@@ -16,7 +16,7 @@ import {
   ThemeTypings,
   Avatar,
   Badge,
-  Link
+  Link,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
@@ -73,7 +73,7 @@ export default function Home() {
           </Button>
         </Stack>
       </Stack>
-      <SimpleGrid columns={{ base: 4, md: 2, lg: 4, sm: 1 }} spacing={2}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 4, sm: 1 }} spacing={2}>
         <BlogPostWithImage
           title={"掲載企業数"}
           num={"2000"}
@@ -95,11 +95,16 @@ export default function Home() {
           color={"pink.400"}
         />
       </SimpleGrid>
-      <SimpleGrid columns={{base: 1, md: 3}}>
-      <SocialProfileSimple name="LINE" date={"2021-03-12"}/>
-      <SocialProfileSimple name="LINE" date={"2021-03-12"}/>
-      <SocialProfileSimple name="LINE" date={"2021-03-12"}/>
-        </SimpleGrid>
+      <Box mt={12} bg={"blue.400"} w={32} p={4} rounded={"lg"}>
+        <Text fontSize={"medium"} fontWeight={600} color={"white"}>
+          新着レビュー
+        </Text>
+        </Box>
+      <SimpleGrid columns={{ base: 1, md: 3 }}>
+        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
+        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
+        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
+      </SimpleGrid>
     </Container>
   );
 }
@@ -110,7 +115,7 @@ const BlogPostWithImage = (props: {
   color: ThemeTypings["colorSchemes"] | (string & {});
 }) => {
   return (
-    <Center py={6}>
+    <Center py={4}>
       <Box
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
@@ -120,7 +125,7 @@ const BlogPostWithImage = (props: {
       >
         <Stack
           textAlign={"center"}
-          p={6}
+          p={4}
           color={useColorModeValue("gray.800", "white")}
           align={"center"}
         >
@@ -129,7 +134,7 @@ const BlogPostWithImage = (props: {
             fontWeight={500}
             bg={props.color}
             p={2}
-            px={3}
+            px={1}
             color={"white"}
             rounded={"full"}
           >
@@ -146,36 +151,39 @@ const BlogPostWithImage = (props: {
   );
 };
 
-function SocialProfileSimple(props: {name: String, date: String}) {
+function SocialProfileSimple(props: { name: String; date: String }) {
   return (
     <Center py={6}>
       <Box
-        maxW={'320px'}
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'2xl'}
-        rounded={'lg'}
+        maxW={"320px"}
+        w={"full"}
+        bg={useColorModeValue("white", "gray.900")}
+        boxShadow={"2xl"}
+        rounded={"lg"}
         p={6}
-        textAlign={'center'}>
-        <Heading fontSize={'2xl'} fontFamily={'body'}>
+        textAlign={"center"}
+      >
+        <Heading fontSize={"2xl"} fontFamily={"body"}>
           {props.name}
         </Heading>
-        <Text fontWeight={600} color={'gray.500'} mb={4}>
+        <Text fontWeight={600} color={"gray.500"} mb={4}>
           {props.date}
         </Text>
         <Text
-          textAlign={'center'}
-          color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}>
+          textAlign={"center"}
+          color={useColorModeValue("gray.700", "gray.400")}
+          px={3}
+        >
           Java+オンプレの会社で内製のライブラリも多く、企業としての大きさを感じました。
         </Text>
 
-        <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
+        <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
           <Badge
             px={2}
             py={0}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
+            bg={useColorModeValue("gray.50", "gray.800")}
+            fontWeight={"400"}
+          >
             #Java
           </Badge>
         </Stack>
