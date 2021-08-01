@@ -11,16 +11,19 @@ import {
   Box,
   Icon,
   useColorModeValue,
+  SimpleGrid,
+  color,
+  ThemeTypings
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
 import { title } from "process";
 import { ReactNode } from "react";
-import { CheckIcon } from '@chakra-ui/icons';
+import { CheckIcon } from "@chakra-ui/icons";
 
 export default function Home() {
   return (
-    <Container maxW={"3xl"}>
+    <Container maxW={"5xl"}>
       <Stack
         as={Box}
         textAlign={"center"}
@@ -67,38 +70,45 @@ export default function Home() {
           </Button>
         </Stack>
       </Stack>
-      <BlogPostWithImage title={"掲載企業数"} num={'2000'}/>
+      <SimpleGrid columns={{base: 4, md: 2, lg: 4, sm: 1}} spacing={2}>
+      <BlogPostWithImage title={"掲載企業数"} num={"2000"} color={"green.400"}/>
+      <BlogPostWithImage title={"掲載企業数"} num={"2000"} color={"blue.400"}/>
+      <BlogPostWithImage title={"掲載企業数"} num={"2000"} color={"orange.400"}/>
+      <BlogPostWithImage title={"掲載企業数"} num={"2000"} color={"pink.400"}/>
+      </SimpleGrid>
     </Container>
   );
 }
 
-const BlogPostWithImage = (props: {title: String, num: String}) => {
+const BlogPostWithImage = (props: { title: String; num: String, color: ThemeTypings["colorSchemes"]|(string & {})}) => {
   return (
     <Center py={6}>
       <Box
-        maxW={'330px'}
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
-        boxShadow={'2xl'}
-        rounded={'md'}
-        overflow={'hidden'}>
+        w={"full"}
+        bg={useColorModeValue("white", "gray.800")}
+        boxShadow={"2xl"}
+        rounded={"md"}
+        overflow={"hidden"}
+      >
         <Stack
-          textAlign={'center'}
+          textAlign={"center"}
           p={6}
-          color={useColorModeValue('gray.800', 'white')}
-          align={'center'}>
+          color={useColorModeValue("gray.800", "white")}
+          align={"center"}
+        >
           <Text
-            fontSize={'sm'}
+            fontSize={"sm"}
             fontWeight={500}
-            bg={useColorModeValue('green.50', 'green.900')}
+            bg={props.color}
             p={2}
             px={3}
-            color={'green.500'}
-            rounded={'full'}>
+            color={"white"}
+            rounded={"full"}
+          >
             {props.title}
           </Text>
-          <Stack direction={'row'} align={'center'} justify={'center'}>
-            <Text fontSize={'4xl'} fontWeight={800}>
+          <Stack direction={"row"} align={"center"} justify={"center"}>
+            <Text fontSize={"4xl"} fontWeight={800}>
               {props.num}
             </Text>
           </Stack>
@@ -106,4 +116,4 @@ const BlogPostWithImage = (props: {title: String, num: String}) => {
       </Box>
     </Center>
   );
-}
+};
