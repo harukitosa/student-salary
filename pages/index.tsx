@@ -1,25 +1,22 @@
 import {
   Container,
-  Flex,
-  Spacer,
   Text,
   Center,
-  Grid,
-  GridItem,
   Stack,
   Heading,
+  List,
+  ListItem,
+  ListIcon,
   Button,
   Box,
   Icon,
   useColorModeValue,
-  createIcon,
-  Stat,
-  StatLabel,
-  StatNumber,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
+import { title } from "process";
 import { ReactNode } from "react";
+import { CheckIcon } from '@chakra-ui/icons';
 
 export default function Home() {
   return (
@@ -70,37 +67,43 @@ export default function Home() {
           </Button>
         </Stack>
       </Stack>
+      <BlogPostWithImage title={"掲載企業数"} num={'2000'}/>
     </Container>
   );
 }
 
-const StatsCard = (props: { title: String; stat: Number; icon: ReactNode }) => {
+const BlogPostWithImage = (props: {title: String, num: String}) => {
   return (
-    <Stat
-      px={{ base: 2, md: 4 }}
-      py={"5"}
-      shadow={"xl"}
-      border={"1px solid"}
-      borderColor={useColorModeValue("gray.800", "gray.500")}
-      rounded={"lg"}
-    >
-      <Flex justifyContent={"space-between"}>
-        <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight={"medium"} isTruncated>
+    <Center py={6}>
+      <Box
+        maxW={'330px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        overflow={'hidden'}>
+        <Stack
+          textAlign={'center'}
+          p={6}
+          color={useColorModeValue('gray.800', 'white')}
+          align={'center'}>
+          <Text
+            fontSize={'sm'}
+            fontWeight={500}
+            bg={useColorModeValue('green.50', 'green.900')}
+            p={2}
+            px={3}
+            color={'green.500'}
+            rounded={'full'}>
             {props.title}
-          </StatLabel>
-          <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
-            {props.stat}
-          </StatNumber>
-        </Box>
-        <Box
-          my={"auto"}
-          color={useColorModeValue("gray.800", "gray.200")}
-          alignContent={"center"}
-        >
-          {props.icon}
-        </Box>
-      </Flex>
-    </Stat>
+          </Text>
+          <Stack direction={'row'} align={'center'} justify={'center'}>
+            <Text fontSize={'4xl'} fontWeight={800}>
+              {props.num}
+            </Text>
+          </Stack>
+        </Stack>
+      </Box>
+    </Center>
   );
-};
+}
