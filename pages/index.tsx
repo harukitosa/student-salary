@@ -54,7 +54,7 @@ export default function Home() {
           alignSelf={"center"}
           position={"relative"}
         >
-                <Button
+          <Button
             colorScheme={"blue"}
             bg={"blue.400"}
             rounded={"full"}
