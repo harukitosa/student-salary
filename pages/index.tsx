@@ -126,12 +126,18 @@ export default function Home() {
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }}>
-        {query.data && query.data.review && query.data.review.map((item, index)=> {
-          return (
-            <SocialProfileSimple  key={index} name={item.company_name} date={item.create_data_js} detail={item.report.substr(0, 20)} />
-          );
-        })
-        }
+        {query.data &&
+          query.data.review &&
+          query.data.review.map((item, index) => {
+            return (
+              <SocialProfileSimple
+                key={index}
+                name={item.company_name}
+                date={item.create_data_js}
+                detail={item.report.substr(0, 20)}
+              />
+            );
+          })}
       </SimpleGrid>
       {query.data && query.data.workdata && (
         <SalaryTable
@@ -187,7 +193,11 @@ const BlogPostWithImage = (props: {
   );
 };
 
-const SocialProfileSimple = (props: { name: String; date: String; detail: String; }) => {
+const SocialProfileSimple = (props: {
+  name: String;
+  date: String;
+  detail: String;
+}) => {
   return (
     <Center py={6}>
       <Box
