@@ -17,14 +17,34 @@ import {
   Avatar,
   Badge,
   Link,
+  TableCaption,
+  Table,
+  Tbody,
+  Td,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
 import { title } from "process";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { CheckIcon } from "@chakra-ui/icons";
+import { useQuery } from "@apollo/client";
+import {
+  HOMEPAGE_QUERY,
+  HomepageData,
+} from "../request/queries/homepage.query";
+import { workdata } from "../types/workdata";
 
 export default function Home() {
+  // const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
+  const query = useQuery<HomepageData>(HOMEPAGE_QUERY);
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>error</p>;
+
   return (
     <Container maxW={"5xl"}>
       <Stack
@@ -95,16 +115,31 @@ export default function Home() {
           color={"pink.400"}
         />
       </SimpleGrid>
-      <Box mt={12} bg={"blue.400"} w={32} p={4} rounded={"lg"}>
-        <Text fontSize={"medium"} fontWeight={600} color={"white"}>
+      <Box mt={12} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
+        <Text
+          fontSize={"medium"}
+          fontWeight={600}
+          color={"white"}
+          align={"center"}
+        >
           新着レビュー
         </Text>
-        </Box>
+      </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }}>
-        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
-        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
-        <SocialProfileSimple name="LINE" date={"2021-03-12"} />
+        {query.data && query.data.review && query.data.review.map((item, index)=> {
+          return (
+            <SocialProfileSimple  key={index} name={item.company_name} date={item.create_data_js} detail={item.report.substr(0, 20)} />
+          );
+        })
+        }
       </SimpleGrid>
+      {query.data && query.data.workdata && (
+        <SalaryTable
+          error={query.error != null}
+          loading={query.loading}
+          data={query.data.workdata}
+        />
+      )}
     </Container>
   );
 }
@@ -119,7 +154,8 @@ const BlogPostWithImage = (props: {
       <Box
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"2xl"}
+        border={"1px"}
+        borderColor={"blackAlpha.200"}
         rounded={"md"}
         overflow={"hidden"}
       >
@@ -133,10 +169,10 @@ const BlogPostWithImage = (props: {
             fontSize={"sm"}
             fontWeight={500}
             bg={props.color}
-            p={2}
+            p={1}
             px={1}
             color={"white"}
-            rounded={"full"}
+            rounded={"md"}
           >
             {props.title}
           </Text>
@@ -151,30 +187,27 @@ const BlogPostWithImage = (props: {
   );
 };
 
-function SocialProfileSimple(props: { name: String; date: String }) {
+const SocialProfileSimple = (props: { name: String; date: String; detail: String; }) => {
   return (
     <Center py={6}>
       <Box
         maxW={"320px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.900")}
-        boxShadow={"2xl"}
+        border={"1px"}
+        borderColor={"blackAlpha.200"}
         rounded={"lg"}
-        p={6}
+        p={3}
         textAlign={"center"}
       >
-        <Heading fontSize={"2xl"} fontFamily={"body"}>
+        <Heading fontSize={"xl"} fontFamily={"body"}>
           {props.name}
         </Heading>
-        <Text fontWeight={600} color={"gray.500"} mb={4}>
+        <Text fontWeight={300} color={"gray.500"} mb={4}>
           {props.date}
         </Text>
-        <Text
-          textAlign={"center"}
-          color={useColorModeValue("gray.700", "gray.400")}
-          px={3}
-        >
-          Java+オンプレの会社で内製のライブラリも多く、企業としての大きさを感じました。
+        <Text textAlign={"center"} px={3}>
+          {props.detail}
         </Text>
 
         <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
@@ -190,4 +223,46 @@ function SocialProfileSimple(props: { name: String; date: String }) {
       </Box>
     </Center>
   );
-}
+};
+
+const SalaryTable = (props: {
+  loading: Boolean;
+  error: Boolean;
+  data: workdata[] | undefined;
+}) => {
+  // const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
+
+  if (props.loading) return <p>Loading...</p>;
+  if (props.error) return <p>error</p>;
+
+  return (
+    <Table>
+      <Thead>
+        <Tr>
+          <Th>企業名</Th>
+          <Th isNumeric>時給</Th>
+          <Th>タイプ</Th>
+          <Th>勤務期間</Th>
+          <Th>経験年数</Th>
+          <Th>週出勤日数</Th>
+          <Th>雇用形態</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {props.data.map((item, index) => {
+          return (
+            <Tr key={index}>
+              <Td>{item.name}</Td>
+              <Td isNumeric>{item.salary}円</Td>
+              <Td>{item.type}</Td>
+              <Td>{item.term}</Td>
+              <Td>{item.experience}年</Td>
+              <Td>{item.workdays}</Td>
+              <Td>{item.workType}</Td>
+            </Tr>
+          );
+        })}
+      </Tbody>
+    </Table>
+  );
+};
