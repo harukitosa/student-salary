@@ -30,21 +30,21 @@ import Head from "next/head";
 import Image from "next/image";
 import { title } from "process";
 import React, { ReactNode } from "react";
-import { CheckIcon } from "@chakra-ui/icons";
-import { useQuery } from "@apollo/client";
 import {
   HOMEPAGE_QUERY,
   HomepageData,
 } from "../request/queries/homepage.query";
 import { workdata } from "../types/workdata";
+import client from "../request/client";
 
-export default function Home() {
-  // const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
-  const query = useQuery<HomepageData>(HOMEPAGE_QUERY);
+export async function getServerSideProps(context) {
+  const { data } = await client.query<HomepageData>({query: HOMEPAGE_QUERY})
+  return {
+    props: data,
+ };
+}
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>error</p>;
-
+export default function Home(props: HomepageData) {
   return (
     <Container maxW={"5xl"}>
       <Stack
@@ -96,23 +96,23 @@ export default function Home() {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 4, sm: 1 }} spacing={2}>
         <BlogPostWithImage
           title={"掲載企業数"}
-          num={"2000"}
-          color={"green.400"}
+          num={props.workdatainfo.company_count}
+          color={"green.300"}
         />
         <BlogPostWithImage
-          title={"掲載企業数"}
-          num={"2000"}
-          color={"blue.400"}
+          title={"登録データ数"}
+          num={props.workdatainfo.count}
+          color={"blue.300"}
         />
         <BlogPostWithImage
-          title={"掲載企業数"}
-          num={"2000"}
-          color={"orange.400"}
+          title={"時給の中央値"}
+          num={props.workdatainfo.mid}
+          color={"orange.300"}
         />
         <BlogPostWithImage
-          title={"掲載企業数"}
-          num={"2000"}
-          color={"pink.400"}
+          title={"時給の平均値"}
+          num={props.workdatainfo.avarage}
+          color={"pink.300"}
         />
       </SimpleGrid>
       <Box mt={12} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
@@ -126,9 +126,7 @@ export default function Home() {
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }}>
-        {query.data &&
-          query.data.review &&
-          query.data.review.map((item, index) => {
+        {props.review.map((item, index) => {
             return (
               <SocialProfileSimple
                 key={index}
@@ -139,24 +137,19 @@ export default function Home() {
             );
           })}
       </SimpleGrid>
-      {query.data && query.data.workdata && (
         <SalaryTable
-          error={query.error != null}
-          loading={query.loading}
-          data={query.data.workdata}
+          data={props.workdatainfo.workdata}
         />
-      )}
     </Container>
   );
 }
 
 const BlogPostWithImage = (props: {
   title: String;
-  num: String;
+  num: Number;
   color: ThemeTypings["colorSchemes"] | (string & {});
 }) => {
   return (
-    <Center py={4}>
       <Box
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
@@ -166,30 +159,26 @@ const BlogPostWithImage = (props: {
         overflow={"hidden"}
       >
         <Stack
-          textAlign={"center"}
-          p={4}
+          p={2}
           color={useColorModeValue("gray.800", "white")}
           align={"center"}
         >
           <Text
             fontSize={"sm"}
-            fontWeight={500}
-            bg={props.color}
             p={1}
             px={1}
-            color={"white"}
+            color={"gray.600"}
             rounded={"md"}
           >
             {props.title}
           </Text>
-          <Stack direction={"row"} align={"center"} justify={"center"}>
-            <Text fontSize={"3xl"} fontWeight={800}>
+          <Stack direction={"row"}>
+            <Text fontSize={"3xl"} fontWeight={400}>
               {props.num}
             </Text>
           </Stack>
         </Stack>
       </Box>
-    </Center>
   );
 };
 
@@ -236,15 +225,8 @@ const SocialProfileSimple = (props: {
 };
 
 const SalaryTable = (props: {
-  loading: Boolean;
-  error: Boolean;
-  data: workdata[] | undefined;
+  data: workdata[];
 }) => {
-  // const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
-
-  if (props.loading) return <p>Loading...</p>;
-  if (props.error) return <p>error</p>;
-
   return (
     <Table>
       <Thead>

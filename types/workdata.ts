@@ -1,3 +1,11 @@
+export interface workdataInfo {
+  mid: Number;
+  avarage: Number;
+  count: Number;
+  company_count: Number;
+  workdata: workdata[];
+}
+
 export interface workdata {
   id: Number;
   create_data_js: String;

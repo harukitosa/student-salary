@@ -1,16 +1,24 @@
 import { gql } from "@apollo/client";
-import { review, workdata } from "../../types/workdata";
+import { review, workdata, workdataInfo } from "../../types/workdata";
 
 export const HOMEPAGE_QUERY = gql`
-  query {
-    review: newreview {
-      id
-      user_name
-      company_name
-      link
-      create_data_js
-      report
-    }
+query {
+  review: newreview{
+    id
+    user_name
+    company_name
+    
+    link
+    create_data_js
+    content
+    detail
+    report
+  }
+  workdatainfo {
+    mid
+    avarage
+    count
+    company_count
     workdata {
       id
       name
@@ -25,9 +33,10 @@ export const HOMEPAGE_QUERY = gql`
       workType
     }
   }
+}
 `;
 
 export interface HomepageData {
-  workdata: workdata[] | undefined;
+  workdatainfo: workdataInfo | undefined;
   review: review[] | undefined;
 }
