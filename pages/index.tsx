@@ -133,7 +133,7 @@ export default function Home(props: HomepageData) {
               rounded={"md"}
             >
               <Heading fontSize={"xl"} fontFamily={"body"}>
-        {item.name}
+                {item.name}
               </Heading>
               <Text>max: {item.max}円</Text>
               <Text>min: {item.min}円</Text>
