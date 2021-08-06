@@ -122,32 +122,25 @@ export default function Home(props: HomepageData) {
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 1, lg: 3, sm: 1 }} spacing={2} mt={6}>
-
         {props.company.map((item, index) => {
           return (
             <Box
-            bg={useColorModeValue("white", "gray.800")}
-            border={"1px"}
-            padding={2}
-            w={"full"}
-            borderColor={"blackAlpha.200"}
-            rounded={"md"}
-        >
-          <Heading fontSize={"xl"} fontFamily={"body"}>
-            DMM
-          </Heading>
-          <Text>
-            max: 3000円
-          </Text>
-          <Text>
-            min: 1200円
-          </Text>
-          <Text>
-            登録件数: 12
-          </Text>
-        </Box>
+              key={index}
+              border={"1px"}
+              padding={2}
+              w={"full"}
+              borderColor={"blackAlpha.200"}
+              rounded={"md"}
+            >
+              <Heading fontSize={"xl"} fontFamily={"body"}>
+        {item.name}
+              </Heading>
+              <Text>max: {item.max}円</Text>
+              <Text>min: {item.min}円</Text>
+              <Text>登録件数: {item.count}</Text>
+            </Box>
           );
-        })} 
+        })}
       </SimpleGrid>
       <Box mt={12} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
         <Text
@@ -176,10 +169,7 @@ export default function Home(props: HomepageData) {
   );
 }
 
-const BlogPostWithImage = (props: {
-  title: String;
-  num: Number;
-}) => {
+const BlogPostWithImage = (props: { title: String; num: Number }) => {
   return (
     <Box
       w={"full"}
