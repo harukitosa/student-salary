@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { review, workdata, workdataInfo } from "../../types/workdata";
+import { review, workdataInfo, company } from "../../types/workdata";
 
 export const HOMEPAGE_QUERY = gql`
   query {
@@ -7,12 +7,17 @@ export const HOMEPAGE_QUERY = gql`
       id
       user_name
       company_name
-
       link
       create_data_js
       content
       detail
       report
+    }
+    company: topcompany {
+      name
+      max
+      min
+      count
     }
     workdatainfo {
       mid
@@ -39,4 +44,5 @@ export const HOMEPAGE_QUERY = gql`
 export interface HomepageData {
   workdatainfo: workdataInfo | undefined;
   review: review[] | undefined;
+  company: company[] | undefined;
 }

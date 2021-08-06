@@ -32,3 +32,10 @@ export interface review {
   skill: String;
   user_name: String;
 }
+
+export interface company {
+  name: String;
+  max: number;
+  min: number;
+  count: number;
+}

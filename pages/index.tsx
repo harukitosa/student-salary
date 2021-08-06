@@ -97,23 +97,57 @@ export default function Home(props: HomepageData) {
         <BlogPostWithImage
           title={"掲載企業数"}
           num={props.workdatainfo.company_count}
-          color={"green.300"}
         />
         <BlogPostWithImage
           title={"登録データ数"}
           num={props.workdatainfo.count}
-          color={"blue.300"}
         />
         <BlogPostWithImage
           title={"時給の中央値"}
           num={props.workdatainfo.mid}
-          color={"orange.300"}
         />
         <BlogPostWithImage
           title={"時給の平均値"}
           num={props.workdatainfo.avarage}
-          color={"pink.300"}
         />
+      </SimpleGrid>
+      <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
+        <Text
+          fontSize={"medium"}
+          fontWeight={600}
+          color={"white"}
+          align={"center"}
+        >
+          登録件数が多い企業
+        </Text>
+      </Box>
+      <SimpleGrid columns={{ base: 1, md: 1, lg: 3, sm: 1 }} spacing={2} mt={6}>
+
+        {props.company.map((item, index) => {
+          return (
+            <Box
+            bg={useColorModeValue("white", "gray.800")}
+            border={"1px"}
+            padding={2}
+            w={"full"}
+            borderColor={"blackAlpha.200"}
+            rounded={"md"}
+        >
+          <Heading fontSize={"xl"} fontFamily={"body"}>
+            DMM
+          </Heading>
+          <Text>
+            max: 3000円
+          </Text>
+          <Text>
+            min: 1200円
+          </Text>
+          <Text>
+            登録件数: 12
+          </Text>
+        </Box>
+          );
+        })} 
       </SimpleGrid>
       <Box mt={12} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
         <Text
@@ -145,7 +179,6 @@ export default function Home(props: HomepageData) {
 const BlogPostWithImage = (props: {
   title: String;
   num: Number;
-  color: ThemeTypings["colorSchemes"] | (string & {});
 }) => {
   return (
     <Box
