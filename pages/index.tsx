@@ -38,10 +38,10 @@ import { workdata } from "../types/workdata";
 import client from "../request/client";
 
 export async function getServerSideProps(context) {
-  const { data } = await client.query<HomepageData>({query: HOMEPAGE_QUERY})
+  const { data } = await client.query<HomepageData>({ query: HOMEPAGE_QUERY });
   return {
     props: data,
- };
+  };
 }
 
 export default function Home(props: HomepageData) {
@@ -127,19 +127,17 @@ export default function Home(props: HomepageData) {
       </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }}>
         {props.review.map((item, index) => {
-            return (
-              <SocialProfileSimple
-                key={index}
-                name={item.company_name}
-                date={item.create_data_js}
-                detail={item.report.substr(0, 20)}
-              />
-            );
-          })}
+          return (
+            <SocialProfileSimple
+              key={index}
+              name={item.company_name}
+              date={item.create_data_js}
+              detail={item.report.substr(0, 20)}
+            />
+          );
+        })}
       </SimpleGrid>
-        <SalaryTable
-          data={props.workdatainfo.workdata}
-        />
+      <SalaryTable data={props.workdatainfo.workdata} />
     </Container>
   );
 }
@@ -150,35 +148,29 @@ const BlogPostWithImage = (props: {
   color: ThemeTypings["colorSchemes"] | (string & {});
 }) => {
   return (
-      <Box
-        w={"full"}
-        bg={useColorModeValue("white", "gray.800")}
-        border={"1px"}
-        borderColor={"blackAlpha.200"}
-        rounded={"md"}
-        overflow={"hidden"}
+    <Box
+      w={"full"}
+      bg={useColorModeValue("white", "gray.800")}
+      border={"1px"}
+      borderColor={"blackAlpha.200"}
+      rounded={"md"}
+      overflow={"hidden"}
+    >
+      <Stack
+        p={2}
+        color={useColorModeValue("gray.800", "white")}
+        align={"center"}
       >
-        <Stack
-          p={2}
-          color={useColorModeValue("gray.800", "white")}
-          align={"center"}
-        >
-          <Text
-            fontSize={"sm"}
-            p={1}
-            px={1}
-            color={"gray.600"}
-            rounded={"md"}
-          >
-            {props.title}
+        <Text fontSize={"sm"} p={1} px={1} color={"gray.600"} rounded={"md"}>
+          {props.title}
+        </Text>
+        <Stack direction={"row"}>
+          <Text fontSize={"3xl"} fontWeight={400}>
+            {props.num}
           </Text>
-          <Stack direction={"row"}>
-            <Text fontSize={"3xl"} fontWeight={400}>
-              {props.num}
-            </Text>
-          </Stack>
         </Stack>
-      </Box>
+      </Stack>
+    </Box>
   );
 };
 
@@ -224,9 +216,7 @@ const SocialProfileSimple = (props: {
   );
 };
 
-const SalaryTable = (props: {
-  data: workdata[];
-}) => {
+const SalaryTable = (props: { data: workdata[] }) => {
   return (
     <Table>
       <Thead>
