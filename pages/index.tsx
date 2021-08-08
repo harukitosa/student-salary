@@ -141,12 +141,12 @@ export default function Home() {
       <SimpleGrid columns={{ base: 1, md: 3 }}>
         {data.review.map((item, index) => {
           return (
-              <SocialProfileSimple
+            <SocialProfileSimple
               key={index}
-                name={item.company_name}
-                date={item.create_data_js}
-                detail={item.report.substr(0, 20)}
-              />
+              name={item.company_name}
+              date={item.create_data_js}
+              detail={item.report.substr(0, 20)}
+            />
           );
         })}
       </SimpleGrid>
@@ -189,41 +189,39 @@ const SocialProfileSimple = (props: {
   detail: String;
 }) => {
   return (
-    <Link  href={`/workinfo/${props.name}`} passHref>
-
-    <Center py={6}>
-      <Box
-        maxW={"320px"}
-        w={"full"}
-        bg={useColorModeValue("white", "gray.900")}
-        border={"1px"}
-        borderColor={"blackAlpha.200"}
-        rounded={"lg"}
-        p={3}
-        textAlign={"center"}
-      >
-        <Heading fontSize={"xl"} fontFamily={"body"}>
-          {props.name}
-        </Heading>
-        <Text fontWeight={300} color={"gray.500"} mb={4}>
-          {props.date}
-        </Text>
-        <Text textAlign={"center"} px={3}>
-          {props.detail}
-        </Text>
-        <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
-          <Badge
-            px={2}
-            py={0}
-            bg={useColorModeValue("gray.50", "gray.800")}
-            fontWeight={"400"}
-          >
-            #Java
-          </Badge>
-        </Stack>
-      </Box>
-    </Center>
+    <Link href={`/workinfo/${props.name}`} passHref>
+      <Center py={6}>
+        <Box
+          maxW={"320px"}
+          w={"full"}
+          bg={useColorModeValue("white", "gray.900")}
+          border={"1px"}
+          borderColor={"blackAlpha.200"}
+          rounded={"lg"}
+          p={3}
+          textAlign={"center"}
+        >
+          <Heading fontSize={"xl"} fontFamily={"body"}>
+            {props.name}
+          </Heading>
+          <Text fontWeight={300} color={"gray.500"} mb={4}>
+            {props.date}
+          </Text>
+          <Text textAlign={"center"} px={3}>
+            {props.detail}
+          </Text>
+          <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
+            <Badge
+              px={2}
+              py={0}
+              bg={useColorModeValue("gray.50", "gray.800")}
+              fontWeight={"400"}
+            >
+              #Java
+            </Badge>
+          </Stack>
+        </Box>
+      </Center>
     </Link>
-
   );
 };

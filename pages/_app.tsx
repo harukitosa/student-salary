@@ -26,7 +26,7 @@ const themes = {
       "html, body": {
         padding: 0,
         margin: 0,
-        backgroundColor: 'gray.300',
+        backgroundColor: "gray.300",
         color: "gray.600",
       },
     },
