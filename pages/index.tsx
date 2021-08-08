@@ -9,42 +9,30 @@ import {
   ListIcon,
   Button,
   Box,
-  Icon,
   useColorModeValue,
   SimpleGrid,
-  color,
-  ThemeTypings,
-  Avatar,
   Badge,
-  Link,
-  TableCaption,
-  Table,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
 } from "@chakra-ui/react";
-import Head from "next/head";
-import Image from "next/image";
-import { title } from "process";
-import React, { ReactNode } from "react";
 import {
   HOMEPAGE_QUERY,
   HomepageData,
 } from "../request/queries/homepage.query";
-import { workdata } from "../types/workdata";
-import client from "../request/client";
+import { useQuery } from "@apollo/client";
+import { SimpleTable } from "../component/simpletable";
+import Link from "next/link";
 
-export async function getServerSideProps(context) {
-  const { data } = await client.query<HomepageData>({ query: HOMEPAGE_QUERY });
-  return {
-    props: data,
-  };
-}
+// export async function getServerSideProps(context) {
+//   const { data } = await client.query<HomepageData>({ query: HOMEPAGE_QUERY });
+//   return {
+//     props: data,
+//   };
+// }
 
-export default function Home(props: HomepageData) {
+export default function Home() {
+  const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>Error:)</p>;
+
   return (
     <Container maxW={"5xl"}>
       <Stack
@@ -96,19 +84,16 @@ export default function Home(props: HomepageData) {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 4, sm: 1 }} spacing={2}>
         <BlogPostWithImage
           title={"掲載企業数"}
-          num={props.workdatainfo.company_count}
+          num={data.workdatainfo.company_count}
         />
         <BlogPostWithImage
           title={"登録データ数"}
-          num={props.workdatainfo.count}
+          num={data.workdatainfo.count}
         />
-        <BlogPostWithImage
-          title={"時給の中央値"}
-          num={props.workdatainfo.mid}
-        />
+        <BlogPostWithImage title={"時給の中央値"} num={data.workdatainfo.mid} />
         <BlogPostWithImage
           title={"時給の平均値"}
-          num={props.workdatainfo.avarage}
+          num={data.workdatainfo.avarage}
         />
       </SimpleGrid>
       <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
@@ -122,23 +107,24 @@ export default function Home(props: HomepageData) {
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 1, lg: 3, sm: 1 }} spacing={2} mt={6}>
-        {props.company.map((item, index) => {
+        {data.company.map((item, index) => {
           return (
-            <Box
-              key={index}
-              border={"1px"}
-              padding={2}
-              w={"full"}
-              borderColor={"blackAlpha.200"}
-              rounded={"md"}
-            >
-              <Heading fontSize={"xl"} fontFamily={"body"}>
-                {item.name}
-              </Heading>
-              <Text>max: {item.max}円</Text>
-              <Text>min: {item.min}円</Text>
-              <Text>登録件数: {item.count}</Text>
-            </Box>
+            <Link key={index} href={`/workinfo/${item.name}`} passHref>
+              <Box
+                border={"1px"}
+                padding={2}
+                w={"full"}
+                borderColor={"blackAlpha.200"}
+                rounded={"md"}
+              >
+                <Heading fontSize={"xl"} fontFamily={"body"}>
+                  {item.name}
+                </Heading>
+                <Text>max: {item.max}円</Text>
+                <Text>min: {item.min}円</Text>
+                <Text>登録件数: {item.count}</Text>
+              </Box>
+            </Link>
           );
         })}
       </SimpleGrid>
@@ -153,18 +139,18 @@ export default function Home(props: HomepageData) {
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }}>
-        {props.review.map((item, index) => {
+        {data.review.map((item, index) => {
           return (
-            <SocialProfileSimple
+              <SocialProfileSimple
               key={index}
-              name={item.company_name}
-              date={item.create_data_js}
-              detail={item.report.substr(0, 20)}
-            />
+                name={item.company_name}
+                date={item.create_data_js}
+                detail={item.report.substr(0, 20)}
+              />
           );
         })}
       </SimpleGrid>
-      <SalaryTable data={props.workdatainfo.workdata} />
+      <SimpleTable data={data.workdatainfo.workdata} />
     </Container>
   );
 }
@@ -203,6 +189,8 @@ const SocialProfileSimple = (props: {
   detail: String;
 }) => {
   return (
+    <Link  href={`/workinfo/${props.name}`} passHref>
+
     <Center py={6}>
       <Box
         maxW={"320px"}
@@ -223,7 +211,6 @@ const SocialProfileSimple = (props: {
         <Text textAlign={"center"} px={3}>
           {props.detail}
         </Text>
-
         <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
           <Badge
             px={2}
@@ -236,38 +223,7 @@ const SocialProfileSimple = (props: {
         </Stack>
       </Box>
     </Center>
-  );
-};
+    </Link>
 
-const SalaryTable = (props: { data: workdata[] }) => {
-  return (
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>企業名</Th>
-          <Th isNumeric>時給</Th>
-          <Th>タイプ</Th>
-          <Th>勤務期間</Th>
-          <Th>経験年数</Th>
-          <Th>週出勤日数</Th>
-          <Th>雇用形態</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {props.data.map((item, index) => {
-          return (
-            <Tr key={index}>
-              <Td>{item.name}</Td>
-              <Td isNumeric>{item.salary}円</Td>
-              <Td>{item.type}</Td>
-              <Td>{item.term}</Td>
-              <Td>{item.experience}年</Td>
-              <Td>{item.workdays}</Td>
-              <Td>{item.workType}</Td>
-            </Tr>
-          );
-        })}
-      </Tbody>
-    </Table>
   );
 };

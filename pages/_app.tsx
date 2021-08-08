@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Header } from "../component/header";
 import {
   ApolloClient,
@@ -20,14 +20,28 @@ const client = new ApolloClient({
   link,
 });
 
+const themes = {
+  styles: {
+    global: {
+      "html, body": {
+        padding: 0,
+        margin: 0,
+        backgroundColor: 'gray.300',
+        color: "gray.600",
+      },
+    },
+  },
+};
+const theme = extendTheme({ themes });
+
 function MyApp({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
-      <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <ApolloProvider client={client}>
         <Header />
         <Component {...pageProps} />
-      </ChakraProvider>
-    </ApolloProvider>
+      </ApolloProvider>
+    </ChakraProvider>
   );
 }
 

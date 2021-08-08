@@ -34,8 +34,10 @@ export interface review {
 }
 
 export interface company {
+  review: review[];
   name: String;
   max: number;
   min: number;
   count: number;
+  workdata: workdata[];
 }

@@ -9,15 +9,18 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export const Header = () => {
   return (
     <Box bg="blue.500" w="100%" p={4} color="white">
       <Container maxW="container.xl">
         <Flex>
-          <Text fontSize="2xl" fontWeight="bold">
-            StudentSalary
-          </Text>
+          <Link href={`/`}>
+            <Text fontSize="2xl" fontWeight="bold">
+              StudentSalary
+            </Text>
+          </Link>
           <Spacer />
           <HeaderMenu />
         </Flex>
