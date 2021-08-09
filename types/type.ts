@@ -34,7 +34,7 @@ export interface review {
 }
 
 export interface company {
-  review: review[];
+  review?: review[];
   name: String;
   max: number;
   min: number;

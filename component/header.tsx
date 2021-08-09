@@ -13,11 +13,11 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <Box bg="blue.500" w="100%" p={4} color="white">
+    <Box bg="blue.500" w="100%" p={2} color="white">
       <Container maxW="container.xl">
         <Flex>
           <Link href={`/`}>
-            <Text fontSize="2xl" fontWeight="bold">
+            <Text fontSize="xl" fontWeight="bold">
               StudentSalary
             </Text>
           </Link>
@@ -35,8 +35,12 @@ const HeaderMenu = () => {
       <MenuButton>Menu</MenuButton>
       <Box color="black">
         <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
+          <Link href={`/`}>
+            <MenuItem>Topページ</MenuItem>
+          </Link>
+          <Link href={`/workinfo`}>
+            <MenuItem>企業一覧</MenuItem>
+          </Link>
           <MenuItem>Mark as Draft</MenuItem>
           <MenuItem>Delete</MenuItem>
           <MenuItem>Attend a Workshop</MenuItem>

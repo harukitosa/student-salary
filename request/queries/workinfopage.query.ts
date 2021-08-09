@@ -1,6 +1,25 @@
 import { gql } from "@apollo/client";
 import { company, review } from "../../types/type";
 
+export const WORKINFOTOPPAGE_QUERY = gql`
+  query {
+    company {
+      max
+      min
+      count
+      name
+      workdata {
+        salary
+        name
+      }
+    }
+  }
+`;
+
+export interface WORKINFOTOPPAGE_QUERY_DATA {
+  company: company[] | undefined;
+}
+
 export const WORKINFOPAGE_QUERY = gql`
   query Company($name: String) {
     company(name: $name) {
@@ -9,6 +28,7 @@ export const WORKINFOPAGE_QUERY = gql`
       count
       name
       workdata {
+        id
         salary
         name
         detail
@@ -38,5 +58,5 @@ export const WORKINFOPAGE_QUERY = gql`
 `;
 
 export interface WORKINFOPAGE_QUERY_DATA {
-  company: company | undefined;
+  company: company[] | undefined;
 }

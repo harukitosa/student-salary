@@ -12,12 +12,11 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
-import client from "../../request/client";
 import {
   WORKINFOPAGE_QUERY,
   WORKINFOPAGE_QUERY_DATA,
 } from "../../request/queries/workinfopage.query";
-import { SimpleTable } from "../../component/simpletable";
+import { DataTable } from "../../component/simpletable";
 import { review } from "../../types/type";
 
 export default function WorkInfo() {
@@ -49,19 +48,19 @@ export default function WorkInfo() {
             zIndex: -1,
           }}
         >
-          {data.company.name}
+          {data.company[0].name}
         </Text>
         <br />{" "}
         <Text color={"blue.400"} as={"span"} fontSize={"2xl"}>
-          登録件数: {data.company.count}
+          登録件数: {data.company[0].count}
         </Text>{" "}
       </Heading>
       <Text fontSize={20} fontWeight={700}>
         データ
       </Text>
-      <SimpleTable data={data.company.workdata} />
-      {data.company.review &&
-        data.company.review.map((item, index) => {
+      <DataTable data={data.company[0].workdata} />
+      {data.company[0].review &&
+        data.company[0].review.map((item, index) => {
           return <TestmonialCard key={index} review={item} />;
         })}
     </Container>

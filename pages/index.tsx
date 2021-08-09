@@ -18,7 +18,7 @@ import {
   HomepageData,
 } from "../request/queries/homepage.query";
 import { useQuery } from "@apollo/client";
-import { SimpleTable } from "../component/simpletable";
+import { DataTable } from "../component/simpletable";
 import Link from "next/link";
 
 // export async function getServerSideProps(context) {
@@ -150,7 +150,7 @@ export default function Home() {
           );
         })}
       </SimpleGrid>
-      <SimpleTable data={data.workdatainfo.workdata} />
+      <DataTable data={data.workdatainfo.workdata} />
     </Container>
   );
 }
