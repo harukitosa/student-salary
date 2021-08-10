@@ -150,6 +150,16 @@ export default function Home() {
           );
         })}
       </SimpleGrid>
+      <Box mt={12} mb={6} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
+        <Text
+          fontSize={"medium"}
+          fontWeight={600}
+          color={"white"}
+          align={"center"}
+        >
+          企業情報
+        </Text>
+      </Box>
       <DataTable data={data.workdatainfo.workdata} />
     </Container>
   );
