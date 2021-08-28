@@ -3,7 +3,7 @@ import { workdata } from "../types/type";
 import Link from "next/link";
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 // export const SimpleTable = (props: { data: workdata[] }) => {
 
@@ -99,17 +99,17 @@ const columns = [
 ];
 
 export const DataTable = (props: { data: workdata[] }) => {
-  const router = useRouter()
+  const router = useRouter();
   const handleRowSelection = (e) => {
-    for(let i = 0;i < props.data.length;i++) {
-      if (e[0]===props.data[i].id) {
-        router.push(`/workinfo/${props.data[i].name}`)
+    for (let i = 0; i < props.data.length; i++) {
+      if (e[0] === props.data[i].id) {
+        router.push(`/workinfo/${props.data[i].name}`);
       }
     }
   };
   const pageSize = props.data.length > 15 ? 15 : props.data.length;
   return (
-    <div style={{ height: pageSize*50 + 150, width: "100%" }}>
+    <div style={{ height: pageSize * 50 + 150, width: "100%" }}>
       <DataGrid
         rows={props.data}
         columns={columns}

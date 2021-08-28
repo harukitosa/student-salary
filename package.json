@@ -22,6 +22,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@hookform/resolvers": "^2.8.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/data-grid": "^4.0.0-alpha.35",
     "framer-motion": "^4.1.17",
@@ -29,7 +30,9 @@
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "recharts": "^2.0.10"
+    "react-hook-form": "^7.12.2",
+    "recharts": "^2.0.10",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/node": "^16.4.8",

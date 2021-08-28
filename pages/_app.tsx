@@ -1,6 +1,7 @@
 import "../styles/globals.css";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, Container, extendTheme } from "@chakra-ui/react";
 import { Header } from "../component/header";
+import { Footer } from "../component/footer";
 import {
   ApolloClient,
   InMemoryCache,
@@ -26,8 +27,6 @@ const themes = {
       "html, body": {
         padding: 0,
         margin: 0,
-        backgroundColor: "gray.300",
-        color: "gray.600",
       },
     },
   },
@@ -39,7 +38,10 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
         <Header />
-        <Component {...pageProps} />
+        <Container maxW={"6xl"}>
+          <Component {...pageProps} />
+        </Container>
+        <Footer />
       </ApolloProvider>
     </ChakraProvider>
   );
