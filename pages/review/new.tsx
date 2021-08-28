@@ -71,7 +71,7 @@ const ReviewForm = () => {
   if (loading) return <Text>loading</Text>;
   if (error) {
     console.log(error);
-    return <ErrorPage/>;
+    return <ErrorPage />;
   }
   if (data) return <ThankPage />;
 

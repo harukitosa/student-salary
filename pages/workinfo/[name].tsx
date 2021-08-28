@@ -29,7 +29,7 @@ export default function WorkInfo() {
     }
   );
   if (loading) return <p>Loading...</p>;
-  if (error) return <ErrorPage/>;
+  if (error) return <ErrorPage />;
   console.log(data);
   return (
     <Container maxW={"5xl"}>

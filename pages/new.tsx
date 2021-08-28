@@ -80,7 +80,7 @@ const WorkinfoForm = () => {
   const space = "4";
 
   if (loading) return <Text>loading</Text>;
-  if (error) return <ErrorPage/>;
+  if (error) return <ErrorPage />;
   if (data) return <ThankPage />;
 
   return (

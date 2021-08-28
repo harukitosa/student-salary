@@ -2,21 +2,21 @@ import { gql } from "@apollo/client";
 import { company, review } from "../../types/type";
 
 export const REVIEW_QUERY = gql`
-query {
-	review {
-    id
-    company_name
-    content
-    detail
-    user_name
-    skill
-    detail
-    report
+  query {
+    review {
+      id
+      company_name
+      content
+      detail
+      user_name
+      skill
+      detail
+      report
+    }
   }
-}
-`
+`;
 export interface ReviewPageData {
-review: review[] | undefined;
+  review: review[] | undefined;
 }
 
 export const CREATE_REVIEW = gql`

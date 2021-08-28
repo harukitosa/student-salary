@@ -22,7 +22,7 @@ import { ErrorPage } from "../component/error";
 export default function Home() {
   const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
   if (loading) return <p>loading...</p>;
-  if (error) return <ErrorPage/>
+  if (error) return <ErrorPage />;
 
   return (
     <>

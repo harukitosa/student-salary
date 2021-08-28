@@ -23,7 +23,7 @@ export default function WorkInfo() {
     WORKINFOTOPPAGE_QUERY
   );
   if (loading) return <Text>Loading...</Text>;
-  if (error) return <ErrorPage/>;
+  if (error) return <ErrorPage />;
   return (
     <Container maxW={"5xl"}>
       <Box pt={8} pb={8}>
