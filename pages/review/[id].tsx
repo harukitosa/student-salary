@@ -24,7 +24,7 @@ export default function ReviewDetailPage() {
 
   const review = data.review[0];
   return (
-    <Container w="lg">
+    <Container maxW="lg">
       <Box
         mt={12}
         maxW="lg"

@@ -10,7 +10,9 @@ import {
 } from "@apollo/client";
 
 const link = createHttpLink({
-  uri: "https://student-salary-api.an.r.appspot.com/query",
+  uri:   process.env.NODE_ENV === 'production'
+  ? 'https://student-salary-api.an.r.appspot.com/query'
+  : 'http://localhost:8080/query',
   credentials: "same-origin",
 });
 
