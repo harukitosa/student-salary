@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { company, review } from "../../types/type";
+import { review } from "../../types/type";
 
 export const REVIEW_QUERY = gql`
   query {

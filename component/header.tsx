@@ -35,17 +35,23 @@ const HeaderMenu = () => {
       <MenuButton>Menu</MenuButton>
       <Box color="black">
         <MenuList>
-          <Link href={`/`}>
+          <Link href={`/`} passHref>
             <MenuItem>Topページ</MenuItem>
           </Link>
-          <Link href={`/workinfo`}>
+          <Link href={`/workinfo`} passHref>
             <MenuItem>企業一覧</MenuItem>
           </Link>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Box>
+          <Link href={`/review`} passHref>
+            <MenuItem>口コミ一覧</MenuItem>
+          </Link>      
+          <Link href={`/new`} passHref>
+            <MenuItem>時給登録</MenuItem>
+          </Link>
+          <Link href={`/review/new`} passHref>
+            <MenuItem>口コミ登録</MenuItem>
+          </Link>
+          </MenuList>
+        </Box>
     </Menu>
   );
 };

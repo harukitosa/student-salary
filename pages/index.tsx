@@ -18,6 +18,7 @@ import { DataTable } from "../component/simpletable";
 import Link from "next/link";
 import Image from "next/image";
 import { ErrorPage } from "../component/error";
+import { ReviewItem } from "../component/reviewItem";
 
 export default function Home() {
   const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
@@ -190,10 +191,11 @@ export default function Home() {
       <SimpleGrid columns={{ base: 1, md: 3 }}>
         {data.review.map((item, index) => {
           return (
-            <SocialProfileSimple
+            <ReviewItem
               key={index}
+              link={`/workinfo/${item.company_name}`}
               name={item.company_name}
-              date={item.create_data_js}
+              user_name={item.user_name}
               detail={item.report.substr(0, 20)}
             />
           );
@@ -245,36 +247,5 @@ const BlogPostWithImage = (props: {
         </Text>
       </Stack>
     </Box>
-  );
-};
-
-const SocialProfileSimple = (props: {
-  name: String;
-  date: String;
-  detail: String;
-}) => {
-  return (
-    <Link href={`/workinfo/${props.name}`} passHref>
-      <Center py={6}>
-        <Box
-          bg={useColorModeValue("white", "gray.900")}
-          border={"1px"}
-          borderColor={"blackAlpha.200"}
-          rounded={"lg"}
-          p={3}
-          m={1}
-          w={"full"}
-          h={"full"}
-        >
-          <Heading fontSize={"xl"} fontFamily={"body"}>
-            {props.name}
-          </Heading>
-          <Text fontWeight={300} color={"gray.500"} mb={4}>
-            {props.date}
-          </Text>
-          <Text>{props.detail}...</Text>
-        </Box>
-      </Center>
-    </Link>
   );
 };
