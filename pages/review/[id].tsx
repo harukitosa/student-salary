@@ -53,12 +53,15 @@ export default function ReviewDetailPage() {
             {review.user_name}
           </Box>
 
-	  <LineItem title="内容" content={review.content} />
-	  <LineItem title="使用した技術" content={review.skill} />
-	  <LineItem title="参加した理由" content={review.reasons} />
-	  <LineItem title="
+          <LineItem title="内容" content={review.content} />
+          <LineItem title="使用した技術" content={review.skill} />
+          <LineItem title="参加した理由" content={review.reasons} />
+          <LineItem
+            title="
 	  感想・一推しポイント・詳細など
-	  " content={review.report} />
+	  "
+            content={review.report}
+          />
 
           <Box mt="8" d="flex" alignItems="baseline">
             <Badge borderRadius="full" px="4" py="2" colorScheme="teal">
@@ -71,19 +74,21 @@ export default function ReviewDetailPage() {
   );
 }
 
-
-const LineItem = (props: {
-	title: string
-	content: String
-}) => {
-	return (<>
-		<Badge borderRadius="md" px="2" py="1" 
-		mt="4" bg="blue.200">
-			{props.title}
-		</Badge>
-		<Box mt="2" fontWeight="semibold" as="p" fontSize={"16"} lineHeight="tight">
-		  {props.content}
-		</Box>
-		</>
-	)
-} 
+const LineItem = (props: { title: string; content: String }) => {
+  return (
+    <>
+      <Badge borderRadius="md" px="2" py="1" mt="4" bg="blue.200">
+        {props.title}
+      </Badge>
+      <Box
+        mt="2"
+        fontWeight="semibold"
+        as="p"
+        fontSize={"16"}
+        lineHeight="tight"
+      >
+        {props.content}
+      </Box>
+    </>
+  );
+};
