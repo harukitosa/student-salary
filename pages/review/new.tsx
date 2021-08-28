@@ -41,39 +41,38 @@ export default function NewReviewPage() {
 const ReviewForm = () => {
   const { control, handleSubmit } = useForm<IFormInput>();
 
-  const [createReview, { data, loading, error }] =
-  useMutation(CREATE_REVIEW);
+  const [createReview, { data, loading, error }] = useMutation(CREATE_REVIEW);
 
   const labelColor = "red.400";
   const space = "4";
 
   const validation = (data: IFormInput) => {
-	if (data.company_name_1 === "-" && data.company_name_2 === "") return false;
-	if (data.detail === "") return false;
-	return true;
+    if (data.company_name_1 === "-" && data.company_name_2 === "") return false;
+    if (data.detail === "") return false;
+    return true;
   };
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
     const company_name =
-    data.company_name_2 === "" ? data.company_name_1 : data.company_name_2;
+      data.company_name_2 === "" ? data.company_name_1 : data.company_name_2;
     createReview({
-	variables: {
-		company_name: company_name,
-		detail: data.detail,
-		user_name: data.user_name,
-		content: data.content,
-		skill: data.skill,
-		link: data.link,
-		reasons: data.reason,
-	},
+      variables: {
+        company_name: company_name,
+        detail: data.detail,
+        user_name: data.user_name,
+        content: data.content,
+        skill: data.skill,
+        link: data.link,
+        reasons: data.reason,
+      },
     });
   };
 
   return (
     <>
       <Text as={"h1"} fontSize={"2xl"} fontWeight={"bold"}>
-	インターンシップの口コミ登録
+        インターンシップの口コミ登録
       </Text>
       <Box py={4} />
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -113,9 +112,9 @@ const ReviewForm = () => {
         />
         <Box py={space} />
 
-	<FormLabel pt={"4"}>
+        <FormLabel pt={"4"}>
           <Text as={"span"} fontSize={"sm"}>
-		  ユーザーネーム
+            ユーザーネーム
           </Text>
         </FormLabel>
         <Controller
@@ -124,14 +123,14 @@ const ReviewForm = () => {
           defaultValue="名無しの天才エンジニア"
           render={({ field }) => <Input type={"text"} {...field} />}
         />
-	<Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-		ユーザーネームを記入してください、口コミに表示されます。
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+          ユーザーネームを記入してください、口コミに表示されます。
         </Text>
-	<Box py={space} />
+        <Box py={space} />
 
-	<FormLabel pt={"4"}>
+        <FormLabel pt={"4"}>
           <Text as={"span"} fontSize={"sm"}>
-		  使用した技術
+            使用した技術
           </Text>
         </FormLabel>
         <Controller
@@ -140,12 +139,12 @@ const ReviewForm = () => {
           defaultValue=""
           render={({ field }) => <Input type={"text"} {...field} />}
         />
-	<Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-	例: golang, vue, aws, terraform, bigQuery(箇条書き)
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+          例: golang, vue, aws, terraform, bigQuery(箇条書き)
         </Text>
-	<Box py={space} />
+        <Box py={space} />
 
-	<FormLabel>業務内容</FormLabel>
+        <FormLabel>業務内容</FormLabel>
         <Controller
           name="content"
           control={control}
@@ -153,11 +152,11 @@ const ReviewForm = () => {
           render={({ field }) => <Textarea {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-	   簡単な概要を記入してください
+          簡単な概要を記入してください
         </Text>
         <Box py={space} />
 
-	<FormLabel>応募した理由</FormLabel>
+        <FormLabel>応募した理由</FormLabel>
         <Controller
           name="reason"
           control={control}
@@ -165,16 +164,16 @@ const ReviewForm = () => {
           render={({ field }) => <Textarea height={40} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-	このインターンに応募した理由記入してください。
+          このインターンに応募した理由記入してください。
         </Text>
         <Box py={space} />
 
-	<FormLabel>
-	感想・一推しポイント・詳細など
-	<Text as={"span"} color={labelColor}>
+        <FormLabel>
+          感想・一推しポイント・詳細など
+          <Text as={"span"} color={labelColor}>
             [必須]
-	</Text>
-	</FormLabel>
+          </Text>
+        </FormLabel>
         <Controller
           name="detail"
           control={control}
@@ -182,13 +181,13 @@ const ReviewForm = () => {
           render={({ field }) => <Textarea height={40} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-	このインターンの感想やイチオシポイントやどのようなことが印象に残ったのかを記入してください
+          このインターンの感想やイチオシポイントやどのようなことが印象に残ったのかを記入してください
         </Text>
         <Box py={space} />
 
-	<FormLabel pt={"4"}>
+        <FormLabel pt={"4"}>
           <Text as={"span"} fontSize={"sm"}>
-		参考リンク
+            参考リンク
           </Text>
         </FormLabel>
         <Controller
@@ -197,12 +196,12 @@ const ReviewForm = () => {
           defaultValue=""
           render={({ field }) => <Input type={"text"} {...field} />}
         />
-	<Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-	現在募集中や企業情報など、参考リンクがあれば記入してください
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+          現在募集中や企業情報など、参考リンクがあれば記入してください
         </Text>
-	<Box py={space} />
+        <Box py={space} />
 
-	<Input type="submit" />
+        <Input type="submit" />
       </form>
     </>
   );

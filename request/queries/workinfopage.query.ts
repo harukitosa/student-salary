@@ -72,20 +72,22 @@ mutation createReview(
   $skill: String
   $user_name: String
 ) {
-  createReview(input: {
-    company_name: $company_name,
-    detail: $detail,
-    content: $content,
-    link: $link,
-    reasons: $reasons,
-    report: $report,
-    skill: $skill,
-    user_name: $user_name,
-  }) {
+  createReview(
+    input: {
+      company_name: $company_name,
+      detail: $detail,
+      content: $content,
+      link: $link,
+      reasons: $reasons,
+      report: $report,
+      skill: $skill,
+      user_name: $user_name,
+    }
+  ) {
     id
-  })
+  }
 }
-`
+`;
 
 export const CREATE_WORKDATA = gql`
   mutation createWorkData(
