@@ -123,7 +123,7 @@ const WorkinfoForm = () => {
           name="company_name_2"
           control={control}
           defaultValue=""
-            // @ts-ignore
+          // @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Box py={space} />
@@ -136,7 +136,7 @@ const WorkinfoForm = () => {
         <Controller
           name="salary"
           control={control}
-            // @ts-ignore
+          // @ts-ignore
           render={({ field }) => <Input type={"number"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -239,7 +239,7 @@ const WorkinfoForm = () => {
           name="detail"
           control={control}
           defaultValue={""}
-            // @ts-ignore
+          // @ts-ignore
           render={({ field }) => <Textarea {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
