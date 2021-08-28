@@ -235,7 +235,10 @@ const BlogPostWithImage = (props: {
           {props.title}
         </Text>
         <Text fontSize={"xl"} fontWeight={400}>
-          {props.num}<Text as="span" fontSize={"md"}>{props.unit}</Text>
+          {props.num}
+          <Text as="span" fontSize={"md"}>
+            {props.unit}
+          </Text>
         </Text>
       </Stack>
     </Box>
