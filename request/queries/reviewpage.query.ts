@@ -19,6 +19,24 @@ export interface ReviewPageData {
   review: review[] | undefined;
 }
 
+export const REVIEWBYID_QUERY = gql`
+  query getreview($id: Int) {
+    review(id: $id) {
+      id
+      company_name
+      content
+      detail
+      user_name
+      skill
+      detail
+      report
+    }
+  }
+`;
+export interface ReviewBYIDPageData {
+  review: review[] | undefined;
+}
+
 export const CREATE_REVIEW = gql`
   mutation createReview(
     $company_name: String!

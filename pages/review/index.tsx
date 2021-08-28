@@ -12,6 +12,10 @@ export default function ReviewPage() {
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
   return (
+	  <>
+	  <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
+		  口コミ一覧
+	  </Text>
     <SimpleGrid columns={{ base: 1, md: 3 }}>
       {data.review.map((item, index) => {
         return (
@@ -25,5 +29,5 @@ export default function ReviewPage() {
         );
       })}
     </SimpleGrid>
-  );
+    </>)
 }

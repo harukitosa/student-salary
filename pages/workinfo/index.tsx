@@ -36,7 +36,7 @@ export default function WorkInfo() {
       {data.company.map((item, index) => {
         return (
           <div key={index}>
-            <Link href={`/workinfo/${item.name}`}>
+            <Link href={`/workinfo/${item.name}`} passHref>
               <Text fontSize={"md"} fontWeight={"medium"}>
                 {item.name}
                 <Text color={"gray.400"} fontSize={"sm"}>

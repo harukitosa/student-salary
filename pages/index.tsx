@@ -193,7 +193,7 @@ export default function Home() {
           return (
             <ReviewItem
               key={index}
-              link={`/workinfo/${item.company_name}`}
+              link={`/review/${item.id}`}
               name={item.company_name}
               user_name={item.user_name}
               detail={item.report.substr(0, 20)}
