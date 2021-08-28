@@ -10,12 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { CREATE_WORKDATA } from "../request/queries/workinfopage.query";
 import { useMutation } from "@apollo/client";
+import Image from 'next/image'
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from "yup";
 
 export default function workinfonewPage() {
   return (
-    <Container w="lg" pt="12">
+    <Container pt={12}>
       <WorkinfoForm />
     </Container>
   );
@@ -71,7 +72,9 @@ const WorkinfoForm = () => {
 
   if (loading) return "Submitting...";
   if (error) return `Submission error! ${error.message}`;
-  if (true) return `done`;
+  if (true) return <ThankPage/>;
+
+  
 
   return (
     <>
@@ -217,6 +220,31 @@ const WorkinfoForm = () => {
     </>
   );
 };
+
+
+const ThankPage = () => {
+  const pic = "/done.png"
+
+  return (
+    <Container maxW={"lg"}>
+      <Image 
+        src={pic} 
+        alt="Picture of the author" 
+        width={400} 
+        height={400}
+        objectFit="none" 
+      />
+    <Text fontSize={"28"} fontWeight={"bold"}>ご協力ありがとうございます！</Text>
+    <Text fontSize={"22"} fontWeight={"semibold"}>Thank You!</Text>
+    <Box h={8}/>
+    <Text fontSize={"16"} fontWeight={"medium"}>
+      ご登録いただいたデータは運営者の確認が入ります。<br/>
+      会社名にかぎり、データの統一させていただくために、修正変更等をさせていただく場合がございますがご了承ください。<br/>
+      これからのご活躍を期待しています。
+    </Text>
+    </Container>
+  )
+}
 
 const companyName = ["-", "DMM", "mercari", "CyberAgent"];
 

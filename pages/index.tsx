@@ -115,7 +115,7 @@ export default function Home() {
           title={"掲載企業数"}
           num={data.workdatainfo.company_count}
           icon={"/statistics.svg"}
-          unit={""}
+          unit={"企業"}
         />
         <BlogPostWithImage
           title={"登録データ数"}
@@ -235,10 +235,7 @@ const BlogPostWithImage = (props: {
           {props.title}
         </Text>
         <Text fontSize={"xl"} fontWeight={400}>
-          {props.num}
-          <Text as="span" fontSize={"sm"}>
-            {props.unit}
-          </Text>
+          {props.num}<Text as="span" fontSize={"md"}>{props.unit}</Text>
         </Text>
       </Stack>
     </Box>
