@@ -18,6 +18,7 @@ import {
 } from "../../request/queries/workinfopage.query";
 import { DataTable } from "../../component/simpletable";
 import { review } from "../../types/type";
+import { ErrorPage } from "../../component/error";
 
 export default function WorkInfo() {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function WorkInfo() {
     }
   );
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :( {error}</p>;
+  if (error) return <ErrorPage/>;
   console.log(data);
   return (
     <Container maxW={"5xl"}>

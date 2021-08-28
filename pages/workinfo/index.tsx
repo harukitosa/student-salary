@@ -16,13 +16,14 @@ import {
 } from "recharts";
 import { company } from "../../types/type";
 import Link from "next/link";
+import { ErrorPage } from "../../component/error";
 
 export default function WorkInfo() {
   const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
     WORKINFOTOPPAGE_QUERY
   );
   if (loading) return <Text>Loading...</Text>;
-  if (error) return <p>Error :( {error}</p>;
+  if (error) return <ErrorPage/>;
   return (
     <Container maxW={"5xl"}>
       <Box pt={8} pb={8}>

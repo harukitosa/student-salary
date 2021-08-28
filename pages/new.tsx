@@ -19,6 +19,7 @@ import {
   workdays,
 } from "../types/type";
 import { ThankPage } from "../component/thankpage";
+import { ErrorPage } from "../component/error";
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from "yup";
 
@@ -79,7 +80,7 @@ const WorkinfoForm = () => {
   const space = "4";
 
   if (loading) return <Text>loading</Text>;
-  if (error) return <Text>Error {error}</Text>;
+  if (error) return <ErrorPage/>;
   if (data) return <ThankPage />;
 
   return (

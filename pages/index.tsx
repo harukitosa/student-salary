@@ -17,11 +17,12 @@ import { useQuery } from "@apollo/client";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
 import Image from "next/image";
+import { ErrorPage } from "../component/error";
 
 export default function Home() {
   const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
   if (loading) return <p>loading...</p>;
-  if (error) return <p>Error:) {JSON.stringify(error, null, 4)}</p>;
+  if (error) return <ErrorPage/>
 
   return (
     <>

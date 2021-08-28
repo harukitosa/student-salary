@@ -9,11 +9,10 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { CREATE_REVIEW } from "../../request/queries/workinfopage.query";
-import {
-  companyName,
-} from "../../types/type";
+import { CREATE_REVIEW } from "../../request/queries/reviewpage.query";
+import { companyName } from "../../types/type";
 import { ThankPage } from "../../component/thankpage";
+import { ErrorPage } from "../../component/error";
 
 interface IFormInput {
   company_name_1: String;
@@ -51,8 +50,8 @@ const ReviewForm = () => {
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
     if (!validation(data)) {
-	alert("未記入事項があります");
-	return;
+      alert("未記入事項があります");
+      return;
     }
     const company_name =
       data.company_name_2 === "" ? data.company_name_1 : data.company_name_2;
@@ -63,22 +62,18 @@ const ReviewForm = () => {
         content: data.content,
         skill: data.skill,
         link: data.link,
-	report: data.report,
+        report: data.report,
         reasons: data.reason,
       },
     });
   };
 
-  if (loading) return (
-  <Text>loading</Text>
-  );
+  if (loading) return <Text>loading</Text>;
   if (error) {
-	  console.log(error)
-  return (
-  <Text>Error</Text>
-  );
+    console.log(error);
+    return <ErrorPage/>;
   }
-  if (data) return (<ThankPage />);
+  if (data) return <ThankPage />;
 
   return (
     <>

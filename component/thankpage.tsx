@@ -1,8 +1,4 @@
-import {
-  Container,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { Container, Text, Box } from "@chakra-ui/react";
 import Image from "next/image";
 export const ThankPage = () => {
   const pic = "/done.png";
