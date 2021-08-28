@@ -98,6 +98,7 @@ const ReviewForm = () => {
           control={control}
           defaultValue={"-"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {companyName.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -114,6 +115,7 @@ const ReviewForm = () => {
           name="company_name_2"
           control={control}
           defaultValue=""
+            // @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Box py={space} />
@@ -127,6 +129,7 @@ const ReviewForm = () => {
           name="user_name"
           control={control}
           defaultValue="名無しの天才エンジニア"
+            // @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -143,6 +146,7 @@ const ReviewForm = () => {
           name="skill"
           control={control}
           defaultValue=""
+	// @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -155,6 +159,7 @@ const ReviewForm = () => {
           name="content"
           control={control}
           defaultValue={""}
+            // @ts-ignore
           render={({ field }) => <Textarea {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -167,6 +172,7 @@ const ReviewForm = () => {
           name="reason"
           control={control}
           defaultValue={""}
+            // @ts-ignore
           render={({ field }) => <Textarea height={40} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -184,6 +190,7 @@ const ReviewForm = () => {
           name="report"
           control={control}
           defaultValue={""}
+            // @ts-ignore
           render={({ field }) => <Textarea height={40} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -200,6 +207,7 @@ const ReviewForm = () => {
           name="link"
           control={control}
           defaultValue=""
+            // @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>

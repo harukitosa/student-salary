@@ -106,6 +106,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"-"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {companyName.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -122,6 +123,7 @@ const WorkinfoForm = () => {
           name="company_name_2"
           control={control}
           defaultValue=""
+            // @ts-ignore
           render={({ field }) => <Input type={"text"} {...field} />}
         />
         <Box py={space} />
@@ -134,6 +136,7 @@ const WorkinfoForm = () => {
         <Controller
           name="salary"
           control={control}
+            // @ts-ignore
           render={({ field }) => <Input type={"number"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
@@ -148,6 +151,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"記載なし"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {selectType.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -166,6 +170,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"インターン"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {workType.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -181,6 +186,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"0.5"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {experience.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -199,6 +205,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"1day"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {term.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -214,6 +221,7 @@ const WorkinfoForm = () => {
           control={control}
           defaultValue={"記載なし"}
           render={({ field }) => (
+            // @ts-ignore
             <Select {...field}>
               {workdays.map((item, index) => {
                 return <option key={index}>{item}</option>;
@@ -231,6 +239,7 @@ const WorkinfoForm = () => {
           name="detail"
           control={control}
           defaultValue={""}
+            // @ts-ignore
           render={({ field }) => <Textarea {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
