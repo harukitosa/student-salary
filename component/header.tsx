@@ -43,15 +43,15 @@ const HeaderMenu = () => {
           </Link>
           <Link href={`/review`} passHref>
             <MenuItem>口コミ一覧</MenuItem>
-          </Link>      
+          </Link>
           <Link href={`/new`} passHref>
             <MenuItem>時給登録</MenuItem>
           </Link>
           <Link href={`/review/new`} passHref>
             <MenuItem>口コミ登録</MenuItem>
           </Link>
-          </MenuList>
-        </Box>
+        </MenuList>
+      </Box>
     </Menu>
   );
 };
