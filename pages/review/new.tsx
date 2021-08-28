@@ -11,19 +11,15 @@ import {
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { CREATE_REVIEW } from "../../request/queries/workinfopage.query";
 import {
-  term,
   companyName,
-  selectType,
-  experience,
-  workType,
-  workdays,
 } from "../../types/type";
+import { ThankPage } from "../../component/thankpage";
 
 interface IFormInput {
   company_name_1: String;
   company_name_2: String;
   user_name: String;
-  detail: String;
+  report: String;
   skill: String;
   link: String;
   reason: String;
@@ -48,26 +44,41 @@ const ReviewForm = () => {
 
   const validation = (data: IFormInput) => {
     if (data.company_name_1 === "-" && data.company_name_2 === "") return false;
-    if (data.detail === "") return false;
+    if (data.report === "") return false;
     return true;
   };
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
+    if (!validation(data)) {
+	alert("未記入事項があります");
+	return;
+    }
     const company_name =
       data.company_name_2 === "" ? data.company_name_1 : data.company_name_2;
     createReview({
       variables: {
         company_name: company_name,
-        detail: data.detail,
         user_name: data.user_name,
         content: data.content,
         skill: data.skill,
         link: data.link,
+	report: data.report,
         reasons: data.reason,
       },
     });
   };
+
+  if (loading) return (
+  <Text>loading</Text>
+  );
+  if (error) {
+	  console.log(error)
+  return (
+  <Text>Error</Text>
+  );
+  }
+  if (data) return (<ThankPage />);
 
   return (
     <>
@@ -175,7 +186,7 @@ const ReviewForm = () => {
           </Text>
         </FormLabel>
         <Controller
-          name="detail"
+          name="report"
           control={control}
           defaultValue={""}
           render={({ field }) => <Textarea height={40} {...field} />}
