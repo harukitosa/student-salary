@@ -56,7 +56,7 @@ export default function Home() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Link href={`/new`}>
+            <Link href={`/new`} passHref>
               <Button
                 color={"blue.400"}
                 border={"1px"}
@@ -72,6 +72,7 @@ export default function Home() {
                 時給を登録する
               </Button>
             </Link>
+            <Link href={`/review/new`} passHref>
             <Button
               color={"blue.400"}
               border={"1px"}
@@ -86,6 +87,7 @@ export default function Home() {
             >
               インターンの口コミを書く
             </Button>
+            </Link>
           </Stack>
         </Stack>
         <Image
@@ -115,7 +117,7 @@ export default function Home() {
           title={"掲載企業数"}
           num={data.workdatainfo.company_count}
           icon={"/statistics.svg"}
-          unit={"企業"}
+          unit={"社"}
         />
         <BlogPostWithImage
           title={"登録データ数"}

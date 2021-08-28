@@ -11,6 +11,7 @@ import {
 import { CREATE_WORKDATA } from "../request/queries/workinfopage.query";
 import { useMutation } from "@apollo/client";
 import Image from "next/image";
+import { term, companyName, selectType, experience, workType, workdays } from "../types/type";
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from "yup";
 
@@ -70,13 +71,17 @@ const WorkinfoForm = () => {
   const labelColor = "red.400";
   const space = "4";
 
-  if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.message}`;
-  if (true) return <ThankPage />;
+  if (loading) return (
+    <Text>loading</Text>
+  );
+  if (error) return (
+    <Text>Error {error}</Text>
+  );
+  if (data) return <ThankPage />;
 
   return (
     <>
-      <Text as={"h1"} fontSize={"xl"}>
+      <Text as={"h1"} fontSize={"2xl"} fontWeight={"bold"}>
         時給登録フォーム
       </Text>
       <Box py={4} />
@@ -127,6 +132,10 @@ const WorkinfoForm = () => {
           control={control}
           render={({ field }) => <Input type={"number"} {...field} />}
         />
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+        日本円で1時間あたりの給料を記入してください
+        時間給ではない場合は、給料÷労働時間の値を記入してください。
+        </Text>
         <Box py={space} />
 
         <FormLabel>開発領域</FormLabel>
@@ -142,6 +151,9 @@ const WorkinfoForm = () => {
             </Select>
           )}
         />
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+        携わった分野を記入してください。
+        </Text>
         <Box py={space} />
 
         <FormLabel>雇用契約種類</FormLabel>
@@ -172,6 +184,9 @@ const WorkinfoForm = () => {
             </Select>
           )}
         />
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+        プログラミング、開発を始めてからの年数を記入してください。
+        </Text>
         <Box py={space} />
 
         <FormLabel>勤務期間</FormLabel>
@@ -202,6 +217,9 @@ const WorkinfoForm = () => {
             </Select>
           )}
         />
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+          一週間に出勤した日数を記入してください。
+        </Text>
         <Box py={space} />
 
         <FormLabel>詳細</FormLabel>
@@ -211,7 +229,9 @@ const WorkinfoForm = () => {
           defaultValue={""}
           render={({ field }) => <Textarea {...field} />}
         />
-
+        <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
+          業務内容、使用した言語、技術等を個人が特定されない範囲で記入してください。
+        </Text>
         <Box py={space} />
         <Input type="submit" />
       </form>
@@ -248,57 +268,3 @@ const ThankPage = () => {
     </Container>
   );
 };
-
-const companyName = ["-", "DMM", "mercari", "CyberAgent"];
-
-const selectType = [
-  "記載なし",
-  "iOS",
-  "Android",
-  "Mobile",
-  "Web Frontend",
-  "Fullstack",
-  "Backend",
-  "AI/ML",
-  "Infra",
-  "Site Reliability(SRE)",
-  "Security",
-  "Devops",
-  "Data",
-  "Networking",
-  "その他",
-];
-
-const workType = ["インターン", "アルバイト", "業務委託", "その他"];
-
-const experience = [
-  "0.5",
-  "1",
-  "1.5",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "10年以上",
-];
-
-const workdays = ["1", "2", "3", "4", "5", "記載なし"];
-
-const term = [
-  "1day",
-  "2days",
-  "1week",
-  "2weeks",
-  "3weeks",
-  "1month",
-  "2~3month",
-  "6months",
-  "1year",
-  "2~3year",
-  "More than 3 years",
-];
