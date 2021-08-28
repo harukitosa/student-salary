@@ -73,20 +73,20 @@ export default function Home() {
               </Button>
             </Link>
             <Link href={`/review/new`} passHref>
-            <Button
-              color={"blue.400"}
-              border={"1px"}
-              rounded={"full"}
-              bg={"white"}
-              px={2}
-              width={"80"}
-              _hover={{
-                bg: "blue.400",
-                color: "white",
-              }}
-            >
-              インターンの口コミを書く
-            </Button>
+              <Button
+                color={"blue.400"}
+                border={"1px"}
+                rounded={"full"}
+                bg={"white"}
+                px={2}
+                width={"80"}
+                _hover={{
+                  bg: "blue.400",
+                  color: "white",
+                }}
+              >
+                インターンの口コミを書く
+              </Button>
             </Link>
           </Stack>
         </Stack>

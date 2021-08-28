@@ -61,20 +61,31 @@ export interface WORKINFOPAGE_QUERY_DATA {
   company: company[] | undefined;
 }
 
-// export const CREATE_REVIEW = gql`
-// mutation createReview(
-//   $company_name: String!
-//   $detail: String!
-//   $content: String!
-//   $link: String
-//   $reasons: String
-//   $report: String
-//   $skill: String
-//   $user_name: String
-// ) {
-
-// }
-// `
+export const CREATE_REVIEW = gql`
+mutation createReview(
+  $company_name: String!
+  $detail: String!
+  $content: String
+  $link: String
+  $reasons: String
+  $report: String
+  $skill: String
+  $user_name: String
+) {
+  createReview(input: {
+    company_name: $company_name,
+    detail: $detail,
+    content: $content,
+    link: $link,
+    reasons: $reasons,
+    report: $report,
+    skill: $skill,
+    user_name: $user_name,
+  }) {
+    id
+  })
+}
+`
 
 export const CREATE_WORKDATA = gql`
   mutation createWorkData(

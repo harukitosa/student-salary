@@ -11,7 +11,14 @@ import {
 import { CREATE_WORKDATA } from "../request/queries/workinfopage.query";
 import { useMutation } from "@apollo/client";
 import Image from "next/image";
-import { term, companyName, selectType, experience, workType, workdays } from "../types/type";
+import {
+  term,
+  companyName,
+  selectType,
+  experience,
+  workType,
+  workdays,
+} from "../types/type";
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from "yup";
 
@@ -71,12 +78,8 @@ const WorkinfoForm = () => {
   const labelColor = "red.400";
   const space = "4";
 
-  if (loading) return (
-    <Text>loading</Text>
-  );
-  if (error) return (
-    <Text>Error {error}</Text>
-  );
+  if (loading) return <Text>loading</Text>;
+  if (error) return <Text>Error {error}</Text>;
   if (data) return <ThankPage />;
 
   return (
@@ -133,8 +136,8 @@ const WorkinfoForm = () => {
           render={({ field }) => <Input type={"number"} {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-        日本円で1時間あたりの給料を記入してください
-        時間給ではない場合は、給料÷労働時間の値を記入してください。
+          日本円で1時間あたりの給料を記入してください
+          時間給ではない場合は、給料÷労働時間の値を記入してください。
         </Text>
         <Box py={space} />
 
@@ -152,7 +155,7 @@ const WorkinfoForm = () => {
           )}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-        携わった分野を記入してください。
+          携わった分野を記入してください。
         </Text>
         <Box py={space} />
 
@@ -185,7 +188,7 @@ const WorkinfoForm = () => {
           )}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-        プログラミング、開発を始めてからの年数を記入してください。
+          プログラミング、開発を始めてからの年数を記入してください。
         </Text>
         <Box py={space} />
 
@@ -230,7 +233,7 @@ const WorkinfoForm = () => {
           render={({ field }) => <Textarea {...field} />}
         />
         <Text fontSize={14} fontWeight={"light"} color={"gray.500"}>
-          業務内容、使用した言語、技術等を個人が特定されない範囲で記入してください。
+          業務内容、使用した言語、技術等を記入してください。
         </Text>
         <Box py={space} />
         <Input type="submit" />

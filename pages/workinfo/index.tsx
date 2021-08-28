@@ -21,9 +21,7 @@ export default function WorkInfo() {
   const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
     WORKINFOTOPPAGE_QUERY
   );
-  if (loading) return (
-    <Text>Loading...</Text>
-  );
+  if (loading) return <Text>Loading...</Text>;
   if (error) return <p>Error :( {error}</p>;
   return (
     <Container maxW={"5xl"}>
