@@ -20,7 +20,8 @@ export interface workdata {
   workType: String;
 }
 
-export const companyName = ["-", "DMM", "mercari", "CyberAgent"];
+
+export const companyName = ["-", "Apple", "AutoScale", "CyberAgent", "Cybozu", "DeNA", "DMM", "dynave", "Freee", "Future", "Future Architect", "GMOインターネット", "Goldman Sachs", "Google", "KPMG", "LINE", "menu株式会社", "mercari", "NTT研究所", "pixiv", "teamLab", "TRUST SMITH and COMPANY", "VOYAGE GROUP", "Wantedly", "いい生活", "アイフル", "アカツキ", "エイチーム", "エヌエヌ生命保険", "クックパッド", "ソフトバンク", "マネーフォワード", "ミクシィ", "ヤフー", "ライスカレー", "リクルート", "ワタミ", "大田区の会社", "日本経済新聞社", "株式会社プレイド", "楽天", "電警"];
 
 export const selectType = [
   "記載なし",
