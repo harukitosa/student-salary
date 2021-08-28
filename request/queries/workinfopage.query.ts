@@ -61,23 +61,33 @@ export interface WORKINFOPAGE_QUERY_DATA {
   company: company[] | undefined;
 }
 
-
 export const CREATE_WORKDATA = gql`
-  mutation createWorkData($name: String!, $salary: Int!, $experience: String, $detail: String, $term: String, $workType: String, $type: String $workdays: String) {
-    createWorkData(input: {
-      name: $name,
-      salary: $salary,
-      experience: $experience,
-      detail: $detail,
-      term: $term,
-      workType: $workType,
-      type: $type,
-      workdays: $workdays,
-    }) {
+  mutation createWorkData(
+    $name: String!
+    $salary: Int!
+    $experience: String
+    $detail: String
+    $term: String
+    $workType: String
+    $type: String
+    $workdays: String
+  ) {
+    createWorkData(
+      input: {
+        name: $name
+        salary: $salary
+        experience: $experience
+        detail: $detail
+        term: $term
+        workType: $workType
+        type: $type
+        workdays: $workdays
+      }
+    ) {
       id
     }
   }
-`
+`;
 
 // const ADD_TODO = gql`
 //   mutation AddTodo($text: String!) {
