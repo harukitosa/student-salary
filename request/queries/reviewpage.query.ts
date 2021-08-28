@@ -7,7 +7,6 @@ export const REVIEW_QUERY = gql`
       id
       company_name
       content
-      detail
       user_name
       skill
       detail
@@ -25,11 +24,10 @@ export const REVIEWBYID_QUERY = gql`
       id
       company_name
       content
-      detail
       user_name
       skill
-      detail
       report
+      reasons
     }
   }
 `;

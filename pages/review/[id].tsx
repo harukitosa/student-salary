@@ -1,60 +1,89 @@
-import { Container, Text, Box } from "@chakra-ui/layout"
-import { ReviewBYIDPageData, REVIEWBYID_QUERY } from "../../request/queries/reviewpage.query";
+import { Container, Text, Box, Badge } from "@chakra-ui/layout";
+import {
+  ReviewBYIDPageData,
+  REVIEWBYID_QUERY,
+} from "../../request/queries/reviewpage.query";
 import { useQuery } from "@apollo/client";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
+import { title } from "process";
 
 export default function ReviewDetailPage() {
-	const router = useRouter()
-	const { id } = router.query
-	const { loading, error, data } = useQuery<ReviewBYIDPageData>(REVIEWBYID_QUERY, {
-		variables: {
-			id
-		}
-	});
-	if (loading) return <p>loading...</p>;
-	if (error) return <p>{JSON.stringify(error)}</p>;
-	return (
-		<Container w="lg">
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+  const router = useRouter();
+  const { id } = router.query;
+  const { loading, error, data } = useQuery<ReviewBYIDPageData>(
+    REVIEWBYID_QUERY,
+    {
+      variables: {
+        id,
+      },
+    }
+  );
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>{JSON.stringify(error)}</p>;
 
-      <Box p="6">
-        <Box d="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            New
-          </Badge>
+  const review = data.review[0];
+  return (
+    <Container w="lg">
+      <Box
+        mt={12}
+        maxW="lg"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+      >
+        <Box p="6">
           <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
+            mt="1"
+            fontWeight="bold"
+            fontSize={"32"}
+            as="h1"
+            lineHeight="tight"
+            isTruncated
           >
-         beds &bull; } baths
+            {review.company_name}
           </Box>
-        </Box>
+          <Box
+            fontWeight="semibold"
+            as="h4"
+            color={"gray.500"}
+            lineHeight="tight"
+            isTruncated
+          >
+            {review.user_name}
+          </Box>
 
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
-		title
-        </Box>
+	  <LineItem title="内容" content={review.content} />
+	  <LineItem title="使用した技術" content={review.skill} />
+	  <LineItem title="参加した理由" content={review.reasons} />
+	  <LineItem title="
+	  感想・一推しポイント・詳細など
+	  " content={review.report} />
 
-        <Box>
-		Tokyo
-          <Box as="span" color="gray.600" fontSize="sm">
-            / wk
+          <Box mt="8" d="flex" alignItems="baseline">
+            <Badge borderRadius="full" px="4" py="2" colorScheme="teal">
+              review
+            </Badge>
           </Box>
         </Box>
       </Box>
-    </Box>
-			{JSON.stringify(data)}
-		</Container>
-	)
+    </Container>
+  );
 }
 
+
+const LineItem = (props: {
+	title: string
+	content: String
+}) => {
+	return (<>
+		<Badge borderRadius="md" px="2" py="1" 
+		mt="4" bg="blue.200">
+			{props.title}
+		</Badge>
+		<Box mt="2" fontWeight="semibold" as="p" fontSize={"16"} lineHeight="tight">
+		  {props.content}
+		</Box>
+		</>
+	)
+} 
