@@ -84,15 +84,15 @@ const Chart = (props: { company: company }) => {
             );
           }
           return (
-              <Scatter
-                fillOpacity="0.1"
-                key={index}
-                dataKey="salary"
-                name="salary"
-                data={[item]}
-                fill="#ff5900"
-                stroke="#ff5900"
-              />
+            <Scatter
+              fillOpacity="0.1"
+              key={index}
+              dataKey="salary"
+              name="salary"
+              data={[item]}
+              fill="#ff5900"
+              stroke="#ff5900"
+            />
           );
         })}
       </ScatterChart>
