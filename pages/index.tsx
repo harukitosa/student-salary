@@ -19,28 +19,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
-import Head from "next/head"
+import Head from "next/head";
 
 const HeadInformation = () => {
   return (
     <Head>
-    <title>StudentSalary 学生エンジニアの情報共有サイト</title>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-     
-<meta property="og:url" content=" ページの URL" />
+      <title>StudentSalary 学生エンジニアの情報共有サイト</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta property="og:title" content="StudentSalary" />
+      <meta property="og:description" content="学生エンジニアの情報共有サイト" />
+      <meta property="og:site_name" content="StudentSalary" />
+      <meta property="og:image" content="/StudentOGP.jpeg" />
+      <meta name="twitter:card" content="summary_large_image" />
  
- <meta property="og:type" content=" ページの種類" />
-  
- <meta property="og:title" content=" ページの タイトル" />
-  
- <meta property="og:description" content=" ページのディスクリプション" />
-  
- <meta property="og:site_name" content="サイト名" />
-  
- <meta property="og:image" content=" サムネイル画像の URL" />
-  </Head>
-  )
-}
+    </Head>
+  );
+};
 
 export default function Home() {
   const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
