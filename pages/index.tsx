@@ -32,12 +32,21 @@ const HeadInformation = () => {
         content="学生エンジニアの情報共有サイト"
       />
       <meta property="og:site_name" content="StudentSalary" />
-      <meta property="og:image" content="https://www.student-salary.com/StudentOGP.jpeg" />
+      <meta
+        property="og:image"
+        content="https://www.student-salary.com/StudentOGP.jpeg"
+      />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@tosa_now"/>
-<meta name="twitter:title" content="StudentSalary"/>
-<meta name="twitter:description" content="学生エンジニアの情報共有サイト"/>
-<meta name="twitter:image" content="https://www.student-salary.com/StudentOGP.jpeg"/>
+      <meta name="twitter:site" content="@tosa_now" />
+      <meta name="twitter:title" content="StudentSalary" />
+      <meta
+        name="twitter:description"
+        content="学生エンジニアの情報共有サイト"
+      />
+      <meta
+        name="twitter:image"
+        content="https://www.student-salary.com/StudentOGP.jpeg"
+      />
     </Head>
   );
 };
