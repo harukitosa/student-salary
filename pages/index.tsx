@@ -45,6 +45,7 @@ export default function Home() {
 
   return (
     <>
+      <HeadInformation/>    
       <Box display={{ md: "flex" }}>
         <Stack
           as={Box}
