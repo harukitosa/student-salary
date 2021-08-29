@@ -10,6 +10,7 @@ import {
   gql,
   createHttpLink,
 } from "@apollo/client";
+import { HeadInformation } from ".";
 
 const link = createHttpLink({
   uri: "https://student-salary-api.an.r.appspot.com/query",
@@ -35,6 +36,8 @@ const theme = extendTheme({ themes });
 
 function MyApp({ Component, pageProps }) {
   return (
+    <>
+    <HeadInformation/>
     <ChakraProvider theme={theme}>
       <ApolloProvider client={client}>
         <Header />
@@ -44,6 +47,7 @@ function MyApp({ Component, pageProps }) {
         <Footer />
       </ApolloProvider>
     </ChakraProvider>
+    </>
   );
 }
 
