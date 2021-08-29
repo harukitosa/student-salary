@@ -27,11 +27,13 @@ const HeadInformation = () => {
       <title>StudentSalary 学生エンジニアの情報共有サイト</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta property="og:title" content="StudentSalary" />
-      <meta property="og:description" content="学生エンジニアの情報共有サイト" />
+      <meta
+        property="og:description"
+        content="学生エンジニアの情報共有サイト"
+      />
       <meta property="og:site_name" content="StudentSalary" />
       <meta property="og:image" content="/StudentOGP.jpeg" />
       <meta name="twitter:card" content="summary_large_image" />
- 
     </Head>
   );
 };
