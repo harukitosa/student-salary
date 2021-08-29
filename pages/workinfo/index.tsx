@@ -43,9 +43,14 @@ export default function WorkInfo() {
               <Text fontSize={"md"} fontWeight={"medium"}>
                 {item.name}
                 <Text color={"gray.400"} fontSize={"sm"}>
-                  [データ数:{item.count}] 
-                  {item.max}<Text as="span" fontSize="x-small">円</Text> 
-                  ~{item.min}<Text as="span" fontSize="x-small">円</Text>
+                  [データ数:{item.count}]{item.max}
+                  <Text as="span" fontSize="x-small">
+                    円
+                  </Text>
+                  ~{item.min}
+                  <Text as="span" fontSize="x-small">
+                    円
+                  </Text>
                 </Text>
               </Text>
             </Link>
