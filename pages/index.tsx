@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   SimpleGrid,
   Badge,
+  Container
 } from "@chakra-ui/react";
 import {
   HOMEPAGE_QUERY,
@@ -243,6 +244,25 @@ export default function Home() {
         </Text>
       </Box>
       <DataTable data={data.workdatainfo.workdata} />
+      <Center alignContent={"center"} py={16}>
+        <Link href={`/workinfo`} passHref>
+            <Button
+              color={"blue.400"}
+              border={"1px"}
+              rounded={"full"}
+              bg={"white"}
+              px={2}
+              py={6}
+              width={"80"}
+              _hover={{
+                bg: "blue.400",
+                color: "white",
+              }}
+            >
+              企業一覧
+            </Button>
+        </Link>
+      </Center>
     </>
   );
 }

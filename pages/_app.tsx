@@ -37,16 +37,16 @@ const theme = extendTheme({ themes });
 function MyApp({ Component, pageProps }) {
   return (
     <>
-    <HeadInformation/>
-    <ChakraProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <Header />
-        <Container maxW={"6xl"}>
-          <Component {...pageProps} />
-        </Container>
-        <Footer />
-      </ApolloProvider>
-    </ChakraProvider>
+      <HeadInformation />
+      <ChakraProvider theme={theme}>
+        <ApolloProvider client={client}>
+          <Header />
+          <Container maxW={"6xl"}>
+            <Component {...pageProps} />
+          </Container>
+          <Footer />
+        </ApolloProvider>
+      </ChakraProvider>
     </>
   );
 }
