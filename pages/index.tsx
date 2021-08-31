@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   SimpleGrid,
   Badge,
-  Container
+  Container,
 } from "@chakra-ui/react";
 import {
   HOMEPAGE_QUERY,
@@ -21,6 +21,7 @@ import Image from "next/image";
 import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
 import Head from "next/head";
+import { CircleChart } from "../component/circlechart";
 
 export const HeadInformation = () => {
   return (
@@ -246,21 +247,21 @@ export default function Home() {
       <DataTable data={data.workdatainfo.workdata} />
       <Center alignContent={"center"} py={16}>
         <Link href={`/workinfo`} passHref>
-            <Button
-              color={"blue.400"}
-              border={"1px"}
-              rounded={"full"}
-              bg={"white"}
-              px={2}
-              py={6}
-              width={"80"}
-              _hover={{
-                bg: "blue.400",
-                color: "white",
-              }}
-            >
-              企業一覧
-            </Button>
+          <Button
+            color={"blue.400"}
+            border={"1px"}
+            rounded={"full"}
+            bg={"white"}
+            px={2}
+            py={6}
+            width={"80"}
+            _hover={{
+              bg: "blue.400",
+              color: "white",
+            }}
+          >
+            企業一覧
+          </Button>
         </Link>
       </Center>
     </>
