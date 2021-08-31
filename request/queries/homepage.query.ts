@@ -19,6 +19,9 @@ export const HOMEPAGE_QUERY = gql`
       min
       count
     }
+    companylist: company {
+      name
+    }
     workdatainfo {
       mid
       avarage
@@ -45,4 +48,5 @@ export interface HomepageData {
   workdatainfo: workdataInfo | undefined;
   review: review[] | undefined;
   company: company[] | undefined;
+  companylist: company[] | undefined;
 }

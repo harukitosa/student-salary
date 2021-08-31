@@ -264,6 +264,21 @@ export default function Home() {
           </Button>
         </Link>
       </Center>
+      <Box w="full">
+        <Text p="2" fontSize="24" fontWeight="bold">登録されている企業一覧</Text>
+        {data.companylist.map((item, index) => {
+          return (
+            <>
+            <Link key={index} href={`/workinfo/${item.name}`} passHref>
+              <Text as="span" fontSize="18" color="blue.400" px="2">
+              {item.name.trim()} 
+              </Text>
+            </Link>
+            <Text as="span">|</Text>
+            </>
+          )
+        })}
+      </Box>
     </>
   );
 }

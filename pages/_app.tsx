@@ -12,10 +12,9 @@ import {
 } from "@apollo/client";
 import { HeadInformation } from ".";
 import Head from "next/dist/next-server/lib/head";
-import * as gtag from '../libs/gtag';
-import { useEffect } from 'react'
-import router from 'next/router'
-
+import * as gtag from "../libs/gtag";
+import { useEffect } from "react";
+import router from "next/router";
 
 const link = createHttpLink({
   uri: "https://student-salary-api.an.r.appspot.com/query",
