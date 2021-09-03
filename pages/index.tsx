@@ -49,85 +49,92 @@ export const HeadInformation = () => {
 };
 
 export default function Home() {
+  return (
+    <>
+    <Box display={{ md: "flex" }}>
+    <Stack
+      as={Box}
+      textAlign={"center"}
+      spacing={{ base: 8, md: 14 }}
+      py={{ base: 20, md: 28 }}
+    >
+      <Heading
+        fontWeight={600}
+        fontSize={{ base: "4xl", sm: "4xl", md: "6xl" }}
+        lineHeight={"100%"}
+      >
+        StudentSalary <br />
+        <Text
+          as={"span"}
+          color={"blue.400"}
+          fontSize={{ base: "xl", sm: "3xl" }}
+        >
+          学生エンジニアの情報サイト
+        </Text>
+      </Heading>
+      <Text color={"gray.500"}>
+        このwebサイトは日本の学生エンジニアから匿名であつめられた給与情報、インターンのクチコミを掲載しています。
+      </Text>
+      <Stack
+        direction={"column"}
+        spacing={3}
+        align={"center"}
+        alignSelf={"center"}
+        position={"relative"}
+      >
+        <Link href={`/new`} passHref>
+          <Button
+            color={"blue.400"}
+            border={"1px"}
+            rounded={"full"}
+            bg={"white"}
+            px={2}
+            width={"80"}
+            _hover={{
+              bg: "blue.400",
+              color: "white",
+            }}
+          >
+            時給を登録する
+          </Button>
+        </Link>
+        <Link href={`/review/new`} passHref>
+          <Button
+            color={"blue.400"}
+            border={"1px"}
+            rounded={"full"}
+            bg={"white"}
+            px={2}
+            width={"80"}
+            _hover={{
+              bg: "blue.400",
+              color: "white",
+            }}
+          >
+            インターンの口コミを書く
+          </Button>
+        </Link>
+      </Stack>
+    </Stack>
+    <Image
+      src={"/icon.svg"}
+      alt="studentsalary"
+      width={"850"}
+      height={"850"}
+    />
+  </Box>
+  <HomePage/>
+  </>
+  )
+}
+
+function HomePage() {
   const { data, loading, error } = useGetHomePageQuery({});
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
 
   return (
     <>
-      <Box display={{ md: "flex" }}>
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 28 }}
-        >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: "4xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"100%"}
-          >
-            StudentSalary <br />
-            <Text
-              as={"span"}
-              color={"blue.400"}
-              fontSize={{ base: "xl", sm: "3xl" }}
-            >
-              学生エンジニアの情報サイト
-            </Text>
-          </Heading>
-          <Text color={"gray.500"}>
-            このwebサイトは日本の学生エンジニアから匿名であつめられた給与情報、インターンのクチコミを掲載しています。
-          </Text>
-          <Stack
-            direction={"column"}
-            spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
-          >
-            <Link href={`/new`} passHref>
-              <Button
-                color={"blue.400"}
-                border={"1px"}
-                rounded={"full"}
-                bg={"white"}
-                px={2}
-                width={"80"}
-                _hover={{
-                  bg: "blue.400",
-                  color: "white",
-                }}
-              >
-                時給を登録する
-              </Button>
-            </Link>
-            <Link href={`/review/new`} passHref>
-              <Button
-                color={"blue.400"}
-                border={"1px"}
-                rounded={"full"}
-                bg={"white"}
-                px={2}
-                width={"80"}
-                _hover={{
-                  bg: "blue.400",
-                  color: "white",
-                }}
-              >
-                インターンの口コミを書く
-              </Button>
-            </Link>
-          </Stack>
-        </Stack>
-        <Image
-          src={"/icon.svg"}
-          alt="studentsalary"
-          width={"850"}
-          height={"850"}
-        />
-      </Box>
-
       <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
