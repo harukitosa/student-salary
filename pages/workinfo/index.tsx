@@ -1,11 +1,5 @@
 import { Box, Container, Text, Heading } from "@chakra-ui/react";
 import {
-  WORKINFOTOPPAGE_QUERY,
-  WORKINFOTOPPAGE_QUERY_DATA,
-} from "../../request/queries/workinfopage.query";
-import { useQuery } from "@apollo/client";
-import {
-  ComposedChart,
   XAxis,
   YAxis,
   Tooltip,
@@ -14,14 +8,15 @@ import {
   Scatter,
   ScatterChart,
 } from "recharts";
-import { company } from "../../types/type";
 import Link from "next/link";
 import { ErrorPage } from "../../component/error";
+import { Company, useGetWorkinfoQuery } from "../../src/generated/graphql";
 
 export default function WorkInfo() {
-  const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
-    WORKINFOTOPPAGE_QUERY
-  );
+  // const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
+  //   WORKINFOTOPPAGE_QUERY
+  // );
+  const {loading, error, data} = useGetWorkinfoQuery();
   if (loading) return <Text>Loading...</Text>;
   if (error) return <ErrorPage />;
   return (
@@ -54,7 +49,6 @@ export default function WorkInfo() {
                 </Text>
               </Text>
             </Link>
-
             <Chart company={item} />
           </div>
         );
@@ -63,7 +57,7 @@ export default function WorkInfo() {
   );
 }
 
-const Chart = (props: { company: company }) => {
+const Chart = (props: { company: Company }) => {
   return (
     <ResponsiveContainer width="100%" height={80}>
       <ScatterChart>

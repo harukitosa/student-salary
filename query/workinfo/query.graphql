@@ -1,0 +1,76 @@
+  query getWorkinfo {
+    company {
+      max
+      min
+      count
+      name
+      workdata {
+	id
+        salary
+        name
+        workType
+      }
+    }
+  }
+
+
+  query Company($name: String) {
+    company(name: $name) {
+      max
+      min
+      count
+      name
+      workdata {
+        id
+        salary
+        name
+        detail
+        workType
+        experience
+        is_show
+        term
+        type
+        workdays
+        workType
+        create_data_js
+      }
+      review {
+        id
+        company_name
+        detail
+        content
+        create_data_js
+        link
+        reasons
+        report
+        skill
+        user_name
+      }
+    }
+  }
+
+    mutation createWorkData(
+    $name: String!
+    $salary: Int!
+    $experience: String
+    $detail: String
+    $term: String
+    $workType: String
+    $type: String
+    $workdays: String
+  ) {
+    createWorkData(
+      input: {
+        name: $name
+        salary: $salary
+        experience: $experience
+        detail: $detail
+        term: $term
+        workType: $workType
+        type: $type
+        workdays: $workdays
+      }
+    ) {
+      id
+    }
+  }

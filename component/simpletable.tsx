@@ -4,6 +4,7 @@ import Link from "next/link";
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useRouter } from "next/router";
+import { WorkData } from "../src/generated/graphql";
 
 // export const SimpleTable = (props: { data: workdata[] }) => {
 
@@ -98,7 +99,7 @@ const columns = [
   },
 ];
 
-export const DataTable = (props: { data: workdata[] }) => {
+export const DataTable = (props: { data: WorkData[] }) => {
   const router = useRouter();
   const handleRowSelection = (e) => {
     for (let i = 0; i < props.data.length; i++) {

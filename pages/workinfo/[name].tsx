@@ -1,33 +1,20 @@
-import { useQuery } from "@apollo/client";
 import {
   Container,
   Heading,
   Text,
-  Stack,
-  Button,
-  useBreakpointValue,
   Flex,
   useColorModeValue,
   chakra,
   Avatar,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
-import {
-  WORKINFOPAGE_QUERY,
-  WORKINFOPAGE_QUERY_DATA,
-} from "../../request/queries/workinfopage.query";
 import { DataTable } from "../../component/simpletable";
-import { review } from "../../types/type";
 import { ErrorPage } from "../../component/error";
+import { Review, useCompanyQuery } from "../../src/generated/graphql";
 
 export default function WorkInfo() {
   const router = useRouter();
-  const { loading, error, data } = useQuery<WORKINFOPAGE_QUERY_DATA>(
-    WORKINFOPAGE_QUERY,
-    {
-      variables: { name: router.query.name },
-    }
-  );
+  const {loading, error, data} = useCompanyQuery({variables: {name: router.query.name as string}});
   if (loading) return <p>Loading...</p>;
   if (error) return <ErrorPage />;
   console.log(data);
@@ -60,15 +47,15 @@ export default function WorkInfo() {
         データ
       </Text>
       <DataTable data={data.company[0].workdata} />
-      {/* {data.company[0].review &&
+      {data.company[0].review &&
         data.company[0].review.map((item, index) => {
           return <TestmonialCard key={index} review={item} />;
-        })} */}
+        })}
     </Container>
   );
 }
 
-function TestmonialCard(props: { review: review }) {
+function TestmonialCard(props: { review: Review}) {
   // const { name, role, content, avatar, index } = props;
   return (
     <Flex

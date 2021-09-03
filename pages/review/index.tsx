@@ -1,14 +1,10 @@
-import { useQuery } from "@apollo/client";
 import { Text, SimpleGrid } from "@chakra-ui/react";
 import { ReviewItem } from "../../component/reviewItem";
 import { ErrorPage } from "../../component/error";
-import {
-  ReviewPageData,
-  REVIEW_QUERY,
-} from "../../request/queries/reviewpage.query";
+import { useReviewQuery } from "../../src/generated/graphql";
 
 export default function ReviewPage() {
-  const { loading, error, data } = useQuery<ReviewPageData>(REVIEW_QUERY);
+  const { loading, error, data } = useReviewQuery();
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
   return (

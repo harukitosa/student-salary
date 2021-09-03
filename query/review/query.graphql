@@ -1,0 +1,47 @@
+  query review {
+    review {
+      id
+      company_name
+      content
+      user_name
+      skill
+      detail
+      report
+    }
+  }
+
+    query getreview($id: Int) {
+    review(id: $id) {
+      id
+      company_name
+      content
+      user_name
+      skill
+      report
+      reasons
+    }
+  }
+
+    mutation createReview(
+    $company_name: String!
+    $content: String
+    $link: String
+    $reasons: String
+    $report: String!
+    $skill: String
+    $user_name: String
+  ) {
+    createReview(
+      input: {
+        company_name: $company_name
+        content: $content
+        link: $link
+        reasons: $reasons
+        report: $report
+        skill: $skill
+        user_name: $user_name
+      }
+    ) {
+      id
+    }
+  }

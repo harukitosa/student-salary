@@ -1,0 +1,40 @@
+ query getHomePage {
+    review: newreview {
+      id
+      user_name
+      company_name
+      link
+      create_data_js
+      content
+      detail
+      report
+    }
+    company: topcompany {
+      name
+      max
+      min
+      count
+    }
+    companylist: company {
+      name
+    }
+    workdatainfo {
+      mid
+      avarage
+      count
+      company_count
+      workdata {
+        id
+        name
+        salary
+        create_data_js
+        experience
+        is_show
+        salary
+        term
+        type
+        workdays
+        workType
+      }
+    }
+  }

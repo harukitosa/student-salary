@@ -1,26 +1,16 @@
 import { Container, Text, Box, Badge } from "@chakra-ui/layout";
-import {
-  ReviewBYIDPageData,
-  REVIEWBYID_QUERY,
-} from "../../request/queries/reviewpage.query";
-import { useQuery } from "@apollo/client";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
-import { title } from "process";
+import { useGetreviewQuery } from "../../src/generated/graphql";
 
 export default function ReviewDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { loading, error, data } = useQuery<ReviewBYIDPageData>(
-    REVIEWBYID_QUERY,
-    {
-      variables: {
-        id,
-      },
-    }
-  );
+  const { loading, error, data } = useGetreviewQuery({
+    variables: {id: Number(id as string)}
+  });
   if (loading) return <p>loading...</p>;
-  if (error) return <p>{JSON.stringify(error)}</p>;
+  if (error) return <ErrorPage/>;
 
   const review = data.review[0];
   return (

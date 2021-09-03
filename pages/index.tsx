@@ -10,18 +10,13 @@ import {
   Badge,
   Container,
 } from "@chakra-ui/react";
-import {
-  HOMEPAGE_QUERY,
-  HomepageData,
-} from "../request/queries/homepage.query";
-import { useQuery } from "@apollo/client";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
 import Image from "next/image";
 import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
 import Head from "next/head";
-import { CircleChart } from "../component/circlechart";
+import { useGetHomePageQuery } from "../src/generated/graphql";
 
 export const HeadInformation = () => {
   return (
@@ -54,7 +49,7 @@ export const HeadInformation = () => {
 };
 
 export default function Home() {
-  const { loading, error, data } = useQuery<HomepageData>(HOMEPAGE_QUERY);
+  const {data, loading, error} = useGetHomePageQuery({});
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
 
