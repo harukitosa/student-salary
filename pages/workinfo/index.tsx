@@ -16,7 +16,7 @@ export default function WorkInfo() {
   // const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
   //   WORKINFOTOPPAGE_QUERY
   // );
-  const {loading, error, data} = useGetWorkinfoQuery();
+  const { loading, error, data } = useGetWorkinfoQuery();
   if (loading) return <Text>Loading...</Text>;
   if (error) return <ErrorPage />;
   return (

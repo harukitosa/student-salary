@@ -7,10 +7,10 @@ export default function ReviewDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const { loading, error, data } = useGetreviewQuery({
-    variables: {id: Number(id as string)}
+    variables: { id: Number(id as string) },
   });
   if (loading) return <p>loading...</p>;
-  if (error) return <ErrorPage/>;
+  if (error) return <ErrorPage />;
 
   const review = data.review[0];
   return (

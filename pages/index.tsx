@@ -49,7 +49,7 @@ export const HeadInformation = () => {
 };
 
 export default function Home() {
-  const {data, loading, error} = useGetHomePageQuery({});
+  const { data, loading, error } = useGetHomePageQuery({});
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
 

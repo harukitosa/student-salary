@@ -14,7 +14,9 @@ import { Review, useCompanyQuery } from "../../src/generated/graphql";
 
 export default function WorkInfo() {
   const router = useRouter();
-  const {loading, error, data} = useCompanyQuery({variables: {name: router.query.name as string}});
+  const { loading, error, data } = useCompanyQuery({
+    variables: { name: router.query.name as string },
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return <ErrorPage />;
   console.log(data);
@@ -55,7 +57,7 @@ export default function WorkInfo() {
   );
 }
 
-function TestmonialCard(props: { review: Review}) {
+function TestmonialCard(props: { review: Review }) {
   // const { name, role, content, avatar, index } = props;
   return (
     <Flex
