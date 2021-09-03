@@ -49,10 +49,6 @@ export default function WorkInfo() {
         データ
       </Text>
       <DataTable data={data.company[0].workdata} />
-      {data.company[0].review &&
-        data.company[0].review.map((item, index) => {
-          return <TestmonialCard key={index} review={item} />;
-        })}
     </Container>
   );
 }
