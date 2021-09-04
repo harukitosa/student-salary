@@ -15,12 +15,15 @@ import {
   HStack,
   VStack,
 } from "@chakra-ui/react";
+import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import Image from "next/dist/client/image";
 export default function BlogPage() {
   return (
     <>
-      <Text as="h1">blog</Text>
+    <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
+	<Text as="h1" fontSize="4xl" fontWeight="800">blogまとめ</Text>
+    </Center>
       {data.map((item, index) => {
         return <ItemBlock key={index} item={item} />;
       })}
@@ -36,15 +39,20 @@ interface blog {
   url: string;
 }
 const ItemBlock = (props: { item: blog }) => {
-	return (
-		<HStack align={'center'} my="2" py="1">
-		<Box color={'green.400'} px={2}>
-	            <Image src="/node.svg" layout="fixed" height={30} width={30} alt="link icon" />
-		</Box>
-		<VStack align={'start'}>
-		  <Text fontWeight={600}>{props.item.title}</Text>
-		  <Text color={'gray.600'}>{props.item.company_name} - {props.item.year} - {props.item.season}</Text>
-		</VStack>
-	      </HStack>
-	)
+  return (
+	  <Link href={props.item.url} passHref>
+    <HStack align={"center"} my="2" mx="1" p="1" h="32">
+      <Box color={"black"} p="6" borderRadius="xl" mx="2">
+        <LinkIcon w="6" h="6"/>
+      </Box>
+      <VStack align={"start"}>
+        <Text fontWeight={600}>{props.item.title}</Text>
+        <Text color={"gray.600"}>
+          {props.item.company_name} - {props.item.year} - {props.item.season}
+        </Text>
+      </VStack>
+    </HStack>
+	  </Link>
+
+  );
 };
