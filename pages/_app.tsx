@@ -80,7 +80,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={theme}>
         <ApolloProvider client={client}>
           <Header />
-          <Container maxW={"6xl"}>
+          <Container minW={"80vw"}>
             <Component {...pageProps} />
           </Container>
           <Footer />

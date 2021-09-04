@@ -10,13 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
-import Image from "next/dist/client/image";
-import { useForm, Controller, ChangeHandler } from "react-hook-form";
 import React, { useState } from "react";
 
-interface IFormInput {
-  company_name: string;
-}
 export default function BlogPage() {
   const [company_name, setName] = useState("all");
   const set = new Set<String>();
@@ -64,8 +59,8 @@ interface blog {
 const ItemBlock = (props: { item: blog }) => {
   return (
     <Link href={props.item.url} passHref>
-      <HStack align={"center"} my="2" mx="1" p="1" h="28">
-        <Box color={"black"} p="6" borderRadius="xl" mx="2">
+      <HStack align={"center"} my="1" h="32">
+        <Box color={"black"} p="6" borderRadius="xl">
           <LinkIcon w="6" h="6" />
         </Box>
         <VStack align={"start"}>
