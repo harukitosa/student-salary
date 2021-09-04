@@ -6,46 +6,50 @@ import {
   HStack,
   VStack,
   Container,
-  Select
+  Select,
 } from "@chakra-ui/react";
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import Image from "next/dist/client/image";
 import { useForm, Controller, ChangeHandler } from "react-hook-form";
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
 
 interface IFormInput {
-	company_name: string;
+  company_name: string;
 }
 export default function BlogPage() {
   const [company_name, setName] = useState("all");
   const set = new Set<String>();
-  data.forEach(item => set.add(item.company_name));
+  data.forEach((item) => set.add(item.company_name));
   return (
     <>
-    <Container minH="100vh"
-    <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
-        <Text as="h1" fontSize="4xl" fontWeight="800">
-          blogまとめ
-        </Text>
-      </Center>
-            <Select onChange={(e) => {setName(e.target.value)}}>
-		<option>all</option>
-              {Array.from(set).map((item, index) => {
-                return <option key={index}>{item}</option>;
-              })}
-            </Select>
-      {data.filter(item => {
-	      if (company_name==="all") {
-		      return true;
-	      }
-	      return item.company_name === company_name;
-      }).map((item, index) => {
-        return <ItemBlock key={index} item={item} />;
-      })}
-    </Container>
-
+      <Container minH="100vh">
+        <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
+          <Text as="h1" fontSize="4xl" fontWeight="800">
+            blogまとめ
+          </Text>
+        </Center>
+        <Select
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        >
+          <option>all</option>
+          {Array.from(set).map((item, index) => {
+            return <option key={index}>{item}</option>;
+          })}
+        </Select>
+        {data
+          .filter((item) => {
+            if (company_name === "all") {
+              return true;
+            }
+            return item.company_name === company_name;
+          })
+          .map((item, index) => {
+            return <ItemBlock key={index} item={item} />;
+          })}
+      </Container>
     </>
   );
 }
