@@ -10,7 +10,7 @@
     }
   }
 
-    query getreview($id: Int) {
+query getreview($id: Int) {
     review(id: $id) {
       id
       company_name
