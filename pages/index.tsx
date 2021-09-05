@@ -131,7 +131,10 @@ export default function Home() {
 function HomePage() {
   const { data, loading, error } = useGetHomePageQuery({});
   if (loading) return <p>loading...</p>;
-  if (error) {console.log(error); return <ErrorPage />};
+  if (error) {
+    console.log(error);
+    return <ErrorPage />;
+  }
 
   return (
     <>
