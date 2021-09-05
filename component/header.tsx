@@ -44,7 +44,7 @@ const HeaderMenu = () => {
           <Link href={`/review`} passHref>
             <MenuItem>口コミ一覧</MenuItem>
           </Link>
-          <Link href={`/blog`} passHref>
+          <Link href={`/blog/all`} passHref>
             <MenuItem>参加ブログ一覧</MenuItem>
           </Link>
           <Link href={`/new`} passHref>

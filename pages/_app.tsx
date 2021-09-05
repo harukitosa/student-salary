@@ -17,7 +17,8 @@ import { useEffect } from "react";
 import router from "next/router";
 
 const link = createHttpLink({
-  uri: "https://student-salary-api.an.r.appspot.com/query",
+  // uri: "https://student-salary-api.an.r.appspot.com/query",
+  uri: "http://localhost:8080/query",
   credentials: "same-origin",
 });
 

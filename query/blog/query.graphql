@@ -1,0 +1,12 @@
+query getBlog($company_name: String, $limit: Int) {
+  blog(company_name: $company_name, limit: $limit) {
+    blog {
+          title
+    company_name
+    url
+    season
+    year
+    }
+    nameList
+  }
+}
