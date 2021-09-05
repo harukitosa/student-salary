@@ -108,7 +108,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
 
 const ItemBlock = (props: { item: blog }) => {
   return (
-    <Link href={props.item.url} passHref>
+    <a target="_blank" href={props.item.url}  rel="noopener noreferrer">
       <HStack align={"center"} my="1" h="32">
         <Box color={"black"} p="6" borderRadius="xl">
           <LinkIcon w="6" h="6" />
@@ -120,6 +120,6 @@ const ItemBlock = (props: { item: blog }) => {
           </Text>
         </VStack>
       </HStack>
-    </Link>
+    </a>
   );
 };
