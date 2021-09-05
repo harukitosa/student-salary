@@ -17,17 +17,21 @@ import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
-export default function BlogPage() {
+export async function getServerSideProps({ query }) {
+  return { props: { query } }
+}
+
+export default function BlogPage(props: any) {
   const router = useRouter();
   const { name } = router.query;
   return (
     <>
       <Head>
-      <title>StudentSalary {name}のインターン参加ブログまとめ</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@tosa_now" />
-      <meta name="twitter:title" content="StudentSalary" />
+        <title>StudentSalary {name}のインターン参加ブログまとめ</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@tosa_now" />
+        <meta name="twitter:title" content="StudentSalary" />
         <meta
           property="og:title"
           content={`${name}のインターン参加ブログまとめ`}
