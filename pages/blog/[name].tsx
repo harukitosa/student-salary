@@ -86,7 +86,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   let color = "black";
   if (props.select != undefined && props.select) {
     bg = "blue.400";
-    border = "0px";
+    border = "1px";
     color = "white";
   }
   return (
