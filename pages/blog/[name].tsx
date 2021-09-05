@@ -23,7 +23,10 @@ export default function BlogPage() {
   return (
     <>
       <Head>
-        <meta property="og:title" content={`${name}のインターン参加ブログまとめ`} />
+        <meta
+          property="og:title"
+          content={`${name}のインターン参加ブログまとめ`}
+        />
         <meta
           property="og:description"
           content="学生エンジニアの情報共有サイト"
@@ -139,5 +142,3 @@ const ItemBlock = (props: { item: blog }) => {
     </a>
   );
 };
-
-
