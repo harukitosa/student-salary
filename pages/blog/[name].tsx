@@ -15,12 +15,28 @@ import React, { useState } from "react";
 import { useGetBlogQuery } from "../../src/generated/graphql";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 
 export default function BlogPage() {
   const router = useRouter();
   const { name } = router.query;
   return (
     <>
+      <Head>
+        <meta property="og:title" content={`${name}のインターン参加ブログまとめ`} />
+        <meta
+          property="og:description"
+          content="学生エンジニアの情報共有サイト"
+        />
+        <meta
+          name="twitter:description"
+          content="学生エンジニアの情報共有サイト"
+        />
+        <meta
+          property="og:image"
+          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${name}のインターン参加ブログまとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
+        />
+      </Head>
       <Container minH="100vh">
         <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
           <Text as="h1" fontSize="xl" fontWeight="600">
@@ -108,7 +124,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
 
 const ItemBlock = (props: { item: blog }) => {
   return (
-    <a target="_blank" href={props.item.url}  rel="noopener noreferrer">
+    <a target="_blank" href={props.item.url} rel="noopener noreferrer">
       <HStack align={"center"} my="1" h="32">
         <Box color={"black"} p="6" borderRadius="xl">
           <LinkIcon w="6" h="6" />
@@ -123,3 +139,5 @@ const ItemBlock = (props: { item: blog }) => {
     </a>
   );
 };
+
+

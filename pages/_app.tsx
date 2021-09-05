@@ -77,7 +77,6 @@ function MyApp({ Component, pageProps }) {
           </>
         )}
       </Head>
-      <HeadInformation />
       <ChakraProvider theme={theme}>
         <ApolloProvider client={client}>
           <Header />

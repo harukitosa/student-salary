@@ -8,7 +8,6 @@ import {
   useColorModeValue,
   SimpleGrid,
   Badge,
-  Container,
 } from "@chakra-ui/react";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
@@ -51,6 +50,7 @@ export const HeadInformation = () => {
 export default function Home() {
   return (
     <>
+      <HeadInformation />
       <Box display={{ md: "flex" }}>
         <Stack
           as={Box}
