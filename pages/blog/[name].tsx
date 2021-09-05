@@ -23,6 +23,11 @@ export default function BlogPage() {
   return (
     <>
       <Head>
+      <title>StudentSalary {name}のインターン参加ブログまとめ</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@tosa_now" />
+      <meta name="twitter:title" content="StudentSalary" />
         <meta
           property="og:title"
           content={`${name}のインターン参加ブログまとめ`}
