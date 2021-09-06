@@ -18,7 +18,7 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
 export async function getServerSideProps({ query }) {
-  return { props: { query } }
+  return { props: { query } };
 }
 
 export default function BlogPage(props: any) {

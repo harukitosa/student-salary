@@ -290,7 +290,7 @@ function HomePage() {
   );
 }
 
-const BlogPostWithImage = (props: {
+export const BlogPostWithImage = (props: {
   title: String;
   num: Number;
   icon: string;
