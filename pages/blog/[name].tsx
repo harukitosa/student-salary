@@ -178,17 +178,19 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   }
   return (
     <Link href={props.url} passHref>
-      <Box
-        py="1"
-        px="3"
-        border={border}
-        color={color}
-        borderColor={`gray.300`}
-        bg={bg}
-        borderRadius="lg"
-      >
-        {props.title}
-      </Box>
+      <a>
+        <Box
+          py="1"
+          px="3"
+          border={border}
+          color={color}
+          borderColor={`gray.300`}
+          bg={bg}
+          borderRadius="lg"
+        >
+          {props.title}
+        </Box>
+      </a>
     </Link>
   );
 };
