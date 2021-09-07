@@ -15,7 +15,20 @@ import { ErrorPage } from "../../component/error";
 import { useCompanyQuery } from "../../src/generated/graphql";
 import { BlogPostWithImage } from "..";
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Bar, Tooltip, Legend, YAxis, XAxis, CartesianGrid, BarChart } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  Bar,
+  Tooltip,
+  Legend,
+  YAxis,
+  XAxis,
+  CartesianGrid,
+  BarChart,
+} from "recharts";
 
 interface dataType {
   key: string;
@@ -133,20 +146,18 @@ export default function WorkInfo() {
           </Text>
           <Example
             data={dataList}
-            COLORS={["#00468b", "#0071bc", "#ff5050", "#e7e7e7"]}
+            COLORS={["#d7352b", "#ff6a55", "#ffa746", "#ffd976", "#92c7ff", "#5b97ee"]}
           />
         </Box>
         <Box>
           <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
             契約種別
           </Text>
-          <SimpleBar
-            data={dataList2}
-          />
+          <SimpleBar data={dataList2} />
         </Box>
       </SimpleGrid>
       <Text fontSize={20} fontWeight={700}>
-        データ
+        提供データ
       </Text>
       <DataTable data={data.company[0].workdata} />
     </Container>
@@ -204,27 +215,27 @@ const Example = (props: { data: any[]; COLORS: string[] }) => {
   );
 };
 
-const SimpleBar = (props: {data: any[]}) => {
+const SimpleBar = (props: { data: any[] }) => {
   return (
     <ResponsiveContainer width="100%" height={400}>
-    <BarChart
-      width={500}
-      height={400}
-      data={props.data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="type" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="count" fill="#C084FC" />
-    </BarChart>
-  </ResponsiveContainer>
-  )
-}
+      <BarChart
+        width={400}
+        height={400}
+        data={props.data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        <XAxis dataKey="type" />
+        {/* <YAxis /> */}
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="count" fill="#A78BFA" />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+};
