@@ -276,7 +276,7 @@ function HomePage() {
         {data.companylist.map((item, index) => {
           return (
             <span key={item.name}>
-              <Link  href={`/workinfo/${item.name}`}>
+              <Link href={`/workinfo/${item.name}`}>
                 <a>
                   <Text as="span" fontSize="18" color="blue.400" px="2">
                     {item.name.trim()}

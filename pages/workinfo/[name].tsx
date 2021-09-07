@@ -169,10 +169,18 @@ export default function WorkInfo() {
       </Text>
       <DataTable data={data.company[0].workdata} />
 
-      <Text fontSize="18" fontWeight="bold" mt="24" mb="8">インターン参加ブログ[外部サイト]</Text>
-      {data.blog.blog.length !== 0 ? data.blog.blog.map((item, index) => {
-        return <BlogItemBlock key={index} item={item} />;
-      }) : <Text align="center" py="8">データなし</Text>}
+      <Text fontSize="18" fontWeight="bold" mt="24" mb="8">
+        インターン参加ブログ[外部サイト]
+      </Text>
+      {data.blog.blog.length !== 0 ? (
+        data.blog.blog.map((item, index) => {
+          return <BlogItemBlock key={index} item={item} />;
+        })
+      ) : (
+        <Text align="center" py="8">
+          データなし
+        </Text>
+      )}
     </Container>
   );
 }

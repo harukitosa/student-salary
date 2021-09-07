@@ -35,7 +35,7 @@
         create_data_js
       }
     }
-    blog(company_name: $name) {
+    blog(company_name: $name, limit: 3) {
 	blog {
 		title
 		company_name

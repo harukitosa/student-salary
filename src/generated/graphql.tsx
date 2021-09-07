@@ -191,7 +191,7 @@ export type CompanyQueryVariables = Exact<{
 }>;
 
 
-export type CompanyQuery = { __typename?: 'Query', company?: Maybe<Array<{ __typename?: 'Company', max: number, min: number, count: number, name: string, workdata?: Maybe<Array<{ __typename?: 'WorkData', id: string, salary: number, name: string, detail?: Maybe<string>, workType?: Maybe<string>, experience?: Maybe<string>, is_show?: Maybe<boolean>, term?: Maybe<string>, type?: Maybe<string>, workdays?: Maybe<string>, create_data_js?: Maybe<string> }>> }>>, blog: { __typename?: 'BlogData', nameList: Array<string>, blog: Array<{ __typename?: 'Blog', title: string, company_name: string, url: string, season: string, year: string }> } };
+export type CompanyQuery = { __typename?: 'Query', company?: Maybe<Array<{ __typename?: 'Company', max: number, min: number, count: number, name: string, workdata?: Maybe<Array<{ __typename?: 'WorkData', id: string, salary: number, name: string, detail?: Maybe<string>, workType?: Maybe<string>, experience?: Maybe<string>, is_show?: Maybe<boolean>, term?: Maybe<string>, type?: Maybe<string>, workdays?: Maybe<string>, create_data_js?: Maybe<string> }>> }>>, blog: { __typename?: 'BlogData', blog: Array<{ __typename?: 'Blog', title: string, company_name: string, url: string, season: string, year: string }> } };
 
 export type CreateWorkDataMutationVariables = Exact<{
   name: Scalars['String'];
@@ -507,7 +507,7 @@ export const CompanyDocument = gql`
       create_data_js
     }
   }
-  blog(company_name: $name) {
+  blog(company_name: $name, limit: 3) {
     blog {
       title
       company_name
@@ -515,7 +515,6 @@ export const CompanyDocument = gql`
       season
       year
     }
-    nameList
   }
 }
     `;
