@@ -127,7 +127,7 @@ export default function BlogPage({ data, company_name }) {
             インターン参加blogまとめ
           </Text>
         </Center>
-        <BlogView data={data.data} company_name={company_name} />
+        <BlogView data={data.data} name={company_name} />
       </Container>
     </>
   );
