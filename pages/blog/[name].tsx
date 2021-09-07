@@ -12,29 +12,91 @@ import {
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useGetBlogQuery } from "../../src/generated/graphql";
+import { GetBlogQuery, useGetBlogQuery } from "../../src/generated/graphql";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
-export async function getServerSideProps({ query }) {
-  return { props: { query } };
+export async function getStaticPaths() {
+  const company_name = "all"
+  let results = await fetch("https://student-salary-api.an.r.appspot.com/query", {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      query: `query{
+        blog {
+          nameList
+        }
+      }`,
+    }),
+  });
+  let paths = [];
+  const json = await results.json();
+  json.data.blog.nameList.forEach((item: string)=> {
+    paths.push({params: {name: item}});
+  })
+  paths.push({params: {name: "all"}})
+
+  return {
+    paths: paths,
+    fallback: false
+  }
 }
 
-export default function BlogPage(props: any) {
-  const router = useRouter();
-  const { name } = router.query;
+export async function getStaticProps({ params }) {
+  console.log(params)
+  const company_name = params.name
+  let results = await fetch("https://student-salary-api.an.r.appspot.com/query", {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      query: `query{
+        blog(company_name: "${company_name}") {
+          blog {
+            title
+            company_name
+            url
+            season
+            year
+          }
+          nameList
+        }
+      }`,
+    }),
+  });
+  const data = await results.json();
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { data, company_name }, // will be passed to the page component as props
+  }
+}
+
+export default function BlogPage({ data, company_name }) {
+  console.log(data)
   return (
     <>
       <Head>
-        <title>StudentSalary {name}のインターン参加ブログまとめ</title>
+        <title>StudentSalary {company_name}のインターン参加ブログまとめ</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tosa_now" />
         <meta name="twitter:title" content="StudentSalary" />
         <meta
           property="og:title"
-          content={`${name}のインターン参加ブログまとめ`}
+          content={`${company_name}のインターン参加ブログまとめ`}
         />
         <meta
           property="og:description"
@@ -46,20 +108,20 @@ export default function BlogPage(props: any) {
         />
         <meta
           property="og:image"
-          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${name}のインターン参加ブログまとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
+          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${company_name}のインターン参加ブログまとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
         />
       </Head>
       <Container minH="100vh">
         <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
           <Text as="h1" fontSize="xl" fontWeight="600">
             <Text as="span" fontSize="2xl" fontWeight="800">
-              {name}
+              {company_name}
             </Text>
             <br />
             インターン参加blogまとめ
           </Text>
         </Center>
-        <BlogView />
+        <BlogView data={data.data} company_name={company_name}/>
       </Container>
     </>
   );
@@ -73,18 +135,9 @@ interface blog {
   url: string;
 }
 
-const BlogView = () => {
-  const router = useRouter();
-  const { name } = router.query;
-  const { data, loading, error } = useGetBlogQuery({
-    variables: { company_name: name as string },
-  });
-  if (loading) return <p>loading...</p>;
-  if (error) {
-    console.log(error);
-    return <ErrorPage />;
-  }
-
+const BlogView = (props: {data: GetBlogQuery, name: string}) => {
+  const data = props.data;
+  const name = props.name;
   return (
     <>
       <Wrap>

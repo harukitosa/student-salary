@@ -30,6 +30,7 @@ export default function WorkInfo() {
   if (error) return <ErrorPage />;
 
   // avarage
+  // logic多いので後で移す
   let avg: number = 0;
   let mp: Map<String, number> = new Map();
   data.company[0].workdata.forEach((element) => {
