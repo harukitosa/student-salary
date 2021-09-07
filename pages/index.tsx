@@ -230,7 +230,7 @@ function HomePage() {
         {data.review.map((item, index) => {
           return (
             <ReviewItem
-              key={index}
+              key={item.id}
               link={`/review/${item.id}`}
               name={item.company_name}
               user_name={item.user_name}
@@ -275,8 +275,8 @@ function HomePage() {
         </Text>
         {data.companylist.map((item, index) => {
           return (
-            <>
-              <Link key={index} href={`/workinfo/${item.name}`}>
+            <span key={item.name}>
+              <Link  href={`/workinfo/${item.name}`}>
                 <a>
                   <Text as="span" fontSize="18" color="blue.400" px="2">
                     {item.name.trim()}
@@ -284,7 +284,7 @@ function HomePage() {
                 </a>
               </Link>
               <Text as="span">|</Text>
-            </>
+            </span>
           );
         })}
       </Box>

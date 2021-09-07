@@ -29,6 +29,7 @@ import {
   CartesianGrid,
   BarChart,
 } from "recharts";
+import { BlogItemBlock } from "../blog/[name]";
 
 interface dataType {
   key: string;
@@ -146,7 +147,14 @@ export default function WorkInfo() {
           </Text>
           <Example
             data={dataList}
-            COLORS={["#d7352b", "#ff6a55", "#ffa746", "#ffd976", "#92c7ff", "#5b97ee"]}
+            COLORS={[
+              "#d7352b",
+              "#ff6a55",
+              "#ffa746",
+              "#ffd976",
+              "#92c7ff",
+              "#5b97ee",
+            ]}
           />
         </Box>
         <Box>
@@ -160,6 +168,11 @@ export default function WorkInfo() {
         提供データ
       </Text>
       <DataTable data={data.company[0].workdata} />
+
+      <Text fontSize="18" fontWeight="bold" mt="24" mb="8">インターン参加ブログ[外部サイト]</Text>
+      {data.blog.blog.length !== 0 ? data.blog.blog.map((item, index) => {
+        return <BlogItemBlock key={index} item={item} />;
+      }) : <Text align="center" py="8">データなし</Text>}
     </Container>
   );
 }

@@ -160,7 +160,7 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
       </Wrap>
       <Box py="4"></Box>
       {data.blog.blog.map((item, index) => {
-        return <ItemBlock key={index} item={item} />;
+        return <BlogItemBlock key={index} item={item} />;
       })}
     </>
   );
@@ -194,7 +194,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   );
 };
 
-const ItemBlock = (props: { item: blog }) => {
+export const BlogItemBlock = (props: { item: blog }) => {
   return (
     <a target="_blank" href={props.item.url} rel="noopener noreferrer">
       <HStack align={"center"} my="1" h="32">

@@ -34,20 +34,17 @@
         workType
         create_data_js
       }
-      review {
-        id
-        company_name
-        detail
-        content
-        create_data_js
-        link
-        reasons
-        report
-        skill
-        user_name
-      }
     }
-  }
+    blog(company_name: $name) {
+	blog {
+		title
+		company_name
+		url
+		season
+		year
+	}
+     }
+}
 
     mutation createWorkData(
     $name: String!
