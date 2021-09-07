@@ -33,6 +33,7 @@ export default function WorkInfo() {
   // logic多いので後で移す
   let avg: number = 0;
   let mp: Map<String, number> = new Map();
+  let typeMp: Map<String, number> = new Map();
   data.company[0].workdata.forEach((element) => {
     avg += element.salary;
     if (mp.has(element.type) && element.type !== undefined) {
@@ -41,17 +42,27 @@ export default function WorkInfo() {
     } else {
       mp.set(element.type, 1);
     }
+
+    if (typeMp.has(element.workType) && element.workType !== undefined) {
+      let n = typeMp.get(element.workType) + 1;
+      typeMp.set(element.workType, n);
+    } else {
+      typeMp.set(element.workType, 1);
+    }
   });
-  console.log(mp);
   avg = avg / data.company[0].workdata.length;
 
   let dataList: any[] = [];
   mp.forEach((item, key) => {
     dataList.push({ name: key, value: item });
   });
+  let dataList2: any[] =[];
+  typeMp.forEach((item, key) => {
+    dataList2.push({name: key, value: item})
+  })
 
   return (
-    <Container maxW={"5xl"}>
+    <Container minW={"full"}>
       <Heading pt={8} pb={8}>
         <Text
           as={"span"}
@@ -83,10 +94,11 @@ export default function WorkInfo() {
             icon={"/memory.svg"}
             unit={"件"}
           />
+
           <BlogPostWithImage
-            title={"平均時給"}
-            num={Math.round(avg)}
-            icon={"/statistics.svg"}
+            title={"時給の最大値"}
+            num={data.company[0].max}
+            icon={"/db.svg"}
             unit={"円"}
           />
           <BlogPostWithImage
@@ -96,19 +108,38 @@ export default function WorkInfo() {
             unit={"円"}
           />
           <BlogPostWithImage
-            title={"時給の最大値"}
-            num={data.company[0].max}
-            icon={"/db.svg"}
+            title={"平均時給"}
+            num={Math.round(avg)}
+            icon={"/statistics.svg"}
             unit={"円"}
           />
         </SimpleGrid>
       </Heading>
-      <Text fontSize={20} fontWeight={700}>
-        開発領域
+
+      <Text fontSize={18} fontWeight={700} p="2" mt="6">
+            データの割合
       </Text>
-      <Container w="100%" bg="gray.200" mb="12">
-        <Example data={dataList} />
-      </Container>
+      <SimpleGrid
+        bg="gray.100"
+        mb="12"
+        w="full"
+        mt={"2"}
+        columns={{ base: 1, md: 2, lg: 2, sm: 1 }}
+        spacing={2}
+      >
+        <Box>
+          <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
+            開発領域
+          </Text>
+          <Example data={dataList} COLORS={["#00468b", "#0071bc", "#ff5050", "#e7e7e7"]}/>
+        </Box>
+        <Box>
+          <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
+            契約種別
+          </Text>
+          <Example data={dataList2} COLORS={["#DC2626", "#CA8A04", "#0D9488", "#0891B2"]} />
+        </Box>
+      </SimpleGrid>
       <Text fontSize={20} fontWeight={700}>
         データ
       </Text>
@@ -117,11 +148,8 @@ export default function WorkInfo() {
   );
 }
 
-const Example = (props: { data: any[] }) => {
-  console.log(props);
-
-  const COLORS = ["#00468b", "#0071bc", "#ff5050", "#e7e7e7"];
-
+const Example = (props: { data: any[], COLORS: string[] }) => {
+const COLORS = props.COLORS;
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
@@ -135,7 +163,6 @@ const Example = (props: { data: any[] }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-    console.log("index:%d", index);
     return (
       <text
         x={x}

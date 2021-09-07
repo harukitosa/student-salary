@@ -91,7 +91,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function BlogPage({ data, company_name }) {
-  console.log(data);
   return (
     <>
       <Head>
@@ -177,18 +176,20 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
     color = "white";
   }
   return (
-    <Link href={props.url} passHref>
-      <Box
-        py="1"
-        px="3"
-        border={border}
-        color={color}
-        borderColor={`gray.300`}
-        bg={bg}
-        borderRadius="lg"
-      >
-        {props.title}
-      </Box>
+    <Link href={props.url}>
+      <a>
+        <Box
+          py="1"
+          px="3"
+          border={border}
+          color={color}
+          borderColor={`gray.300`}
+          bg={bg}
+          borderRadius="lg"
+        >
+          {props.title}
+        </Box>
+      </a>
     </Link>
   );
 };
