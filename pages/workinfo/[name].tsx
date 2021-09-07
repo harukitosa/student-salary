@@ -14,9 +14,8 @@ import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
 import { useCompanyQuery } from "../../src/generated/graphql";
 import { BlogPostWithImage } from "..";
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-
+import React, { PureComponent } from "react";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 
 interface dataType {
   key: string;
@@ -35,20 +34,20 @@ export default function WorkInfo() {
   let mp: Map<String, number> = new Map();
   data.company[0].workdata.forEach((element) => {
     avg += element.salary;
-    if (mp.has(element.type)&&element.type!==undefined) {
-      let n = mp.get(element.type)+1;
-      mp.set(element.type, n)
+    if (mp.has(element.type) && element.type !== undefined) {
+      let n = mp.get(element.type) + 1;
+      mp.set(element.type, n);
     } else {
       mp.set(element.type, 1);
     }
   });
-  console.log(mp)
+  console.log(mp);
   avg = avg / data.company[0].workdata.length;
 
   let dataList: any[] = [];
   mp.forEach((item, key) => {
-    dataList.push({"name": key, "value": item})
-  })
+    dataList.push({ name: key, value: item });
+  });
 
   return (
     <Container maxW={"5xl"}>
@@ -107,7 +106,7 @@ export default function WorkInfo() {
         開発領域
       </Text>
       <Container w="100%" bg="gray.200" mb="12">
-      <Example data={dataList}/>
+        <Example data={dataList} />
       </Container>
       <Text fontSize={20} fontWeight={700}>
         データ
@@ -117,41 +116,57 @@ export default function WorkInfo() {
   );
 }
 
-const Example = (props: {data: any[]}) => {
-  console.log(props)
+const Example = (props: { data: any[] }) => {
+  console.log(props);
 
-const COLORS = ['#00468b','#0071bc', '#ff5050', '#e7e7e7'];
+  const COLORS = ["#00468b", "#0071bc", "#ff5050", "#e7e7e7"];
 
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-  console.log("index:%d", index)
-  return (
-    <text x={x} y={y} fill="black" textAnchor={x > cx ? 'start' : 'end'}  dominantBaseline="center" fontSize="18" fontWeight="bold">
-      {`${props.data[index].name}`}
-    </text>
-  );
-};
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    console.log("index:%d", index);
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="black"
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="center"
+        fontSize="18"
+        fontWeight="bold"
+      >
+        {`${props.data[index].name}`}
+      </text>
+    );
+  };
   return (
     <ResponsiveContainer width="100%" height={400}>
-    <PieChart height={400}>
-      <Pie
-        data={props.data}
-        cx="50%"
-        cy="50%"
-        labelLine={false}
-        label={renderCustomizedLabel}
-        outerRadius={110}
-        fill="#8884d8"
-        dataKey="value"
-      >
-        {props.data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
-  </ResponsiveContainer>
+      <PieChart height={400}>
+        <Pie
+          data={props.data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={110}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {props.data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
   );
-}
+};
