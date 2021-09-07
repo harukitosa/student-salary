@@ -12,18 +12,14 @@ import {
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import React, { useState } from "react";
-import { GetBlogQuery, useGetBlogQuery } from "../../src/generated/graphql";
-import { ErrorPage } from "../../component/error";
-import { useRouter } from "next/dist/client/router";
+import { GetBlogQuery } from "../../src/generated/graphql";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const company_name = "all";
   let results = await fetch(
     "https://student-salary-api.an.r.appspot.com/query",
     {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json",
       },
