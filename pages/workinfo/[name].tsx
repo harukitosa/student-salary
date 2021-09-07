@@ -15,7 +15,7 @@ import { ErrorPage } from "../../component/error";
 import { useCompanyQuery } from "../../src/generated/graphql";
 import { BlogPostWithImage } from "..";
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Bar, Tooltip, Legend, YAxis, XAxis, CartesianGrid, BarChart } from "recharts";
 
 interface dataType {
   key: string;
@@ -58,7 +58,7 @@ export default function WorkInfo() {
   });
   let dataList2: any[] = [];
   typeMp.forEach((item, key) => {
-    dataList2.push({ name: key, value: item });
+    dataList2.push({ type: key, count: item });
   });
 
   return (
@@ -140,9 +140,8 @@ export default function WorkInfo() {
           <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
             契約種別
           </Text>
-          <Example
+          <SimpleBar
             data={dataList2}
-            COLORS={["#DC2626", "#CA8A04", "#0D9488", "#0891B2"]}
           />
         </Box>
       </SimpleGrid>
@@ -204,3 +203,28 @@ const Example = (props: { data: any[]; COLORS: string[] }) => {
     </ResponsiveContainer>
   );
 };
+
+const SimpleBar = (props: {data: any[]}) => {
+  return (
+    <ResponsiveContainer width="100%" height={400}>
+    <BarChart
+      width={500}
+      height={400}
+      data={props.data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="type" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="count" fill="#C084FC" />
+    </BarChart>
+  </ResponsiveContainer>
+  )
+}
