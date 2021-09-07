@@ -14,21 +14,19 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	console.log(params)
-	let target = {};
-	data.forEach(item => {
-		if (item.id === params.id) {
-			target = item;
-		}
-	})
-	console.log(target)
+  console.log(params);
+  let target = {};
+  data.forEach((item) => {
+    if (item.id === params.id) {
+      target = item;
+    }
+  });
+  console.log(target);
   return {
     props: { target },
   };
 }
 
 export default function detailPage({ target }) {
-  return (
-	<h1>hello{JSON.stringify(target)}</h1>
-  );
+  return <h1>hello{JSON.stringify(target)}</h1>;
 }
