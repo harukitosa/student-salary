@@ -56,10 +56,10 @@ export default function WorkInfo() {
   mp.forEach((item, key) => {
     dataList.push({ name: key, value: item });
   });
-  let dataList2: any[] =[];
+  let dataList2: any[] = [];
   typeMp.forEach((item, key) => {
-    dataList2.push({name: key, value: item})
-  })
+    dataList2.push({ name: key, value: item });
+  });
 
   return (
     <Container minW={"full"}>
@@ -117,7 +117,7 @@ export default function WorkInfo() {
       </Heading>
 
       <Text fontSize={18} fontWeight={700} p="2" mt="6">
-            データの割合
+        データの割合
       </Text>
       <SimpleGrid
         bg="gray.100"
@@ -131,13 +131,19 @@ export default function WorkInfo() {
           <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
             開発領域
           </Text>
-          <Example data={dataList} COLORS={["#00468b", "#0071bc", "#ff5050", "#e7e7e7"]}/>
+          <Example
+            data={dataList}
+            COLORS={["#00468b", "#0071bc", "#ff5050", "#e7e7e7"]}
+          />
         </Box>
         <Box>
           <Text fontSize={16} fontWeight={700} p="2" mt="6" ml="6">
             契約種別
           </Text>
-          <Example data={dataList2} COLORS={["#DC2626", "#CA8A04", "#0D9488", "#0891B2"]} />
+          <Example
+            data={dataList2}
+            COLORS={["#DC2626", "#CA8A04", "#0D9488", "#0891B2"]}
+          />
         </Box>
       </SimpleGrid>
       <Text fontSize={20} fontWeight={700}>
@@ -148,8 +154,8 @@ export default function WorkInfo() {
   );
 }
 
-const Example = (props: { data: any[], COLORS: string[] }) => {
-const COLORS = props.COLORS;
+const Example = (props: { data: any[]; COLORS: string[] }) => {
+  const COLORS = props.COLORS;
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
