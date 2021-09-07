@@ -18,47 +18,52 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
 export async function getStaticPaths() {
-  const company_name = "all"
-  let results = await fetch("https://student-salary-api.an.r.appspot.com/query", {
-    method: "POST",
+  const company_name = "all";
+  let results = await fetch(
+    "https://student-salary-api.an.r.appspot.com/query",
+    {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
-    },
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-    body: JSON.stringify({
-      query: `query{
+      body: JSON.stringify({
+        query: `query{
         blog {
           nameList
         }
       }`,
-    }),
-  });
+      }),
+    }
+  );
   let paths = [];
   const json = await results.json();
-  json.data.blog.nameList.forEach((item: string)=> {
-    paths.push({params: {name: item}});
-  })
-  paths.push({params: {name: "all"}})
+  json.data.blog.nameList.forEach((item: string) => {
+    paths.push({ params: { name: item } });
+  });
+  paths.push({ params: { name: "all" } });
 
   return {
     paths: paths,
-    fallback: false
-  }
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params)
-  const company_name = params.name
-  let results = await fetch("https://student-salary-api.an.r.appspot.com/query", {
-    method: "POST",
+  console.log(params);
+  const company_name = params.name;
+  let results = await fetch(
+    "https://student-salary-api.an.r.appspot.com/query",
+    {
+      method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
-    },
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-    body: JSON.stringify({
-      query: `query{
+      body: JSON.stringify({
+        query: `query{
         blog(company_name: "${company_name}") {
           blog {
             title
@@ -70,22 +75,23 @@ export async function getStaticProps({ params }) {
           nameList
         }
       }`,
-    }),
-  });
+      }),
+    }
+  );
   const data = await results.json();
   if (!data) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
     props: { data, company_name }, // will be passed to the page component as props
-  }
+  };
 }
 
 export default function BlogPage({ data, company_name }) {
-  console.log(data)
+  console.log(data);
   return (
     <>
       <Head>
@@ -121,7 +127,7 @@ export default function BlogPage({ data, company_name }) {
             インターン参加blogまとめ
           </Text>
         </Center>
-        <BlogView data={data.data} company_name={company_name}/>
+        <BlogView data={data.data} company_name={company_name} />
       </Container>
     </>
   );
@@ -135,7 +141,7 @@ interface blog {
   url: string;
 }
 
-const BlogView = (props: {data: GetBlogQuery, name: string}) => {
+const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   const data = props.data;
   const name = props.name;
   return (
