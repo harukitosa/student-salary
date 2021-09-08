@@ -194,7 +194,7 @@ export default function WorkInfo() {
       )}
       <ShareButton
         url={"https://www.student-salary.com" + router.asPath}
-        title={`${router.query.name}のインターン参加ブログまとめ`}
+        title={`${router.query.name}の情報まとめ`}
       />
     </Container>
   );
