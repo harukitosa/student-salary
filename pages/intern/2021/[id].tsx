@@ -14,14 +14,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   let target = {};
   data.forEach((item) => {
     if (item.id === params.id) {
       target = item;
     }
   });
-  console.log(target);
   return {
     props: { target },
   };

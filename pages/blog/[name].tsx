@@ -8,12 +8,17 @@ import {
   Container,
   Select,
   Wrap,
+  Grid,
+  Flex,
 } from "@chakra-ui/react";
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
 import Head from "next/head";
+import { ContributeButton } from "../../component/contributeButton";
+import { useRouter } from "next/router";
+import { ShareButton } from "../../component/shareButton";
 
 export async function getStaticPaths() {
   let results = await fetch(
@@ -47,17 +52,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const company_name = params.name;
   let results = await fetch(
     "https://student-salary-api.an.r.appspot.com/query",
     {
       method: "POST",
-
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify({
         query: `query{
         blog(company_name: "${company_name}") {
@@ -139,6 +141,8 @@ interface blog {
 const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   const data = props.data;
   const name = props.name;
+  const router = useRouter();
+
   return (
     <>
       <Wrap>
@@ -158,6 +162,18 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
       {data.blog.blog.map((item, index) => {
         return <BlogItemBlock key={index} item={item} />;
       })}
+
+      <Text pt="12" fontSize="18" fontWeight="bold" align="center">
+        Blog情報の提供はこちらからお願いします
+      </Text>
+      <Center py="8">
+        <ContributeButton link={"https://forms.gle/dNwsVNqqq4MCsY6q6"} />
+      </Center>
+
+      <ShareButton
+        url={"https://www.student-salary.com" + router.asPath}
+        title={`${name}のインターン参加ブログまとめ`}
+      />
     </>
   );
 };

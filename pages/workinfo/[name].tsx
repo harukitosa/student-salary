@@ -1,14 +1,4 @@
-import {
-  Container,
-  Heading,
-  Text,
-  Flex,
-  useColorModeValue,
-  chakra,
-  Avatar,
-  Box,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Container, Heading, Text, Box, SimpleGrid } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
@@ -24,17 +14,13 @@ import {
   Bar,
   Tooltip,
   Legend,
-  YAxis,
   XAxis,
-  CartesianGrid,
   BarChart,
 } from "recharts";
 import { BlogItemBlock } from "../blog/[name]";
+import { ShareButton } from "../../component/shareButton";
+import Head from "next/dist/next-server/lib/head";
 
-interface dataType {
-  key: string;
-  value: number;
-}
 export default function WorkInfo() {
   const router = useRouter();
   const { loading, error, data } = useCompanyQuery({
@@ -77,6 +63,31 @@ export default function WorkInfo() {
 
   return (
     <Container minW={"full"}>
+      <Head>
+        <title>StudentSalary {router.query.name as string}の情報まとめ</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@tosa_now" />
+        <meta name="twitter:title" content="StudentSalary" />
+        <meta
+          property="og:title"
+          content={`${router.query.name as string}の情報まとめ`}
+        />
+        <meta
+          property="og:description"
+          content="学生エンジニアの情報共有サイト"
+        />
+        <meta
+          name="twitter:description"
+          content="学生エンジニアの情報共有サイト"
+        />
+        <meta
+          property="og:image"
+          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${
+            router.query.name as string
+          }の情報まとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
+        />
+      </Head>
       <Heading pt={8} pb={8}>
         <Text
           as={"span"}
@@ -181,6 +192,10 @@ export default function WorkInfo() {
           データなし
         </Text>
       )}
+      <ShareButton
+        url={"https://www.student-salary.com" + router.asPath}
+        title={`${router.query.name}のインターン参加ブログまとめ`}
+      />
     </Container>
   );
 }
@@ -250,9 +265,7 @@ const SimpleBar = (props: { data: any[] }) => {
           bottom: 5,
         }}
       >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <XAxis dataKey="type" />
-        {/* <YAxis /> */}
         <Tooltip />
         <Legend />
         <Bar dataKey="count" fill="#A78BFA" />
