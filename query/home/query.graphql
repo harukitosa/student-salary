@@ -33,6 +33,7 @@
         salary
         term
         type
+        detail
         workdays
         workType
       }

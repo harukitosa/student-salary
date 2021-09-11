@@ -1,4 +1,4 @@
-import { Text, Box, Grid } from "@chakra-ui/react";
+import { Text, Box, Grid, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Stack } from "@chakra-ui/react";
 import { workdata } from "../types/type";
 import Link from "next/link";
 import * as React from "react";
@@ -6,54 +6,6 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useRouter } from "next/router";
 import { WorkData } from "../src/generated/graphql";
 
-// export const SimpleTable = (props: { data: workdata[] }) => {
-
-//   return (
-//     <Grid
-//       templateColumns={{ md: "repeat(7, 1fr)", sm: "repeat(7, 1fr)" }}
-//       gap={0}
-//     >
-//       {tableHeader.map((item, index) => {
-//         return <SimpleTableTh key={index}>{item}</SimpleTableTh>;
-//       })}
-//       {props.data.map((item, index) => {
-//         return (
-//           <>
-//             <SimpleTableTh>
-//               <Link href={`/workinfo/${item.name}`} passHref>
-//                 <Text fontWeight={800}>{item.name}</Text>
-//               </Link>
-//             </SimpleTableTh>
-//             <SimpleTableTh>{item.salary}</SimpleTableTh>
-//             <SimpleTableTh>{item.type}</SimpleTableTh>
-//             <SimpleTableTh>{item.term}</SimpleTableTh>
-//             <SimpleTableTh>{item.experience}</SimpleTableTh>
-//             <SimpleTableTh>{item.workdays}</SimpleTableTh>
-//             <SimpleTableTh>{item.workType}</SimpleTableTh>
-//           </>
-//         );
-//       })}
-//     </Grid>
-//   );
-// };
-
-// const SimpleTableTh = (props: {
-//   children:
-//     | boolean
-//     | React.ReactChild
-//     | React.ReactFragment
-//     | React.ReactPortal;
-//   fontSize?: Number;
-// }) => {
-//   const fontsize = props.fontSize == undefined ? "1px" : props.fontSize + "px";
-//   return (
-//     <Box w="100%" h="10" borderBottom={fontsize} borderColor={"gray.200"}>
-//       <Text lineHeight={"10"} fontSize={"sm"} textColor={"gray.800"}>
-//         {props.children}
-//       </Text>
-//     </Box>
-//   );
-// };
 
 const columns = [
   { field: "id", headerName: "ID", width: 30 },
@@ -101,22 +53,53 @@ const columns = [
 
 export const DataTable = (props: { data: WorkData[] }) => {
   const router = useRouter();
-  const handleRowSelection = (e) => {
-    for (let i = 0; i < props.data.length; i++) {
-      if (e[0] === props.data[i].id) {
-        router.push(`/workinfo/${props.data[i].name}`);
-      }
-    }
-  };
-  const pageSize = props.data.length > 15 ? 15 : props.data.length;
+
   return (
-    <div style={{ height: pageSize * 50 + 150, width: "100%" }}>
-      <DataGrid
-        rows={props.data}
-        columns={columns}
-        pageSize={pageSize}
-        onSelectionModelChange={handleRowSelection}
-      />
-    </div>
+    <Accordion allowToggle>
+      {props.data.slice(0, 30).map((item) => {
+        return (
+          <AccordionItem key={item.id}>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                <Stack direction="column" gridGap={0}>
+                  <Link href={`/workinfo/${item.name}`}>
+                  <a>
+                <Text fontSize="18" fontWeight="600" color="blue.400">{item.name}</Text>
+                </a>
+                </Link>
+                <Text as="span" fontSize="12">{item.workType}</Text>
+                </Stack>
+              </Box>
+              <Box flex="1" textAlign="left">
+                <Stack direction="column" gridGap={0}>
+                <Text fontSize="18" fontWeight="400">{item.type}</Text>
+                </Stack>
+              </Box>
+              <Box flex="1" textAlign="left">
+                <Stack direction="column" gridGap={0}>
+                <Text fontSize="18" fontWeight="400">{item.term}</Text>
+                </Stack>
+              </Box>
+              <Box flex="1" textAlign="center">
+                <Text fontSize="18">
+                {item.salary}円
+                </Text>
+              </Box>
+              {/* <AccordionIcon /> */}
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Stack>
+              <Text>経験年数:{item.experience}</Text>
+              <Text>週出勤日数:{item.workdays}</Text>
+              <Text fontSize="12">詳細</Text>
+              <Text>{item.detail}</Text>
+            </Stack>
+          </AccordionPanel>
+        </AccordionItem>
+        );
+      })}
+  </Accordion>
   );
 };
