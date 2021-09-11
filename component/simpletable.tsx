@@ -84,24 +84,26 @@ export const DataTable = (props: { data: WorkData[] }) => {
                     </Text>
                   </Stack>
                 </Box>
-                <Box flex="1" textAlign="left">
+                <Box flex="1" textAlign={{ base: "center", md: "left"}}>
+                  <Text fontSize="18">{item.salary}円</Text>
+                  <Text fontSize="12" display={{ base: "block", md: "none" }} fontWeight="semibold">{item.type}</Text>
+                </Box>
+                <Box flex="1" textAlign="left"  display={{ base: "none", md: "block" }}>
                   <Stack direction="column" gridGap={0}>
                     <Text fontSize="18" fontWeight="400">
                       {item.type}
                     </Text>
                   </Stack>
                 </Box>
-                <Box flex="1" textAlign="left">
+                <Box flex="1" textAlign="left" display={{ base: "none", md: "block" }}>
                   <Stack direction="column" gridGap={0}>
                     <Text fontSize="18" fontWeight="400">
                       {item.term}
                     </Text>
                   </Stack>
                 </Box>
-                <Box flex="1" textAlign="center">
-                  <Text fontSize="18">{item.salary}円</Text>
-                </Box>
-                {/* <AccordionIcon /> */}
+
+                <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
