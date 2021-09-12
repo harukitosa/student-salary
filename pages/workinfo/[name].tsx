@@ -62,7 +62,7 @@ export default function WorkInfo() {
   });
 
   return (
-    <Container minW={"full"}>
+    <Box>
       <Head>
         <title>StudentSalary {router.query.name as string}の情報まとめ</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -196,7 +196,7 @@ export default function WorkInfo() {
         url={"https://www.student-salary.com" + router.asPath}
         title={`${router.query.name}の情報まとめ`}
       />
-    </Container>
+    </Box>
   );
 }
 
