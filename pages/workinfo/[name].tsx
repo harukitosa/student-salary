@@ -1,4 +1,12 @@
-import { Container, Heading, Text, Box, SimpleGrid, Center, Stack } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Text,
+  Box,
+  SimpleGrid,
+  Center,
+  Stack,
+} from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
@@ -191,8 +199,10 @@ export default function WorkInfo() {
       ) : (
         <Center>
           <Stack>
-          <Text textAlign="center" fontSize="18" fontWeight="bold" py="4">データがありません</Text>
-          <ContributeButton link={"https://forms.gle/dNwsVNqqq4MCsY6q6"} />
+            <Text textAlign="center" fontSize="18" fontWeight="bold" py="4">
+              データがありません
+            </Text>
+            <ContributeButton link={"https://forms.gle/dNwsVNqqq4MCsY6q6"} />
           </Stack>
         </Center>
       )}
