@@ -1,10 +1,4 @@
-import {
-  Divider,
-  SimpleGrid,
-  GridItem,
-  Text,
-  Box,
-} from "@chakra-ui/layout";
+import { Divider, SimpleGrid, GridItem, Text, Box } from "@chakra-ui/layout";
 import { FC, useMemo } from "react";
 
 export const InternItem: FC = function ({ children }) {
