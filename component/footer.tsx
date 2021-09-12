@@ -5,7 +5,6 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
 export const Footer = () => {
   return (
     <>

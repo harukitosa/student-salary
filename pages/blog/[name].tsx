@@ -1,4 +1,3 @@
-import data from "../../blog.json";
 import {
   Text,
   Center,
@@ -6,14 +5,11 @@ import {
   HStack,
   VStack,
   Container,
-  Select,
   Wrap,
-  Grid,
-  Flex,
 } from "@chakra-ui/react";
 import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
 import Head from "next/head";
 import { ContributeButton } from "../../component/contributeButton";

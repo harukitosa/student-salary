@@ -1,4 +1,4 @@
-import { Container, Text, Box, Badge } from "@chakra-ui/layout";
+import { Container, Box, Badge } from "@chakra-ui/layout";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
 import { useGetreviewQuery } from "../../src/generated/graphql";

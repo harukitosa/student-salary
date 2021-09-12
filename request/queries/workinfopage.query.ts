@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { company, review } from "../../types/type";
+import { company } from "../../types/type";
 
 export const WORKINFOTOPPAGE_QUERY = gql`
   query {

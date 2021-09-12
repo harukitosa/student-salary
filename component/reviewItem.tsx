@@ -1,13 +1,9 @@
 import {
   Text,
   Center,
-  Stack,
   Heading,
-  Button,
   Box,
   useColorModeValue,
-  SimpleGrid,
-  Badge,
 } from "@chakra-ui/react";
 
 import Link from "next/link";

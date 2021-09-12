@@ -1,5 +1,4 @@
 import {
-  Container,
   Heading,
   Text,
   Box,
@@ -12,11 +11,10 @@ import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
 import { useCompanyQuery } from "../../src/generated/graphql";
 import { BlogPostWithImage } from "..";
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   PieChart,
   Pie,
-  Sector,
   Cell,
   ResponsiveContainer,
   Bar,
