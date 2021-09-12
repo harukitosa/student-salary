@@ -52,23 +52,17 @@ export default function detailPage({ target }) {
       >
         <BreadcrumbItem>
           <Link href={"/"}>
-          <a>
-          Home
-          </a>
+            <a>Home</a>
           </Link>
         </BreadcrumbItem>
 
         <BreadcrumbItem>
-        <Link href={"/intern/2021"}>
-          <a>
-          2021年夏
-          </a>
+          <Link href={"/intern/2021"}>
+            <a>2021年夏</a>
           </Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
-        <Text>
-          {target.company_name}
-          </Text>
+          <Text>{target.company_name}</Text>
         </BreadcrumbItem>
       </Breadcrumb>
 
@@ -121,10 +115,14 @@ const Item = (props: { title: string; content?: string }) => {
             {props.title}
           </Text>
         </GridItem>
-        <GridItem colSpan={{ base: 1, md: 2 }}>
+        <GridItem colSpan={{ base: 1, md: 2 }} maxW="100vw">
+          <Box>
+            <Text>
           {props.content === undefined || props.content == ""
             ? "記載なし"
             : props.content}
+            </Text>
+            </Box>
         </GridItem>
       </SimpleGrid>
     </>
