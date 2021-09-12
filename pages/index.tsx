@@ -196,31 +196,37 @@ function HomePage() {
           return (
             <Link key={index} href={`/workinfo/${item.name}`}>
               <a>
-              <Box
-                border={"1px"}
-                w={"full"}
-                borderColor={"blackAlpha.200"}
-                p={"5"}
-                flex="1"
-              >
-                <HStack>
-                <VStack align="left">
-                <Text fontSize={"18"} fontWeight={"bold"} color={"blue.400"}>
-                  {item.name}
-                </Text>
-                <Text fontSize={"14"} fontWeight={"bold"}>
-                    {item.min}円/hr ~ {item.max}円/hr
-                  </Text>
-                </VStack>
-                <Spacer/>
-                <VStack>
-                  <Text fontSize="24">
-                    {item.count}
-                    <Text fontSize="14" as="span">件</Text>
-                  </Text>
-                </VStack>
-                </HStack>
-                {/* <Badge py={2} mr={1} rounded={"lg"}>
+                <Box
+                  border={"1px"}
+                  w={"full"}
+                  borderColor={"blackAlpha.200"}
+                  p={"5"}
+                  flex="1"
+                >
+                  <HStack>
+                    <VStack align="left">
+                      <Text
+                        fontSize={"18"}
+                        fontWeight={"bold"}
+                        color={"blue.400"}
+                      >
+                        {item.name}
+                      </Text>
+                      <Text fontSize={"14"} fontWeight={"bold"}>
+                        {item.min}円/hr ~ {item.max}円/hr
+                      </Text>
+                    </VStack>
+                    <Spacer />
+                    <VStack>
+                      <Text fontSize="24">
+                        {item.count}
+                        <Text fontSize="14" as="span">
+                          件
+                        </Text>
+                      </Text>
+                    </VStack>
+                  </HStack>
+                  {/* <Badge py={2} mr={1} rounded={"lg"}>
                   max: {item.max}円
                 </Badge>
                 <Badge py={2} mr={1} rounded={"lg"}>
@@ -229,7 +235,7 @@ function HomePage() {
                 <Badge py={2} mr={1} rounded={"lg"}>
                   登録件数: {item.count}
                 </Badge> */}
-              </Box>
+                </Box>
               </a>
             </Link>
           );
