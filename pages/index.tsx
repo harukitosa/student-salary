@@ -8,6 +8,9 @@ import {
   useColorModeValue,
   SimpleGrid,
   Badge,
+  HStack,
+  VStack,
+  Spacer,
 } from "@chakra-ui/react";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
@@ -191,18 +194,33 @@ function HomePage() {
       <SimpleGrid columns={{ base: 1, md: 1, lg: 3, sm: 1 }} spacing={2} mt={6}>
         {data.company.map((item, index) => {
           return (
-            <Link key={index} href={`/workinfo/${item.name}`} passHref>
+            <Link key={index} href={`/workinfo/${item.name}`}>
+              <a>
               <Box
                 border={"1px"}
-                p={6}
                 w={"full"}
                 borderColor={"blackAlpha.200"}
-                rounded={"lg"}
+                p={"5"}
+                flex="1"
               >
-                <Text fontSize={"xl"} fontWeight={600} mb={4}>
+                <HStack>
+                <VStack align="left">
+                <Text fontSize={"18"} fontWeight={"bold"} color={"blue.400"}>
                   {item.name}
                 </Text>
-                <Badge py={2} mr={1} rounded={"lg"}>
+                <Text fontSize={"14"} fontWeight={"bold"}>
+                    {item.min}円/hr ~ {item.max}円/hr
+                  </Text>
+                </VStack>
+                <Spacer/>
+                <VStack>
+                  <Text fontSize="24">
+                    {item.count}
+                    <Text fontSize="14" as="span">件</Text>
+                  </Text>
+                </VStack>
+                </HStack>
+                {/* <Badge py={2} mr={1} rounded={"lg"}>
                   max: {item.max}円
                 </Badge>
                 <Badge py={2} mr={1} rounded={"lg"}>
@@ -210,8 +228,9 @@ function HomePage() {
                 </Badge>
                 <Badge py={2} mr={1} rounded={"lg"}>
                   登録件数: {item.count}
-                </Badge>
+                </Badge> */}
               </Box>
+              </a>
             </Link>
           );
         })}

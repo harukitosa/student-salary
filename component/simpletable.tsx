@@ -85,7 +85,7 @@ export const DataTable = (props: { data: WorkData[] }) => {
                   </Stack>
                 </Box>
                 <Box flex="1" textAlign={{ base: "center", md: "left" }}>
-                  <Text fontSize="18">{item.salary}円</Text>
+                  <Text fontSize="18">{item.salary}円/hr</Text>
                   <Text
                     fontSize="12"
                     display={{ base: "block", md: "none" }}
