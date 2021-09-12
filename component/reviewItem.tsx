@@ -25,17 +25,16 @@ export const ReviewItem = (props: {
             bg={useColorModeValue("white", "gray.900")}
             border={"1px"}
             borderColor={"blackAlpha.200"}
-            rounded={"lg"}
             p={3}
             m={1}
             w={"full"}
             h={"full"}
           >
-            <Heading fontSize={"xl"} fontFamily={"body"}>
+            <Heading fontSize={"xl"} fontFamily={"body"} color="blue.400">
               {props.name}
             </Heading>
-            <Text fontSize={"sm"} fontWeight={300} color={"gray.500"} mb={4}>
-              回答者: {props.user_name}
+            <Text fontSize={"12"} fontWeight={300} color={"gray.500"} mb={4}>
+              {props.user_name}
             </Text>
             <Text>
               {props.detail}...

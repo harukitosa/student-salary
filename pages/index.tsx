@@ -226,15 +226,6 @@ function HomePage() {
                       </Text>
                     </VStack>
                   </HStack>
-                  {/* <Badge py={2} mr={1} rounded={"lg"}>
-                  max: {item.max}円
-                </Badge>
-                <Badge py={2} mr={1} rounded={"lg"}>
-                  min: {item.min}円
-                </Badge>
-                <Badge py={2} mr={1} rounded={"lg"}>
-                  登録件数: {item.count}
-                </Badge> */}
                 </Box>
               </a>
             </Link>
@@ -298,20 +289,27 @@ function HomePage() {
         <Text p="2" fontSize="24" fontWeight="bold">
           登録されている企業一覧
         </Text>
+        <SimpleGrid
+        mt={"4"}
+        columns={{ base: 4, md: 3, lg: 4, sm: 2 }}
+        spacing={2}
+      >
         {data.companylist.map((item, index) => {
           return (
             <span key={item.name}>
               <Link href={`/workinfo/${item.name}`}>
                 <a>
-                  <Text as="span" fontSize="18" color="blue.400" px="2">
+                  <Box bg={"gray.50"} borderRadius="xl" p="4">
+                  <Text fontSize="18" color="blue.400" px="2">
                     {item.name.trim()}
                   </Text>
+                  </Box>
                 </a>
               </Link>
-              <Text as="span">|</Text>
             </span>
           );
         })}
+        </SimpleGrid>
       </Box>
     </>
   );

@@ -1,4 +1,4 @@
-import { Container, Heading, Text, Box, SimpleGrid } from "@chakra-ui/react";
+import { Container, Heading, Text, Box, SimpleGrid, Center, Stack } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
@@ -20,6 +20,7 @@ import {
 import { BlogItemBlock } from "../blog/[name]";
 import { ShareButton } from "../../component/shareButton";
 import Head from "next/dist/next-server/lib/head";
+import { ContributeButton } from "../../component/contributeButton";
 
 export default function WorkInfo() {
   const router = useRouter();
@@ -188,9 +189,12 @@ export default function WorkInfo() {
           return <BlogItemBlock key={index} item={item} />;
         })
       ) : (
-        <Text align="center" py="8">
-          データなし
-        </Text>
+        <Center>
+          <Stack>
+          <Text textAlign="center" fontSize="18" fontWeight="bold" py="4">データがありません</Text>
+          <ContributeButton link={"https://forms.gle/dNwsVNqqq4MCsY6q6"} />
+          </Stack>
+        </Center>
       )}
       <ShareButton
         url={"https://www.student-salary.com" + router.asPath}
