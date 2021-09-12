@@ -1,21 +1,14 @@
-import {
-  Text,
-  Box,
-  Flex,
-  SimpleGrid,
-  GridItem,
-  Grid,
-  Divider,
-} from "@chakra-ui/layout";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from "@chakra-ui/react";
+import { Text, Box } from "@chakra-ui/layout";
+import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import data from "../../../intern2021.json";
 import Link from "next/link";
+import {
+  InternItem as Item,
+  InternItemContent as Content,
+  InternItemTitle as Title,
+  InternItemUrl as Url,
+} from "../../../component/InternItem";
 
 export async function getStaticPaths() {
   let paths = [];
@@ -87,44 +80,42 @@ export default function detailPage({ target }) {
         </Text>
       </Box>
 
-      <Item title="内容" content={target.content} />
-      <Item title="応募期限" content={target.limit} />
-      <Item title="対象" content={target.target} />
-      <Item title="求めるスキル" content={target.skill} />
-      <Item title="給料" content={target.salary} />
-      <Item title="期間" content={target.span} />
-      <Item title="交通費" content={target.transportationexpenses} />
-      <Item title="ホテル" content={target.hotel} />
-      <Item title="応募先" content={target.url} />
+      <Item>
+        <Title title="内容" />
+        <Content content={target.content} />
+      </Item>
+      <Item>
+        <Title title="応募期限" />
+        <Content content={target.limit} />
+      </Item>
+      <Item>
+        <Title title="対象" />
+        <Content content={target.target} />
+      </Item>
+      <Item>
+        <Title title="求めるスキル" />
+        <Content content={target.skill} />
+      </Item>
+      <Item>
+        <Title title="給料" />
+        <Content content={target.salary} />
+      </Item>
+      <Item>
+        <Title title="期間" />
+        <Content content={target.span} />
+      </Item>
+      <Item>
+        <Title title="交通費" />
+        <Content content={target.transportationexpenses} />
+      </Item>
+      <Item>
+        <Title title="ホテル" />
+        <Content content={target.hogel} />
+      </Item>
+      <Item>
+        <Title title="応募先" />
+        <Url url={target.url} />
+      </Item>
     </Box>
   );
 }
-
-const Item = (props: { title: string; content?: string }) => {
-  return (
-    <>
-      <Divider />
-      <SimpleGrid
-        py="4"
-        // columns={{ base: 1, md: 2, lg: 2, sm: 1 }}
-        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
-        spacing={2}
-      >
-        <GridItem colSpan={{ base: 1, md: 1 }}>
-          <Text fontSize="18" fontWeight="bold">
-            {props.title}
-          </Text>
-        </GridItem>
-        <GridItem colSpan={{ base: 1, md: 2 }} maxW="100vw">
-          <Box>
-            <Text>
-          {props.content === undefined || props.content == ""
-            ? "記載なし"
-            : props.content}
-            </Text>
-            </Box>
-        </GridItem>
-      </SimpleGrid>
-    </>
-  );
-};
