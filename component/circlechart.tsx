@@ -1,5 +1,5 @@
-import { review, workdata } from "../types/type";
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
+import { workdata } from "../types/type";
+import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
 
 export const CircleChart = (props: { list: workdata[] }) => {
   return (

@@ -1,14 +1,4 @@
-import {
-  Text,
-  Container,
-  Box,
-  Accordion,
-  AccordionItem,
-  AccordionIcon,
-  AccordionButton,
-  AccordionPanel,
-  Stack,
-} from "@chakra-ui/react";
+import { Text, Container, Box } from "@chakra-ui/react";
 import data from "../../../intern2021.json";
 import Link from "next/link";
 import { ChevronRightIcon } from "@chakra-ui/icons";

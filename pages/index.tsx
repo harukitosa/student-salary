@@ -7,7 +7,6 @@ import {
   Box,
   useColorModeValue,
   SimpleGrid,
-  Badge,
   HStack,
   VStack,
   Spacer,

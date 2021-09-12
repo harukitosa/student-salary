@@ -6,11 +6,8 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql,
   createHttpLink,
 } from "@apollo/client";
-import { HeadInformation } from ".";
 import Head from "next/dist/next-server/lib/head";
 import * as gtag from "../libs/gtag";
 import { useEffect } from "react";

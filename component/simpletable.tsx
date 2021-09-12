@@ -1,7 +1,6 @@
 import {
   Text,
   Box,
-  Grid,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -9,10 +8,8 @@ import {
   AccordionPanel,
   Stack,
 } from "@chakra-ui/react";
-import { workdata } from "../types/type";
 import Link from "next/link";
 import * as React from "react";
-import { DataGrid } from "@material-ui/data-grid";
 import { useRouter } from "next/router";
 import { WorkData } from "../src/generated/graphql";
 
