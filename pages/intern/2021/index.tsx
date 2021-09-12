@@ -11,12 +11,7 @@ import {
 } from "@chakra-ui/react";
 import data from "../../../intern2021.json";
 import Link from "next/link";
-import {
-  PhoneIcon,
-  AddIcon,
-  WarningIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 export async function getStaticProps({ params }) {
   return {
     props: { data },
@@ -42,29 +37,30 @@ export default function InternPage({ data }) {
       </Container>
       {data.map((item) => {
         return (
-<Link key={item.id} href={`/intern/2021/${item.id}`}>
-  <a>
-    <Box py={2}>
-      <Text fontSize="18" fontWeight="semibold">
-        <ChevronRightIcon color="blue.400" h="8" w="8" />
-        {item.company_name}
-      </Text>
-      <Text p="4">
-        {item.content.slice(0, 140)}
-        {item.content != undefined && item.content.length > 140
-          ? "..."
-          : ""}
-      </Text>
-    </Box>
-  </a>
-</Link>
+          <Link key={item.id} href={`/intern/2021/${item.id}`}>
+            <a>
+              <Box py={2}>
+                <Text fontSize="18" fontWeight="semibold">
+                  <ChevronRightIcon color="blue.400" h="8" w="8" />
+                  {item.company_name}
+                </Text>
+                <Text p="4">
+                  {item.content.slice(0, 140)}
+                  {item.content != undefined && item.content.length > 140
+                    ? "..."
+                    : ""}
+                </Text>
+              </Box>
+            </a>
+          </Link>
         );
       })}
     </Container>
   );
 }
 
-{/* <Accordion key={item.id} allowMultiple>
+{
+  /* <Accordion key={item.id} allowMultiple>
 <AccordionItem>
   <h2>
     <AccordionButton>
@@ -83,4 +79,5 @@ export default function InternPage({ data }) {
     </Stack>
   </AccordionPanel>
 </AccordionItem>
-</Accordion> */}
+</Accordion> */
+}
