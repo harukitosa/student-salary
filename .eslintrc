@@ -1,6 +1,7 @@
 {
-  "extends": [
-    "next",
-    "prettier"
-  ]
+  "extends": ["next", "prettier"],
+  "plugins": ["unused-imports"],
+  "rules": {
+		"unused-imports/no-unused-imports": "error"
+	}
 }
