@@ -300,8 +300,13 @@ function HomePage() {
               <span key={item.name}>
                 <Link href={`/workinfo/${item.name}`}>
                   <a>
-                    <Box bg={"gray.50"} borderRadius="xl" p="4">
-                      <Text fontSize={{ base: 12, md: 18}} fontWeight="semibold" color="blue.400" px="2">
+                    <Box bg={"gray.50"} borderRadius="xl" p="4" h="full">
+                      <Text
+                        fontSize={{ base: 14, md: 18 }}
+                        fontWeight="semibold"
+                        color="blue.400"
+                        px="2"
+                      >
                         {item.name}
                       </Text>
                     </Box>

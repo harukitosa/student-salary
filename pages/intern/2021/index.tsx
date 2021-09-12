@@ -7,7 +7,7 @@ import {
   AccordionIcon,
   AccordionButton,
   AccordionPanel,
-  Stack
+  Stack,
 } from "@chakra-ui/react";
 import data from "../../../intern2021.json";
 import Link from "next/link";
@@ -42,44 +42,45 @@ export default function InternPage({ data }) {
       </Container>
       {data.map((item) => {
         return (
-          <Accordion key={item.id} allowMultiple>
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    {item.company_name}
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                <Stack>
-                  <Stack>
-                  <Text>内容</Text>
-                  <Text>{item.content}</Text>
-                  </Stack>
-                </Stack>
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
+<Link key={item.id} href={`/intern/2021/${item.id}`}>
+  <a>
+    <Box py={2}>
+      <Text fontSize="18" fontWeight="semibold">
+        <ChevronRightIcon color="blue.400" h="8" w="8" />
+        {item.company_name}
+      </Text>
+      <Text p="4">
+        {item.content.slice(0, 140)}
+        {item.content != undefined && item.content.length > 140
+          ? "..."
+          : ""}
+      </Text>
+    </Box>
+  </a>
+</Link>
         );
       })}
     </Container>
   );
 }
-// <Link key={item.id} href={`/intern/2021/${item.id}`}>
-//   <a>
-//     <Box py={2}>
-//       <Text fontSize="18" fontWeight="semibold">
-//         <ChevronRightIcon color="blue.400" h="8" w="8" />
-//         {item.company_name}
-//       </Text>
-//       <Text p="4">
-//         {item.content.slice(0, 140)}
-//         {item.content != undefined && item.content.length > 140
-//           ? "..."
-//           : ""}
-//       </Text>
-//     </Box>
-//   </a>
-// </Link>
+
+{/* <Accordion key={item.id} allowMultiple>
+<AccordionItem>
+  <h2>
+    <AccordionButton>
+      <Box flex="1" textAlign="left">
+        {item.company_name}
+      </Box>
+      <AccordionIcon />
+    </AccordionButton>
+  </h2>
+  <AccordionPanel pb={4}>
+    <Stack>
+      <Stack>
+        <Text>内容</Text>
+        <Text>{item.content}</Text>
+      </Stack>
+    </Stack>
+  </AccordionPanel>
+</AccordionItem>
+</Accordion> */}
