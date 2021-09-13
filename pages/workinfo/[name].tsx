@@ -5,7 +5,6 @@ import {
   SimpleGrid,
   Center,
   Stack,
-  Spacer,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
