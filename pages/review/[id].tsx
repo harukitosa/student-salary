@@ -1,4 +1,4 @@
-import { Container, Box, Badge, Text } from "@chakra-ui/layout";
+import { Box, Badge, Text } from "@chakra-ui/layout";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
 import { useGetreviewQuery } from "../../src/generated/graphql";
@@ -6,7 +6,6 @@ import {
   InternItem as Item,
   InternItemContent as Content,
   InternItemTitle as Title,
-  InternItemUrl as Url,
 } from "../../component/InternItem";
 
 export default function ReviewDetailPage() {
