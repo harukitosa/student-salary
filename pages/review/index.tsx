@@ -1,4 +1,4 @@
-import { Text, SimpleGrid } from "@chakra-ui/react";
+import { Text, SimpleGrid, Box } from "@chakra-ui/react";
 import { ReviewItem } from "../../component/reviewItem";
 import { ErrorPage } from "../../component/error";
 import { useReviewQuery } from "../../src/generated/graphql";
@@ -8,7 +8,7 @@ export default function ReviewPage() {
   if (loading) return <p>loading...</p>;
   if (error) return <ErrorPage />;
   return (
-    <>
+    <Box minH="100vh">
       <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
         口コミ一覧
       </Text>
@@ -25,6 +25,6 @@ export default function ReviewPage() {
           );
         })}
       </SimpleGrid>
-    </>
+    </Box>
   );
 }

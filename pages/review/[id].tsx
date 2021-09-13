@@ -19,7 +19,7 @@ export default function ReviewDetailPage() {
 
   const review = data.review[0];
   return (
-    <Box>
+    <Box minH="90vh">
       <Box mt="8" mb="12">
         <Text
           as={"span"}
