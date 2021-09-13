@@ -1,7 +1,13 @@
-import { Container, Box, Badge } from "@chakra-ui/layout";
+import { Container, Box, Badge, Text } from "@chakra-ui/layout";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
 import { useGetreviewQuery } from "../../src/generated/graphql";
+import {
+  InternItem as Item,
+  InternItemContent as Content,
+  InternItemTitle as Title,
+  InternItemUrl as Url,
+} from "../../component/InternItem";
 
 export default function ReviewDetailPage() {
   const router = useRouter();
@@ -14,53 +20,48 @@ export default function ReviewDetailPage() {
 
   const review = data.review[0];
   return (
-    <Container maxW="lg">
-      <Box
-        mt={12}
-        maxW="lg"
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-      >
-        <Box p="6">
-          <Box
-            mt="1"
-            fontWeight="bold"
-            fontSize={"32"}
-            as="h1"
-            lineHeight="tight"
-            isTruncated
-          >
-            {review.company_name}
-          </Box>
-          <Box
-            fontWeight="semibold"
-            as="h4"
-            color={"gray.500"}
-            lineHeight="tight"
-            isTruncated
-          >
-            {review.user_name}
-          </Box>
-
-          <LineItem title="内容" content={review.content} />
-          <LineItem title="使用した技術" content={review.skill} />
-          <LineItem title="参加した理由" content={review.reasons} />
-          <LineItem
-            title="
-	  感想・一推しポイント・詳細など
-	  "
-            content={review.report}
-          />
-
-          <Box mt="8" d="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="4" py="2" colorScheme="teal">
-              review
-            </Badge>
-          </Box>
-        </Box>
+    <Box>
+        <Box mt="8" mb="12">
+        <Text
+          as={"span"}
+          position={"relative"}
+          fontSize={{ base: "4xl", md: "4xl", lg: "5xl" }}
+          fontWeight="bold"
+          _after={{
+            content: "''",
+            width: "full",
+            position: "absolute",
+            bottom: 1,
+            left: 0,
+            bg: "blue.400",
+            height: "10%",
+            zIndex: -1,
+          }}
+        >
+          {review.company_name}
+        </Text>
       </Box>
-    </Container>
+      <Item>
+        <Title title="username" />
+        <Content content={review.user_name} />
+      </Item>
+      <Item>
+        <Title title="内容" />
+        <Content content={review.content} />
+      </Item>
+      <Item>
+        <Title title="応募した理由" />
+        <Content content={review.reasons} />
+      </Item>
+      <Item>
+        <Title title="感想・一推しポイント・詳細など" />
+        <Content content={review.report} />
+      </Item>
+      <Item>
+        <Title title="使用した技術" />
+        <Content content={review.skill} />
+      </Item>
+    </Box>
   );
 }
 
