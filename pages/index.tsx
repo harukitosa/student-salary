@@ -18,8 +18,10 @@ import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
 import Head from "next/head";
 import { useGetHomePageQuery } from "../src/generated/graphql";
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import { InternBlogLink, SummerInternSpreadSheet, SummerInternSpreadSheetLink } from "../component/pageLink";
+import {
+  InternBlogLink,
+  SummerInternSpreadSheetLink,
+} from "../component/pageLink";
 
 export const HeadInformation = () => {
   return (
@@ -290,12 +292,12 @@ function HomePage() {
 
       {/* 夏のインターンスプレッドシート専用UI */}
       <Box w="full" mt="24">
-        <SummerInternSpreadSheetLink/>
+        <SummerInternSpreadSheetLink />
       </Box>
 
       {/* インターン参加ブログまとめ */}
       <Box w="full" mt="24" mb="24">
-        <InternBlogLink/>
+        <InternBlogLink />
       </Box>
 
       <Box w="full">
