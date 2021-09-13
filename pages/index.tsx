@@ -19,6 +19,7 @@ import { ReviewItem } from "../component/reviewItem";
 import Head from "next/head";
 import { useGetHomePageQuery } from "../src/generated/graphql";
 import {
+  CompanyListLink,
   InternBlogLink,
   SummerInternSpreadSheetLink,
 } from "../component/pageLink";
@@ -300,37 +301,7 @@ function HomePage() {
         <InternBlogLink />
       </Box>
 
-      <Box w="full">
-        <Text p="2" fontSize="24" fontWeight="bold">
-          登録されている企業一覧
-        </Text>
-        <SimpleGrid
-          mt={"4"}
-          columns={{ base: 2, md: 3, lg: 4, sm: 2 }}
-          spacing={2}
-        >
-          {data.companylist.map((item, index) => {
-            return (
-              <span key={item.name}>
-                <Link href={`/workinfo/${item.name}`}>
-                  <a>
-                    <Box bg={"gray.50"} borderRadius="xl" p="4" h="full">
-                      <Text
-                        fontSize={{ base: 14, md: 18 }}
-                        fontWeight="semibold"
-                        color="blue.400"
-                        px="2"
-                      >
-                        {item.name}
-                      </Text>
-                    </Box>
-                  </a>
-                </Link>
-              </span>
-            );
-          })}
-        </SimpleGrid>
-      </Box>
+      <CompanyListLink companylist={data.companylist} />
     </>
   );
 }

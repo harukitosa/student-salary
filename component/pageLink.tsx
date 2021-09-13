@@ -1,8 +1,4 @@
-import {
-  Text,
-  Box,
-  HStack,
-} from "@chakra-ui/react";
+import { Text, Box, HStack, SimpleGrid } from "@chakra-ui/react";
 import Link from "next/link";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
@@ -48,6 +44,46 @@ export const InternBlogLink = () => {
           </HStack>
         </a>
       </Link>
+    </Box>
+  );
+};
+
+interface company {
+  name: string;
+}
+
+export const CompanyListLink = (props: { companylist: company[] }) => {
+  return (
+    <Box w="full">
+      <Text p="2" fontSize="24" fontWeight="bold">
+        登録されている企業一覧
+      </Text>
+      <SimpleGrid
+        mt={"4"}
+        columns={{ base: 2, md: 3, lg: 4, sm: 2 }}
+        spacing={2}
+      >
+        {props.companylist.map((item, index) => {
+          return (
+            <span key={item.name}>
+              <Link href={`/workinfo/${item.name}`}>
+                <a>
+                  <Box bg={"gray.50"} borderRadius="xl" p="4" h="full">
+                    <Text
+                      fontSize={{ base: 14, md: 18 }}
+                      fontWeight="semibold"
+                      color="blue.400"
+                      px="2"
+                    >
+                      {item.name}
+                    </Text>
+                  </Box>
+                </a>
+              </Link>
+            </span>
+          );
+        })}
+      </SimpleGrid>
     </Box>
   );
 };

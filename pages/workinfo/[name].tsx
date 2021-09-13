@@ -5,6 +5,7 @@ import {
   SimpleGrid,
   Center,
   Stack,
+  Spacer,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
@@ -27,6 +28,11 @@ import { BlogItemBlock } from "../blog/[name]";
 import { ShareButton } from "../../component/shareButton";
 import Head from "next/dist/next-server/lib/head";
 import { ContributeButton } from "../../component/contributeButton";
+import {
+  CompanyListLink,
+  InternBlogLink,
+  SummerInternSpreadSheetLink,
+} from "../../component/pageLink";
 
 export default function WorkInfo() {
   const router = useRouter();
@@ -208,6 +214,16 @@ export default function WorkInfo() {
         url={"https://www.student-salary.com" + router.asPath}
         title={`${router.query.name}の情報まとめ`}
       />
+
+      <Box pt="24">
+        <SummerInternSpreadSheetLink />
+        <Box h="8"></Box>
+        <InternBlogLink />
+      </Box>
+
+      <Box pt="24">
+        <CompanyListLink companylist={data.companylist} />
+      </Box>
     </Box>
   );
 }
