@@ -1,9 +1,13 @@
-import { Text, Container, Box, Input, useControllableState } from "@chakra-ui/react";
+import {
+  Text,
+  Container,
+  Box,
+  Input,
+  useControllableState,
+} from "@chakra-ui/react";
 import data from "../../../intern2021.json";
 import Link from "next/link";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { useForm, Controller } from "react-hook-form";
-import { useState } from "react";
 export async function getStaticProps({ params }) {
   return {
     props: { data },
@@ -11,8 +15,10 @@ export async function getStaticProps({ params }) {
 }
 
 export default function InternPage({ data }) {
-  const [value, setValue] = useControllableState({ defaultValue: "" })
-  const viewList = data.filter((item) => {return item.company_name.toUpperCase().includes(value.toUpperCase())});
+  const [value, setValue] = useControllableState({ defaultValue: "" });
+  const viewList = data.filter((item) => {
+    return item.company_name.toUpperCase().includes(value.toUpperCase());
+  });
 
   return (
     <Container minH="100vh">
@@ -32,9 +38,17 @@ export default function InternPage({ data }) {
         </a>
       </Container>
 
-      <Text fontSize="14" fontWeight="bold">企業名で検索</Text>
+      <Text fontSize="14" fontWeight="bold">
+        企業名で検索
+      </Text>
       <Input mb="12" onChange={(e) => setValue(e.target.value)} />
-      {viewList.length == 0 ? <Text textAlign="center" fontSize="18" fontWeight="bold">検索結果なし</Text> : <></>}
+      {viewList.length == 0 ? (
+        <Text textAlign="center" fontSize="18" fontWeight="bold">
+          検索結果なし
+        </Text>
+      ) : (
+        <></>
+      )}
       {viewList.map((item) => {
         return (
           <Link key={item.id} href={`/intern/2021/${item.id}`}>
