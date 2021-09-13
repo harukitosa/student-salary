@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-const ListHeader = ({ children }: { children: any}) => {
+const ListHeader = ({ children }: { children: any }) => {
   return (
     <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
       {children}
