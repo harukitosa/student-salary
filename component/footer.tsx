@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-const ListHeader = ({ children }: { children: ReactNode }) => {
+const ListHeader = ({ children }: { children: any}) => {
   return (
     <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
       {children}
@@ -69,22 +69,3 @@ export const Footer = () => {
     </>
   );
 };
-
-/* <Box minH={20}></Box>
-      <Box
-        bg={useColorModeValue("gray.50", "gray.900")}
-        color={useColorModeValue("gray.700", "gray.200")}
-      >
-        <Container
-          as={Stack}
-          maxW={"6xl"}
-          py={4}
-          direction={{ base: "column", md: "row" }}
-          spacing={4}
-          justify={{ base: "center", md: "space-between" }}
-          align={{ base: "center", md: "center" }}
-        >
-          <Text>© 2021 StudentSalary. All rights reserved</Text>
-        </Container>
-      </Box>
-    </> */
