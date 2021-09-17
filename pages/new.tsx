@@ -56,6 +56,7 @@ const WorkinfoForm = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
+    // @ts-ignore
     if (!validation(data)) {
       alert("未記入事項があります");
       return;
