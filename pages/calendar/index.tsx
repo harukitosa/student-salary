@@ -11,7 +11,11 @@ import {
   Stack,
   Badge,
 } from "@chakra-ui/layout";
-import { ExternalLinkIcon, ChevronRightIcon, ChevronLeftIcon} from "@chakra-ui/icons";
+import {
+  ExternalLinkIcon,
+  ChevronRightIcon,
+  ChevronLeftIcon,
+} from "@chakra-ui/icons";
 import { useState } from "react";
 import moment from "moment-timezone";
 import data from "../../calendar.json";
@@ -116,7 +120,7 @@ export default function CalenderPage() {
         <Box w="full" maxW="1000px" pt="2">
           <Flex>
             <IconButton
-              icon={<ChevronLeftIcon/>}
+              icon={<ChevronLeftIcon />}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.subPointDay())
@@ -131,7 +135,7 @@ export default function CalenderPage() {
             </Text>
             <Spacer />
             <IconButton
-              icon={<ChevronRightIcon/>}
+              icon={<ChevronRightIcon />}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.addPointDay())
