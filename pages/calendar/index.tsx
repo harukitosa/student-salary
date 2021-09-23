@@ -210,7 +210,10 @@ export default function CalenderPage() {
             </IconButton>
           </Flex>
 
-          <ShareButton title="エンジニアインターンシップ・新卒採用カレンダー" url="https://www.student-salary.com/calendar" />
+          <ShareButton
+            title="エンジニアインターンシップ・新卒採用カレンダー"
+            url="https://www.student-salary.com/calendar"
+          />
         </Box>
       </Center>
     </>
