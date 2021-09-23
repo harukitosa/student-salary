@@ -25,7 +25,6 @@ import {
 } from "recharts";
 import { BlogItemBlock } from "../blog/[name]";
 import { ShareButton } from "../../component/shareButton";
-import Head from "next/dist/next-server/lib/head";
 import { ContributeButton } from "../../component/contributeButton";
 import {
   CompanyListLink,
@@ -33,6 +32,7 @@ import {
   SummerInternSpreadSheetLink,
 } from "../../component/pageLink";
 import { Loading } from "../../component/loading";
+import { SEO } from "../../component/seo";
 
 export default function WorkInfo() {
   const router = useRouter();
@@ -76,31 +76,12 @@ export default function WorkInfo() {
 
   return (
     <Box>
-      <Head>
-        <title>StudentSalary {router.query.name as string}の情報まとめ</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@tosa_now" />
-        <meta name="twitter:title" content="StudentSalary" />
-        <meta
-          property="og:title"
-          content={`${router.query.name as string}の情報まとめ`}
-        />
-        <meta
-          property="og:description"
-          content="学生エンジニアの情報共有サイト"
-        />
-        <meta
-          name="twitter:description"
-          content="学生エンジニアの情報共有サイト"
-        />
-        <meta
-          property="og:image"
-          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${
-            router.query.name as string
-          }の情報まとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
-        />
-      </Head>
+      <SEO
+        title={`StudentSalary ${router.query.name as string}の情報まとめ`}
+        description={`${router.query.name as string}の時給情報の詳細データを掲載しています。`}
+        imageText={`StudentSalary ${router.query.name as string}の情報まとめ`}
+        url={"https://www.student-salary.com/" + router.asPath}
+      />
       <Heading pt={8} pb={8}>
         <Text
           as={"span"}

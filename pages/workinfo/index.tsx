@@ -12,12 +12,21 @@ import Link from "next/link";
 import { ErrorPage } from "../../component/error";
 import { Company, useGetWorkinfoQuery } from "../../src/generated/graphql";
 import { Loading } from "../../component/loading";
+import { SEO } from "../../component/seo";
+import router from "next/router";
 
 export default function WorkInfo() {
   const { loading, error, data } = useGetWorkinfoQuery();
   if (loading) return <Loading />;
   if (error) return <ErrorPage />;
   return (
+    <>
+    <SEO 
+      title="企業一覧ページ" 
+      description="インターンシップ、アルバイト、業務委託の学生エンジニアの時給情報を一覧画面です。"
+      imageText="企業時給一覧"
+      url={"https://www.student-salary.com/" + router.asPath}
+    />
     <Container maxW={"5xl"}>
       <Box pt={8} pb={8}>
         <Heading pt={8} pb={8}>
@@ -52,6 +61,7 @@ export default function WorkInfo() {
         );
       })}
     </Container>
+    </>
   );
 }
 

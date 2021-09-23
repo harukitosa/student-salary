@@ -11,10 +11,10 @@ import { LinkIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import React from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
-import Head from "next/head";
 import { ContributeButton } from "../../component/contributeButton";
 import { useRouter } from "next/router";
 import { ShareButton } from "../../component/shareButton";
+import { SEO } from "../../component/seo";
 
 export async function getStaticPaths() {
   let results = await fetch(
@@ -87,29 +87,11 @@ export async function getStaticProps({ params }) {
 export default function BlogPage({ data, company_name }) {
   return (
     <>
-      <Head>
-        <title>StudentSalary {company_name}のインターン参加ブログまとめ</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@tosa_now" />
-        <meta name="twitter:title" content="StudentSalary" />
-        <meta
-          property="og:title"
-          content={`${company_name}のインターン参加ブログまとめ`}
-        />
-        <meta
-          property="og:description"
-          content="学生エンジニアの情報共有サイト"
-        />
-        <meta
-          name="twitter:description"
-          content="学生エンジニアの情報共有サイト"
-        />
-        <meta
-          property="og:image"
-          content={`https://res.cloudinary.com/dam6j1bfo/image/upload/l_text:Sawarabi%20Gothic_65_bold:${company_name}のインターン参加ブログまとめ,co_rgb:333,w_800,c_fit/v1630839169/StudentOGP_pkno2h.jpg`}
-        />
-      </Head>
+    <SEO
+    title={`StudentSalary ${company_name}のインターン参加ブログまとめ`}
+    description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
+    imageText={`${company_name}のインターン参加ブログまとめ`}
+    />
       <Container minH="100vh">
         <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
           <Text as="h1" fontSize="xl" fontWeight="600">

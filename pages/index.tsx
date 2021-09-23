@@ -16,7 +16,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
-import Head from "next/head";
 import { useGetHomePageQuery } from "../src/generated/graphql";
 import {
   CompanyListLink,
@@ -24,41 +23,12 @@ import {
   SummerInternSpreadSheetLink,
 } from "../component/pageLink";
 import { Loading } from "../component/loading";
-
-export const HeadInformation = () => {
-  return (
-    <Head>
-      <title>StudentSalary 学生エンジニアの情報共有サイト</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@tosa_now" />
-      <meta name="twitter:title" content="StudentSalary" />
-      <meta
-        name="twitter:description"
-        content="学生エンジニアの情報共有サイト"
-      />
-      <meta
-        name="twitter:image"
-        content="https://www.student-salary.com/StudentOGP.jpeg"
-      />
-      <meta property="og:title" content="StudentSalary" />
-      <meta
-        property="og:description"
-        content="学生エンジニアの情報共有サイト"
-      />
-      <meta property="og:site_name" content="StudentSalary" />
-      <meta
-        property="og:image"
-        content="https://www.student-salary.com/StudentOGP.jpeg"
-      />
-    </Head>
-  );
-};
+import { SEO } from "../component/seo";
 
 export default function Home() {
   return (
     <>
-      <HeadInformation />
+      <SEO />
       <Box display={{ md: "flex" }}>
         <Stack
           as={Box}

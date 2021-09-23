@@ -20,6 +20,7 @@ import { useState } from "react";
 import moment from "moment-timezone";
 import data from "../../calendar.json";
 import { IconButton } from "@chakra-ui/button";
+import { SEO } from "../../component/seo";
 
 interface Event {
   company_name: string;
@@ -116,6 +117,11 @@ export default function CalenderPage() {
 
   return (
     <>
+        <SEO
+    title={`エンジニアインターンシップ・新卒採用カレンダー`}
+    description={`エンジニア向け、インターンシップや新卒採用予定をカレンダーとして一覧で閲覧することができます。`}
+    imageText={`エンジニアインターンシップ・新卒採用カレンダー`}
+    />
       <Center>
         <Box w="full" maxW="1000px" pt="2">
           <Flex>

@@ -20,12 +20,14 @@ import {
 } from "../types/type";
 import { ThankPage } from "../component/thankpage";
 import { ErrorPage } from "../component/error";
+import { SEO } from "../component/seo";
 // import { yupResolver } from '@hookform/resolvers/yup';
 // import * as yup from "yup";
 
 export default function workinfonewPage() {
   return (
     <Container pt={12}>
+      <SEO/>
       <WorkinfoForm />
     </Container>
   );
