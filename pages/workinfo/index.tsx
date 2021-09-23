@@ -15,7 +15,7 @@ import { Loading } from "../../component/loading";
 
 export default function WorkInfo() {
   const { loading, error, data } = useGetWorkinfoQuery();
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
   if (error) return <ErrorPage />;
   return (
     <Container maxW={"5xl"}>

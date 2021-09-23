@@ -15,7 +15,7 @@ export default function ReviewDetailPage() {
   const { loading, error, data } = useGetreviewQuery({
     variables: { id: Number(id as string) },
   });
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
   if (error) return <ErrorPage />;
 
   const review = data.review[0];

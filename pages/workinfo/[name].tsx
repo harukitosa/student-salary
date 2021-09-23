@@ -39,7 +39,7 @@ export default function WorkInfo() {
   const { loading, error, data } = useCompanyQuery({
     variables: { name: router.query.name as string },
   });
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
   if (error) return <ErrorPage />;
 
   // avarage

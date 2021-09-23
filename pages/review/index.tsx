@@ -6,7 +6,7 @@ import { Loading } from "../../component/loading";
 
 export default function ReviewPage() {
   const { loading, error, data } = useReviewQuery();
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
   if (error) return <ErrorPage />;
   return (
     <Box minH="100vh">
