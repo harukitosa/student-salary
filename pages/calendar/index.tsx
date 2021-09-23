@@ -176,37 +176,40 @@ const EventListItem = (props: { item: Event }) => {
       <ListItem>
         <Stack>
           <Box>
-          {props.item.dateType === "event" ? (
-            <Badge variant="outline" colorScheme="blue">
-              開催日
-            </Badge>
-          ) : (
-            ""
-          )}
-          {props.item.dateType === "limit" ? (
-            <Badge variant="outline" colorScheme="red">
-            応募締め切り日
-          </Badge>
-          ) : (
-            ""
-          )}{" "}
-          {props.item.type === "intern" ? (
-                       <Badge variant="outline" colorScheme="blue">
-                       インターン
-                     </Badge> 
-          ) : ( "")}
-
-{props.item.type === "recruit" ? (
-                       <Badge variant="outline" colorScheme="orange">
-                       新卒採用
-                     </Badge> 
-          ) : ( "")}
+            {props.item.dateType === "event" ? (
+              <Badge variant="outline" colorScheme="blue">
+                開催日
+              </Badge>
+            ) : (
+              ""
+            )}
+            {props.item.dateType === "limit" ? (
+              <Badge variant="outline" colorScheme="red">
+                応募締め切り日
+              </Badge>
+            ) : (
+              ""
+            )}{" "}
+            {props.item.type === "intern" ? (
+              <Badge variant="outline" colorScheme="blue">
+                インターン
+              </Badge>
+            ) : (
+              ""
+            )}
+            {props.item.type === "recruit" ? (
+              <Badge variant="outline" colorScheme="orange">
+                新卒採用
+              </Badge>
+            ) : (
+              ""
+            )}
           </Box>
           <Box>
-          <Text as="span">
-          {props.item.title} - {props.item.company_name}
-          </Text>
-          <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
+            <Text as="span">
+              {props.item.title} - {props.item.company_name}
+            </Text>
+            <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
           </Box>
         </Stack>
       </ListItem>
