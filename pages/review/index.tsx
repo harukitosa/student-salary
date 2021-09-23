@@ -2,10 +2,11 @@ import { Text, SimpleGrid, Box } from "@chakra-ui/react";
 import { ReviewItem } from "../../component/reviewItem";
 import { ErrorPage } from "../../component/error";
 import { useReviewQuery } from "../../src/generated/graphql";
+import { Loading } from "../../component/loading";
 
 export default function ReviewPage() {
   const { loading, error, data } = useReviewQuery();
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Loading/>;
   if (error) return <ErrorPage />;
   return (
     <Box minH="100vh">

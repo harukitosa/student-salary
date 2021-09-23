@@ -11,13 +11,11 @@ import {
 import Link from "next/link";
 import { ErrorPage } from "../../component/error";
 import { Company, useGetWorkinfoQuery } from "../../src/generated/graphql";
+import { Loading } from "../../component/loading";
 
 export default function WorkInfo() {
-  // const { loading, error, data } = useQuery<WORKINFOTOPPAGE_QUERY_DATA>(
-  //   WORKINFOTOPPAGE_QUERY
-  // );
   const { loading, error, data } = useGetWorkinfoQuery();
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <Loading/>;
   if (error) return <ErrorPage />;
   return (
     <Container maxW={"5xl"}>

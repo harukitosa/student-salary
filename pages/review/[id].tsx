@@ -7,6 +7,7 @@ import {
   InternItemContent as Content,
   InternItemTitle as Title,
 } from "../../component/InternItem";
+import { Loading } from "../../component/loading";
 
 export default function ReviewDetailPage() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function ReviewDetailPage() {
   const { loading, error, data } = useGetreviewQuery({
     variables: { id: Number(id as string) },
   });
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Loading/>;
   if (error) return <ErrorPage />;
 
   const review = data.review[0];

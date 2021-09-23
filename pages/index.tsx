@@ -23,6 +23,7 @@ import {
   InternBlogLink,
   SummerInternSpreadSheetLink,
 } from "../component/pageLink";
+import { Loading } from "../component/loading";
 
 export const HeadInformation = () => {
   return (
@@ -137,7 +138,7 @@ export default function Home() {
 
 function HomePage() {
   const { data, loading, error } = useGetHomePageQuery({});
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Loading/>;
   if (error) {
     console.log(error);
     return <ErrorPage />;
