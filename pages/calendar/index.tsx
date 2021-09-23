@@ -172,7 +172,7 @@ export default function CalenderPage() {
                     }
                     textAlign="left"
                   >
-                    {item.month+1}/{item.day}({changeWeekdays(item.weekdays)})
+                    {item.month + 1}/{item.day}({changeWeekdays(item.weekdays)})
                   </Text>
                   <List spacing={3} py="2">
                     {calendarState.getEvent(item.today).map((item) => {
@@ -264,9 +264,9 @@ interface Calendar {
 }
 
 const changeWeekdays = (weekdays: number) => {
-  const days = ["日","月","火","水","木","金","土"];
+  const days = ["日", "月", "火", "水", "木", "金", "土"];
   return days[weekdays];
-}
+};
 
 const getCalendar = (currentDate: moment.Moment) => {
   let startDate = getStartDate(currentDate);
