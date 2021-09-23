@@ -120,6 +120,7 @@ export default function CalenderPage() {
         <Box w="full" maxW="1000px" pt="2">
           <Flex>
             <IconButton
+              aria-label="last month"
               icon={<ChevronLeftIcon />}
               onClick={() => {
                 setcalendarState(
@@ -135,7 +136,8 @@ export default function CalenderPage() {
             </Text>
             <Spacer />
             <IconButton
-              icon={<ChevronRightIcon />}
+            aria-label="next month"
+            icon={<ChevronRightIcon />}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.addPointDay())
