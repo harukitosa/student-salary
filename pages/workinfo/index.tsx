@@ -67,12 +67,12 @@ const Chart = (props: { company: Company }) => {
           domain={[0, 5000]}
         />
         <YAxis type="category" dataKey="name" name="name" tick={false} />
-        <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+        <Tooltip cursor={{ strokeDasharray: "10 10" }} />
         {props.company.workdata.map((item, index) => {
           if (item.workType === "インターン") {
             return (
               <Scatter
-                fillOpacity="0.1"
+                fillOpacity="0.6"
                 key={index}
                 dataKey="salary"
                 name="salary"
@@ -84,7 +84,7 @@ const Chart = (props: { company: Company }) => {
           }
           return (
             <Scatter
-              fillOpacity="0.1"
+              fillOpacity="0.6"
               key={index}
               dataKey="salary"
               name="salary"

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "サーバサイド特化型インターン「KLab Server Side Camp」（第1回）",
+    "type": "intern",
+    "company_name": "KLab",
+    "limit_date": ["2021-09-04", "2021-11-17"],
+    "event_date": [
+      "2021-12-27",
+      "2021-12-28",
+      "2022-01-05",
+      "2022-01-06",
+      "2022-01-07"
+    ],
+    "link": "https://klab-hr.snar.jp/jobboard/detail.aspx?id=dOPYn2c4CEE"
+  },
+  {
+    "title": "2023年卒先取り選考",
+    "type": "recruit",
+    "company_name": "Cyberagent",
+    "limit_date": ["2021-09-30"],
+    "event_date": [],
+    "link": "https://www.cyberagent.co.jp/careers/special/students/tech/"
+  }
+]
