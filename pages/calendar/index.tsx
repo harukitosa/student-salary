@@ -95,26 +95,25 @@ export default function CalenderPage() {
             {calendarState.getMonth()}月
           </Text>
           <Flex>
-
-          <Button
-            onClick={() => {
-              setcalendarState(
-                new CalendarState(data, calendarState.subPointDay())
-              );
-            }}
-          >
-            Last
-          </Button>
-          <Spacer/>
-          <Button
-            onClick={() => {
-              setcalendarState(
-                new CalendarState(data, calendarState.addPointDay())
-              );
-            }}
-          >
-            Next
-          </Button>
+            <Button
+              onClick={() => {
+                setcalendarState(
+                  new CalendarState(data, calendarState.subPointDay())
+                );
+              }}
+            >
+              Last
+            </Button>
+            <Spacer />
+            <Button
+              onClick={() => {
+                setcalendarState(
+                  new CalendarState(data, calendarState.addPointDay())
+                );
+              }}
+            >
+              Next
+            </Button>
           </Flex>
 
           <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
