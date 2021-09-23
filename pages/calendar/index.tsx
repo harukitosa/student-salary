@@ -11,11 +11,11 @@ import {
   Stack,
   Badge,
 } from "@chakra-ui/layout";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, ChevronRightIcon, ChevronLeftIcon} from "@chakra-ui/icons";
 import { useState } from "react";
 import moment from "moment-timezone";
 import data from "../../calendar.json";
-import { Button } from "@chakra-ui/button";
+import { IconButton } from "@chakra-ui/button";
 
 interface Event {
   company_name: string;
@@ -115,7 +115,8 @@ export default function CalenderPage() {
       <Center>
         <Box w="full" maxW="1000px" pt="2">
           <Flex>
-            <Button
+            <IconButton
+              icon={<ChevronLeftIcon/>}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.subPointDay())
@@ -123,13 +124,14 @@ export default function CalenderPage() {
               }}
             >
               Last
-            </Button>
+            </IconButton>
             <Spacer />
             <Text textAlign="center" fontWeight="bold" fontSize="xl">
               {calendarState.getYear()}年 {calendarState.getMonth()}月
             </Text>
             <Spacer />
-            <Button
+            <IconButton
+              icon={<ChevronRightIcon/>}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.addPointDay())
@@ -137,7 +139,7 @@ export default function CalenderPage() {
               }}
             >
               Next
-            </Button>
+            </IconButton>
           </Flex>
 
           <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
@@ -166,14 +168,17 @@ export default function CalenderPage() {
           </Grid>
         </Box>
       </Center>
+      <Box mt="32">
+        情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
+      </Box>
     </>
   );
 }
 
 const EventListItem = (props: { item: Event }) => {
   return (
-    <a href={props.item.link}>
-      <ListItem>
+    <a href={props.item.link} target="_blank" rel="noreferrer">
+      <ListItem mb="4">
         <Stack>
           <Box>
             {props.item.dateType === "event" ? (

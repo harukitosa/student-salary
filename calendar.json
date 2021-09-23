@@ -3,7 +3,7 @@
     "title": "サーバサイド特化型インターン「KLab Server Side Camp」（第1回）",
     "type": "intern",
     "company_name": "KLab",
-    "limit_date": ["2021-09-04", "2021-11-17"],
+    "limit_date": ["2021-10-04", "2021-11-17"],
     "event_date": [
       "2021-12-27",
       "2021-12-28",
@@ -20,5 +20,21 @@
     "limit_date": ["2021-09-30"],
     "event_date": [],
     "link": "https://www.cyberagent.co.jp/careers/special/students/tech/"
-  }
+  },
+  {
+	  "title": "【1day】Bug Shooting Challenge #6 ONLINE（不具合調査ワークショップ）",
+	  "type": "intern",
+	  "company_name": "mixi",
+	  "limit_date": ["2021-10-17"],
+	  "event_date": ["2021-11-16"],
+	  "link": "https://mixi-recruit.snar.jp/jobboard/detail.aspx?id=aDCv8OfneSMM9iANqQvaDg"
+  },
+  {
+	"title": "【1day】TDD challenge #6 ONLINE （テスト駆動開発ワークショップ）",
+	"type": "intern",
+	"company_name": "mixi",
+	"limit_date": ["2021-10-17"],
+	"event_date": ["2021-11-7"],
+	"link": "https://mixi-recruit.snar.jp/jobboard/detail.aspx?id=1LAa99w4jEH0GrL0SvHGtw"
+}
 ]
