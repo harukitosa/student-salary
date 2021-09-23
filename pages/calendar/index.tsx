@@ -184,32 +184,6 @@ export default function CalenderPage() {
             })}
           </Grid>
 
-          <Flex pt="20">
-            <IconButton
-              aria-label="last month"
-              icon={<ChevronLeftIcon />}
-              onClick={() => {
-                setcalendarState(
-                  new CalendarState(data, calendarState.subPointDay())
-                );
-              }}
-            >
-              Last
-            </IconButton>
-            <Spacer />
-            <IconButton
-              aria-label="next month"
-              icon={<ChevronRightIcon />}
-              onClick={() => {
-                setcalendarState(
-                  new CalendarState(data, calendarState.addPointDay())
-                );
-              }}
-            >
-              Next
-            </IconButton>
-          </Flex>
-
           <ShareButton
             title="エンジニアインターンシップ・新卒採用カレンダー"
             url="https://www.student-salary.com/calendar"
