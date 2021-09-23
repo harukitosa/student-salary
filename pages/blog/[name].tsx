@@ -87,11 +87,11 @@ export async function getStaticProps({ params }) {
 export default function BlogPage({ data, company_name }) {
   return (
     <>
-    <SEO
-    title={`StudentSalary ${company_name}のインターン参加ブログまとめ`}
-    description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
-    imageText={`${company_name}のインターン参加ブログまとめ`}
-    />
+      <SEO
+        title={`StudentSalary ${company_name}のインターン参加ブログまとめ`}
+        description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
+        imageText={`${company_name}のインターン参加ブログまとめ`}
+      />
       <Container minH="100vh">
         <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
           <Text as="h1" fontSize="xl" fontWeight="600">

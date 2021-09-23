@@ -78,7 +78,9 @@ export default function WorkInfo() {
     <Box>
       <SEO
         title={`StudentSalary ${router.query.name as string}の情報まとめ`}
-        description={`${router.query.name as string}の時給情報の詳細データを掲載しています。`}
+        description={`${
+          router.query.name as string
+        }の時給情報の詳細データを掲載しています。`}
         imageText={`StudentSalary ${router.query.name as string}の情報まとめ`}
         url={"https://www.student-salary.com/" + router.asPath}
       />

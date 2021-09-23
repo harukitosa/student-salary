@@ -12,30 +12,30 @@ export default function ReviewPage() {
   if (error) return <ErrorPage />;
   return (
     <>
-    <SEO
-    title="エンジニアインターンシップの口コミ一覧"
-    description="エンジニアインターンシップの口コミを掲載しています。"
-    url={"https://www.student-salary.com/" + router.asPath}
-    imageText="インターンシップの口コミ一覧"
-    />
-    <Box minH="100vh">
-      <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
-        口コミ一覧
-      </Text>
-      <SimpleGrid columns={{ base: 1, md: 3 }}>
-        {data.review.map((item, index) => {
-          return (
-            <ReviewItem
-              key={index}
-              link={`/review/${item.id}`}
-              name={item.company_name}
-              user_name={item.user_name}
-              detail={item.report.substr(0, 20)}
-            />
-          );
-        })}
-      </SimpleGrid>
-    </Box>
+      <SEO
+        title="エンジニアインターンシップの口コミ一覧"
+        description="エンジニアインターンシップの口コミを掲載しています。"
+        url={"https://www.student-salary.com/" + router.asPath}
+        imageText="インターンシップの口コミ一覧"
+      />
+      <Box minH="100vh">
+        <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
+          口コミ一覧
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 3 }}>
+          {data.review.map((item, index) => {
+            return (
+              <ReviewItem
+                key={index}
+                link={`/review/${item.id}`}
+                name={item.company_name}
+                user_name={item.user_name}
+                detail={item.report.substr(0, 20)}
+              />
+            );
+          })}
+        </SimpleGrid>
+      </Box>
     </>
   );
 }
