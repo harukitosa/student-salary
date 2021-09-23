@@ -21,6 +21,7 @@ import moment from "moment-timezone";
 import data from "../../calendar.json";
 import { IconButton } from "@chakra-ui/button";
 import { SEO } from "../../component/seo";
+import { ShareButton } from "../../component/shareButton";
 
 interface Event {
   company_name: string;
@@ -137,7 +138,7 @@ export default function CalenderPage() {
               Last
             </IconButton>
             <Spacer />
-            <Text textAlign="center" fontWeight="bold" fontSize="xl">
+            <Text textAlign="center" fontWeight="bold" fontSize="2xl">
               {calendarState.getYear()}年 {calendarState.getMonth()}月
             </Text>
             <Spacer />
@@ -153,6 +154,10 @@ export default function CalenderPage() {
               Next
             </IconButton>
           </Flex>
+
+          <Box py="8">
+            情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
+          </Box>
 
           <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
             {calendarState.calendar.map((item, idx) => {
@@ -178,11 +183,36 @@ export default function CalenderPage() {
               );
             })}
           </Grid>
+
+          <Flex pt="20">
+            <IconButton
+              aria-label="last month"
+              icon={<ChevronLeftIcon />}
+              onClick={() => {
+                setcalendarState(
+                  new CalendarState(data, calendarState.subPointDay())
+                );
+              }}
+            >
+              Last
+            </IconButton>
+            <Spacer />
+            <IconButton
+              aria-label="next month"
+              icon={<ChevronRightIcon />}
+              onClick={() => {
+                setcalendarState(
+                  new CalendarState(data, calendarState.addPointDay())
+                );
+              }}
+            >
+              Next
+            </IconButton>
+          </Flex>
+
+          <ShareButton title="エンジニアインターンシップ・新卒採用カレンダー" url="https://www.student-salary.com/calendar" />
         </Box>
       </Center>
-      <Box mt="32">
-        情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
-      </Box>
     </>
   );
 }
