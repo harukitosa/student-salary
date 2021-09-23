@@ -136,8 +136,8 @@ export default function CalenderPage() {
             </Text>
             <Spacer />
             <IconButton
-            aria-label="next month"
-            icon={<ChevronRightIcon />}
+              aria-label="next month"
+              icon={<ChevronRightIcon />}
               onClick={() => {
                 setcalendarState(
                   new CalendarState(data, calendarState.addPointDay())
