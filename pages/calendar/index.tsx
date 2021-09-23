@@ -162,7 +162,7 @@ export default function CalenderPage() {
           <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
             {calendarState.calendar.map((item, idx) => {
               return (
-                <Box key={idx} borderBottom="1px" p="1">
+                <Box key={idx} borderBottom="1px" borderColor="gray.300" p="1">
                   <Text
                     textColor={isHoliday(item.weekdays)}
                     fontWeight={
