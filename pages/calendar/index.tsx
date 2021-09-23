@@ -62,10 +62,12 @@ class CalendarState {
       item.event_date.map((date) => {
         const data = this.eventsMap.get(date);
         if (data === undefined) {
-          this.eventsMap.set(date, [{
-            ...item, 
-            dateType: "event",
-          }]);
+          this.eventsMap.set(date, [
+            {
+              ...item,
+              dateType: "event",
+            },
+          ]);
         } else {
           data.push({
             ...item,
@@ -77,10 +79,12 @@ class CalendarState {
       item.limit_date.map((date) => {
         const data = this.eventsMap.get(date);
         if (data === undefined) {
-          this.eventsMap.set(date, [{
-            ...item, 
-            dateType: "limit", 
-          }]);
+          this.eventsMap.set(date, [
+            {
+              ...item,
+              dateType: "limit",
+            },
+          ]);
         } else {
           data.push({
             ...item,
@@ -151,7 +155,7 @@ export default function CalenderPage() {
                   </Text>
                   <List spacing={3} py="2">
                     {calendarState.getEvent(item.today).map((item) => {
-                      return <EventListItem key={item.link} item={item}/> ;
+                      return <EventListItem key={item.link} item={item} />;
                     })}
                   </List>
                 </Box>
@@ -164,22 +168,33 @@ export default function CalenderPage() {
   );
 }
 
-const EventListItem = (props: {item: Event}) => {
+const EventListItem = (props: { item: Event }) => {
   return (
     <a href={props.item.link}>
-    <ListItem>
-      <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
-      {props.item.dateType === "event" ? <Text as="span" color="blue.500">[開催日]</Text> : ""}
-      {props.item.dateType === "limit" ? <Text as="span" color="red.500">[応募締め切り日]</Text> : ""}
-      {" "}
-      {props.item.title}
-      <Text as="span" color="gray.600" fontSize="18">
-        - {props.item.company_name}
-      </Text>
-    </ListItem>
-  </a>
-  )
-}
+      <ListItem>
+        <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
+        {props.item.dateType === "event" ? (
+          <Text as="span" color="blue.500">
+            [開催日]
+          </Text>
+        ) : (
+          ""
+        )}
+        {props.item.dateType === "limit" ? (
+          <Text as="span" color="red.500">
+            [応募締め切り日]
+          </Text>
+        ) : (
+          ""
+        )}{" "}
+        {props.item.title}
+        <Text as="span" color="gray.600" fontSize="18">
+          - {props.item.company_name}
+        </Text>
+      </ListItem>
+    </a>
+  );
+};
 
 const getStartDate = (currentDate: moment.MomentInput) => {
   const date = moment(currentDate);
