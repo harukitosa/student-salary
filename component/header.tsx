@@ -47,6 +47,9 @@ const HeaderMenu = () => {
           <Link href={`/blog/all`} passHref>
             <MenuItem>参加ブログ一覧</MenuItem>
           </Link>
+          <Link href={`/calendar`} passHref>
+            <MenuItem>新卒採用・インターンカレンダー</MenuItem>
+          </Link>
           <Link href={`/new`} passHref>
             <MenuItem>時給登録</MenuItem>
           </Link>

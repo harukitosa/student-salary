@@ -40,6 +40,9 @@ export const Footer = () => {
               <Link href={"/review"}>
                 <a href="">口コミ一覧</a>
               </Link>
+              <Link href={"/calendar"}>
+                <a href="">新卒採用・インターンカレンダー</a>
+              </Link>
             </Stack>
 
             <Stack align={"flex-start"}>

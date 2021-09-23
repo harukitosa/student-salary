@@ -9,7 +9,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/layout";
-import { CheckCircleIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import moment from "moment-timezone";
 import data from "../../calendar.json";
@@ -22,6 +22,7 @@ interface Event {
   link: string;
   type: string;
   title: string;
+  dateType?: "limit" | "event";
 }
 
 class CalendarState {
@@ -32,6 +33,10 @@ class CalendarState {
 
   getMonth(): number {
     return this.pointday.get("month") + 1;
+  }
+
+  getYear(): number {
+    return this.pointday.get("year");
   }
 
   addPointDay(): moment.Moment {
@@ -57,18 +62,30 @@ class CalendarState {
       item.event_date.map((date) => {
         const data = this.eventsMap.get(date);
         if (data === undefined) {
-          this.eventsMap.set(date, [item]);
+          this.eventsMap.set(date, [{
+            ...item, 
+            dateType: "event",
+          }]);
         } else {
-          data.push(item);
+          data.push({
+            ...item,
+            dateType: "event",
+          });
           this.eventsMap.set(date, data);
         }
       });
       item.limit_date.map((date) => {
         const data = this.eventsMap.get(date);
         if (data === undefined) {
-          this.eventsMap.set(date, [item]);
+          this.eventsMap.set(date, [{
+            ...item, 
+            dateType: "limit", 
+          }]);
         } else {
-          data.push(item);
+          data.push({
+            ...item,
+            dateType: "limit",
+          });
           this.eventsMap.set(date, data);
         }
       });
@@ -91,9 +108,6 @@ export default function CalenderPage() {
     <>
       <Center>
         <Box w="full" maxW="1000px" pt="2">
-          <Text textAlign="center" fontWeight="bold" fontSize="xl">
-            {calendarState.getMonth()}月
-          </Text>
           <Flex>
             <Button
               onClick={() => {
@@ -104,6 +118,10 @@ export default function CalenderPage() {
             >
               Last
             </Button>
+            <Spacer />
+            <Text textAlign="center" fontWeight="bold" fontSize="xl">
+              {calendarState.getYear()}年 {calendarState.getMonth()}月
+            </Text>
             <Spacer />
             <Button
               onClick={() => {
@@ -133,17 +151,7 @@ export default function CalenderPage() {
                   </Text>
                   <List spacing={3} py="2">
                     {calendarState.getEvent(item.today).map((item) => {
-                      return (
-                        <a href={item.link} key={item.link}>
-                          <ListItem>
-                            <ListIcon as={CheckCircleIcon} color="green.200" />
-                            <Text as="span" color="blue.400" fontSize="18">
-                              [{item.company_name}]
-                            </Text>{" "}
-                            {item.title}
-                          </ListItem>
-                        </a>
-                      );
+                      return <EventListItem key={item.link} item={item}/> ;
                     })}
                   </List>
                 </Box>
@@ -154,6 +162,23 @@ export default function CalenderPage() {
       </Center>
     </>
   );
+}
+
+const EventListItem = (props: {item: Event}) => {
+  return (
+    <a href={props.item.link}>
+    <ListItem>
+      <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
+      {props.item.dateType === "event" ? <Text as="span" color="blue.500">[開催日]</Text> : ""}
+      {props.item.dateType === "limit" ? <Text as="span" color="red.500">[応募締め切り日]</Text> : ""}
+      {" "}
+      {props.item.title}
+      <Text as="span" color="gray.600" fontSize="18">
+        - {props.item.company_name}
+      </Text>
+    </ListItem>
+  </a>
+  )
 }
 
 const getStartDate = (currentDate: moment.MomentInput) => {
