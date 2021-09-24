@@ -52,5 +52,14 @@
     ],
     "target": "23",
     "link": "https://voyagegroup.snar.jp/jobboard/apply.aspx"
+  },
+  {
+	  "title": "【23卒】エンジニア職新卒採用",
+	  "type": "recruit",
+	  "company_name": "Voyage",
+	  "limit_date": ["2021-10-04"],
+	  "event_date": [],
+	  "target": "23",
+	  "link": "https://voyagegroup.snar.jp/jobboard/detail.aspx?id=u2mj1IfbZtc"
   }
 ]
