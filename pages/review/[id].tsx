@@ -1,4 +1,4 @@
-import { Box, Badge, Text } from "@chakra-ui/layout";
+import { Box, Badge, Text, Container } from "@chakra-ui/layout";
 import { ErrorPage } from "../../component/error";
 import { useRouter } from "next/router";
 import { useGetreviewQuery } from "../../src/generated/graphql";
@@ -20,7 +20,7 @@ export default function ReviewDetailPage() {
 
   const review = data.review[0];
   return (
-    <Box minH="90vh">
+    <Container minH="90vh" minW="80vw">
       <Box mt="8" mb="12">
         <Text
           as={"span"}
@@ -61,7 +61,7 @@ export default function ReviewDetailPage() {
         <Title title="使用した技術" />
         <Content content={review.skill} />
       </Item>
-    </Box>
+    </Container>
   );
 }
 

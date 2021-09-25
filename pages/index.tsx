@@ -10,6 +10,7 @@ import {
   HStack,
   VStack,
   Spacer,
+  Container,
 } from "@chakra-ui/react";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export default function Home() {
   return (
     <>
       <SEO />
-      <Box display={{ md: "flex" }}>
+      <Container display={{ md: "flex" }} minW={"80vw"}>
         <Stack
           as={Box}
           textAlign={"center"}
@@ -100,7 +101,7 @@ export default function Home() {
           width={"850"}
           height={"850"}
         />
-      </Box>
+      </Container>
       <HomePage />
     </>
   );
@@ -115,7 +116,7 @@ function HomePage() {
   }
 
   return (
-    <>
+    <Container minW={"80vw"}>
       <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
@@ -273,7 +274,7 @@ function HomePage() {
       </Box>
 
       <CompanyListLink companylist={data.companylist} />
-    </>
+    </Container>
   );
 }
 

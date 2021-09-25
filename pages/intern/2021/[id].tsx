@@ -1,4 +1,4 @@
-import { Text, Box } from "@chakra-ui/layout";
+import { Text, Box, Container } from "@chakra-ui/layout";
 import { Breadcrumb, BreadcrumbItem } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import data from "../../../intern2021.json";
@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
 
 export default function detailPage({ target }) {
   return (
-    <Box>
+    <Container minW="80vw">
       <Breadcrumb
         spacing="8px"
         fontSize="18"
@@ -116,6 +116,6 @@ export default function detailPage({ target }) {
         <Title title="応募先" />
         <Url url={target.url} />
       </Item>
-    </Box>
+    </Container>
   );
 }

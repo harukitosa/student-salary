@@ -4,8 +4,8 @@ import {
   Box,
   HStack,
   VStack,
-  Container,
   Wrap,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import React from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
@@ -13,7 +13,7 @@ import { ContributeButton } from "../../component/contributeButton";
 import { useRouter } from "next/router";
 import { ShareButton } from "../../component/shareButton";
 import { SEO } from "../../component/seo";
-import { LinkBlock } from "../../component/LInkBlock";
+import { LinkBlock } from "../../component/LinkBlock";
 
 export async function getStaticPaths() {
   let results = await fetch(
@@ -91,18 +91,19 @@ export default function BlogPage({ data, company_name }) {
         description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
         imageText={`${company_name}のインターン参加ブログまとめ`}
       />
-      <Container>
-        <Box borderBottom="1px" borderColor="gray.400" mt="12" mb="2">
-          <Text as="h1" fontSize="3xl" fontWeight="600">
+      <Box maxW="100vw" margin="auto" px={{base: "2", md: "12"}}>
+      <Box borderBottom="1px" borderColor="gray.400" mt="12" mb="2">
+          <Text as="h1" fontSize={{ base: "4xl", md: "6xl"}} fontWeight="600">
             {company_name}
             <br />
-            <Text fontSize="xl" fontWeight="500">
+            <Text fontSize={{ base: "xl", md: "2xl"}} fontWeight="500">
               インターン参加blogまとめ
             </Text>
           </Text>
         </Box>
         <BlogView data={data.data} name={company_name} />
-      </Container>
+      </Box>
+
     </>
   );
 }
@@ -138,9 +139,14 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
         })}
       </Wrap>
       <Box py="4"></Box>
-      {data.blog.blog.map((item, index) => {
+
+      <SimpleGrid columns={{base: 1, md: 2}} spacing={{ base: 0, md: 2}}>
+        {data.blog.blog.map((item, index) => {
         return <BlogItemBlock key={index} item={item} />;
       })}
+
+      </SimpleGrid>
+
 
       <Text pt="12" fontSize="18" fontWeight="bold" align="center">
         Blog情報の提供はこちらからお願いします
@@ -178,7 +184,7 @@ export const BlogItemBlock = (props: { item: blog }) => {
     <HStack align={"center"} py="2" borderBottom="1px" borderColor="gray.400">
       <VStack align={"start"}>
         <LinkBlock url={props.item.url} is_external={true}>
-          <Text color="blue.600" fontWeight={400}>
+          <Text color="blue.400" fontWeight={400}>
             {props.item.title}
           </Text>
         </LinkBlock>

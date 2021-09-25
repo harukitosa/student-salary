@@ -5,6 +5,7 @@ import {
   SimpleGrid,
   Center,
   Stack,
+  Container,
 } from "@chakra-ui/react";
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
@@ -75,7 +76,7 @@ export default function WorkInfo() {
   });
 
   return (
-    <Box>
+    <Container minW={"80vw"}>
       <SEO
         title={`StudentSalary ${router.query.name as string}の情報まとめ`}
         description={`${
@@ -207,7 +208,7 @@ export default function WorkInfo() {
       <Box pt="24">
         <CompanyListLink companylist={data.companylist} />
       </Box>
-    </Box>
+    </Container>
   );
 }
 
