@@ -126,74 +126,78 @@ export default function CalenderPage() {
       />
       <Center>
         <Container>
+          <Box maxW="600px" pt="2">
+            <Flex>
+              <IconButton
+                aria-label="last month"
+                icon={<ChevronLeftIcon />}
+                onClick={() => {
+                  setcalendarState(
+                    new CalendarState(data, calendarState.subPointDay())
+                  );
+                }}
+              >
+                Last
+              </IconButton>
+              <Spacer />
+              <Text textAlign="center" fontWeight="bold" fontSize="2xl">
+                {calendarState.getYear()}年 {calendarState.getMonth()}月
+              </Text>
+              <Spacer />
+              <IconButton
+                aria-label="next month"
+                icon={<ChevronRightIcon />}
+                onClick={() => {
+                  setcalendarState(
+                    new CalendarState(data, calendarState.addPointDay())
+                  );
+                }}
+              >
+                Next
+              </IconButton>
+            </Flex>
 
-        <Box maxW="600px" pt="2">
-          <Flex>
-            <IconButton
-              aria-label="last month"
-              icon={<ChevronLeftIcon />}
-              onClick={() => {
-                setcalendarState(
-                  new CalendarState(data, calendarState.subPointDay())
-                );
-              }}
-            >
-              Last
-            </IconButton>
-            <Spacer />
-            <Text textAlign="center" fontWeight="bold" fontSize="2xl">
-              {calendarState.getYear()}年 {calendarState.getMonth()}月
-            </Text>
-            <Spacer />
-            <IconButton
-              aria-label="next month"
-              icon={<ChevronRightIcon />}
-              onClick={() => {
-                setcalendarState(
-                  new CalendarState(data, calendarState.addPointDay())
-                );
-              }}
-            >
-              Next
-            </IconButton>
-          </Flex>
+            <Box py="8">
+              情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
+            </Box>
 
-          <Box py="8">
-            情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
-          </Box>
-
-          <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
-            {calendarState.calendar.map((item, idx) => {
-              return (
-                <Box key={idx} borderBottom="1px" borderColor="gray.300" p="1">
-                  <Text
-                    textColor={isHoliday(item.weekdays)}
-                    fontWeight={
-                      item.month + 1 == calendarState.getMonth()
-                        ? "normal"
-                        : "hairline"
-                    }
-                    textAlign="left"
+            <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
+              {calendarState.calendar.map((item, idx) => {
+                return (
+                  <Box
+                    key={idx}
+                    borderBottom="1px"
+                    borderColor="gray.300"
+                    p="1"
                   >
-                    {item.month + 1}/{item.day}({changeWeekdays(item.weekdays)})
-                  </Text>
-                  <List spacing={3} py="2">
-                    {calendarState.getEvent(item.today).map((item) => {
-                      return <EventListItem key={item.link} item={item} />;
-                    })}
-                  </List>
-                </Box>
-              );
-            })}
-          </Grid>
+                    <Text
+                      textColor={isHoliday(item.weekdays)}
+                      fontWeight={
+                        item.month + 1 == calendarState.getMonth()
+                          ? "normal"
+                          : "hairline"
+                      }
+                      textAlign="left"
+                    >
+                      {item.month + 1}/{item.day}(
+                      {changeWeekdays(item.weekdays)})
+                    </Text>
+                    <List spacing={3} py="2">
+                      {calendarState.getEvent(item.today).map((item) => {
+                        return <EventListItem key={item.link} item={item} />;
+                      })}
+                    </List>
+                  </Box>
+                );
+              })}
+            </Grid>
 
-          <ShareButton
-            title="エンジニアインターンシップ・新卒採用カレンダー"
-            url="https://www.student-salary.com/calendar"
-          />
-        </Box>
+            <ShareButton
+              title="エンジニアインターンシップ・新卒採用カレンダー"
+              url="https://www.student-salary.com/calendar"
+            />
+          </Box>
         </Container>
-
       </Center>
     </>
   );
