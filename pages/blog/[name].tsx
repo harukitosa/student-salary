@@ -93,13 +93,13 @@ export default function BlogPage({ data, company_name }) {
       />
       <Container>
         <Box borderBottom="1px" borderColor="gray.400" my="12">
-        <Text as="h1" fontSize="xl" fontWeight="600">
-          <Text as="span" fontSize="2xl" fontWeight="800">
-            {company_name}
+          <Text as="h1" fontSize="xl" fontWeight="600">
+            <Text as="span" fontSize="2xl" fontWeight="800">
+              {company_name}
+            </Text>
+            <br />
+            インターン参加blogまとめ
           </Text>
-          <br />
-          インターン参加blogまとめ
-        </Text>
         </Box>
         <BlogView data={data.data} name={company_name} />
       </Container>
@@ -168,9 +168,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   }
   return (
     <LinkBlock url={props.url}>
-      <Text color={color}>
-      {props.title}
-      </Text>
+      <Text color={color}>{props.title}</Text>
     </LinkBlock>
   );
 };
