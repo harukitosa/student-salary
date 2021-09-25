@@ -9,7 +9,5 @@ export const ContributeButton = (props: { link: string }) => {
         Contribute
       </Button>
     </LinkBlock>
-    //   </a>
-    // </Link>
   );
 };
