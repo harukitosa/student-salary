@@ -78,7 +78,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={theme}>
         <ApolloProvider client={client}>
           <Header />
-            <Component {...pageProps} />
+          <Component {...pageProps} />
           <Footer />
         </ApolloProvider>
       </ChakraProvider>
