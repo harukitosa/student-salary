@@ -13,7 +13,7 @@ import { ContributeButton } from "../../component/contributeButton";
 import { useRouter } from "next/router";
 import { ShareButton } from "../../component/shareButton";
 import { SEO } from "../../component/seo";
-import { LinkBlock } from "../../component/LinkBlock";
+import Link from "next/link";
 
 export async function getStaticPaths() {
   let results = await fetch(
@@ -170,9 +170,11 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
     color = "black";
   }
   return (
-    <LinkBlock url={props.url}>
+    <Link href={props.url}>
+      <a>
       <Text color={color}>{props.title}</Text>
-    </LinkBlock>
+      </a>
+    </Link>
   );
 };
 
@@ -180,11 +182,11 @@ export const BlogItemBlock = (props: { item: blog }) => {
   return (
     <HStack align={"center"} py="2" borderBottom="1px" borderColor="gray.400">
       <VStack align={"start"}>
-        <LinkBlock url={props.item.url} is_external={true}>
+        <a href={props.item.url} target="_blank" rel="noopener noreferrer">
           <Text color="blue.400" fontWeight={400}>
             {props.item.title}
           </Text>
-        </LinkBlock>
+        </a>
         <Text fontSize="14" color={"gray.600"} as="span">
           {props.item.company_name} - {props.item.year} - {props.item.season}
         </Text>
