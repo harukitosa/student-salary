@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { LinkBlock } from "./LInkBlock";
+import { LinkBlock } from "./LinkBlock";
 
 // "https://forms.gle/dNwsVNqqq4MCsY6q6"
 export const ContributeButton = (props: { link: string }) => {
