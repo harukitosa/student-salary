@@ -92,13 +92,13 @@ export default function BlogPage({ data, company_name }) {
         imageText={`${company_name}のインターン参加ブログまとめ`}
       />
       <Container>
-        <Box borderBottom="1px" borderColor="gray.400" my="12">
-          <Text as="h1" fontSize="xl" fontWeight="600">
-            <Text as="span" fontSize="2xl" fontWeight="800">
-              {company_name}
-            </Text>
+        <Box borderBottom="1px" borderColor="gray.400" mt="12" mb="2">
+          <Text as="h1" fontSize="3xl" fontWeight="600">
+            {company_name}
             <br />
-            インターン参加blogまとめ
+            <Text fontSize="xl" fontWeight="500">
+              インターン参加blogまとめ
+            </Text>
           </Text>
         </Box>
         <BlogView data={data.data} name={company_name} />

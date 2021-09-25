@@ -217,7 +217,7 @@ function HomePage() {
           新着レビュー
         </Text>
       </Box>
-      <SimpleGrid columns={{ base: 1, md: 3 }}>
+      <SimpleGrid columns={{ base: 1, md: 3 }} mt="4">
         {data.review.map((item, index) => {
           return (
             <ReviewItem

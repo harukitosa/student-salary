@@ -16,7 +16,7 @@ export const ReviewItem = (props: {
   return (
     <Link href={`${props.link}`}>
       <a>
-        <Center py={4}>
+        <Center>
           <Box
             bg={useColorModeValue("white", "gray.900")}
             border={"1px"}
