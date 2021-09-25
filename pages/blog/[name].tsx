@@ -7,14 +7,13 @@ import {
   Container,
   Wrap,
 } from "@chakra-ui/react";
-import { LinkIcon } from "@chakra-ui/icons";
-import Link from "next/link";
 import React from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
 import { ContributeButton } from "../../component/contributeButton";
 import { useRouter } from "next/router";
 import { ShareButton } from "../../component/shareButton";
 import { SEO } from "../../component/seo";
+import { LinkBlock } from "../../component/LInkBlock";
 
 export async function getStaticPaths() {
   let results = await fetch(
@@ -92,16 +91,16 @@ export default function BlogPage({ data, company_name }) {
         description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
         imageText={`${company_name}のインターン参加ブログまとめ`}
       />
-      <Container minH="100vh">
-        <Center h="52" bg="blackAlpha.100" my="4" borderRadius="2xl">
-          <Text as="h1" fontSize="xl" fontWeight="600">
-            <Text as="span" fontSize="2xl" fontWeight="800">
-              {company_name}
-            </Text>
-            <br />
-            インターン参加blogまとめ
+      <Container>
+        <Box borderBottom="1px" borderColor="gray.400" my="12">
+        <Text as="h1" fontSize="xl" fontWeight="600">
+          <Text as="span" fontSize="2xl" fontWeight="800">
+            {company_name}
           </Text>
-        </Center>
+          <br />
+          インターン参加blogまとめ
+        </Text>
+        </Box>
         <BlogView data={data.data} name={company_name} />
       </Container>
     </>
@@ -127,12 +126,14 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
         <LinkBox title="all" url={`/blog/all`} />
         {data.blog.nameList.map((item) => {
           return (
-            <LinkBox
-              key={item}
-              title={item}
-              url={`/blog/${item}`}
-              select={item == name}
-            />
+            <>
+              <LinkBox
+                key={item}
+                title={item}
+                url={`/blog/${item}`}
+                select={item == name}
+              />
+            </>
           );
         })}
       </Wrap>
@@ -159,45 +160,34 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
 const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   let border = "1px";
   let bg = "white";
-  let color = "black";
+  let color = "blue.400";
   if (props.select != undefined && props.select) {
-    bg = "blue.400";
+    bg = "white";
     border = "1px";
-    color = "white";
+    color = "black";
   }
   return (
-    <Link href={props.url}>
-      <a>
-        <Box
-          py="1"
-          px="3"
-          border={border}
-          color={color}
-          borderColor={`gray.300`}
-          bg={bg}
-          borderRadius="lg"
-        >
-          {props.title}
-        </Box>
-      </a>
-    </Link>
+    <LinkBlock url={props.url}>
+      <Text color={color}>
+      {props.title}
+      </Text>
+    </LinkBlock>
   );
 };
 
 export const BlogItemBlock = (props: { item: blog }) => {
   return (
-    <a target="_blank" href={props.item.url} rel="noopener noreferrer">
-      <HStack align={"center"} my="1" h="32">
-        <Box color={"black"} p="6" borderRadius="xl">
-          <LinkIcon w="6" h="6" />
-        </Box>
-        <VStack align={"start"}>
-          <Text fontWeight={600}>{props.item.title}</Text>
-          <Text color={"gray.600"}>
-            {props.item.company_name} - {props.item.year} - {props.item.season}
+    <HStack align={"center"} py="2" borderBottom="1px" borderColor="gray.400">
+      <VStack align={"start"}>
+        <LinkBlock url={props.item.url} is_external={true}>
+          <Text color="blue.600" fontWeight={400}>
+            {props.item.title}
           </Text>
-        </VStack>
-      </HStack>
-    </a>
+        </LinkBlock>
+        <Text fontSize="14" color={"gray.600"} as="span">
+          {props.item.company_name} - {props.item.year} - {props.item.season}
+        </Text>
+      </VStack>
+    </HStack>
   );
 };
