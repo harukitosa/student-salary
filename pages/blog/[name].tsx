@@ -172,7 +172,7 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   return (
     <Link href={props.url}>
       <a>
-      <Text color={color}>{props.title}</Text>
+        <Text color={color}>{props.title}</Text>
       </a>
     </Link>
   );
