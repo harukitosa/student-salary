@@ -10,6 +10,7 @@ import {
   Spacer,
   Stack,
   Badge,
+  Container,
 } from "@chakra-ui/layout";
 import {
   ExternalLinkIcon,
@@ -124,7 +125,9 @@ export default function CalenderPage() {
         imageText={`エンジニアインターンシップ・新卒採用カレンダー`}
       />
       <Center>
-        <Box w="full" maxW="1000px" pt="2">
+        <Container>
+
+        <Box maxW="600px" pt="2">
           <Flex>
             <IconButton
               aria-label="last month"
@@ -189,6 +192,8 @@ export default function CalenderPage() {
             url="https://www.student-salary.com/calendar"
           />
         </Box>
+        </Container>
+
       </Center>
     </>
   );
