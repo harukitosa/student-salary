@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "sitemap": "next build && next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "next lint --dir ./",
     "lint:fix": "eslint ./ --ext .js,jsx,.ts,.tsx --fix",
@@ -53,6 +54,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unused-imports": "^1.1.4",
     "husky": "^7.0.0",
+    "next-sitemap": "^1.6.168",
     "prettier": "^2.3.2",
     "typescript": "^4.4.3"
   }

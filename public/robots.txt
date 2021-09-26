@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.student-salary.com/
+
+# Sitemaps
+Sitemap: https://www.student-salary.com/sitemap.xml
