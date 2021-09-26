@@ -191,7 +191,6 @@ export default function CalenderPage() {
                 );
               })}
             </Grid>
-
             <ShareButton
               title="エンジニアインターンシップ・新卒採用カレンダー"
               url="https://www.student-salary.com/calendar"
