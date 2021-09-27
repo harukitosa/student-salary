@@ -246,21 +246,21 @@ function HomePage() {
       <Center alignContent={"center"} py={16}>
         <Link href={`/workinfo`}>
           <a>
-          <Button
-            color={"blue.400"}
-            border={"1px"}
-            rounded={"full"}
-            bg={"white"}
-            px={2}
-            py={6}
-            width={"80"}
-            _hover={{
-              bg: "blue.400",
-              color: "white",
-            }}
-          >
-            企業一覧
-          </Button>
+            <Button
+              color={"blue.400"}
+              border={"1px"}
+              rounded={"full"}
+              bg={"white"}
+              px={2}
+              py={6}
+              width={"80"}
+              _hover={{
+                bg: "blue.400",
+                color: "white",
+              }}
+            >
+              企業一覧
+            </Button>
           </a>
         </Link>
       </Center>
