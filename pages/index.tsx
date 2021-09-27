@@ -63,41 +63,39 @@ export default function Home() {
           >
             <Link href={`/new`}>
               <a>
-              <Button
-                color={"blue.400"}
-                border={"1px"}
-                rounded={"full"}
-                bg={"white"}
-                px={2}
-                width={"80"}
-                _hover={{
-                  bg: "blue.400",
-                  color: "white",
-                }}
-              >
-                時給を登録する
-              </Button>
+                <Button
+                  color={"blue.400"}
+                  border={"1px"}
+                  rounded={"full"}
+                  bg={"white"}
+                  px={2}
+                  width={"80"}
+                  _hover={{
+                    bg: "blue.400",
+                    color: "white",
+                  }}
+                >
+                  時給を登録する
+                </Button>
               </a>
-
             </Link>
             <Link href={`/review/new`}>
               <a>
-              <Button
-                color={"blue.400"}
-                border={"1px"}
-                rounded={"full"}
-                bg={"white"}
-                px={2}
-                width={"80"}
-                _hover={{
-                  bg: "blue.400",
-                  color: "white",
-                }}
-              >
-                インターンの口コミを書く
-              </Button>
+                <Button
+                  color={"blue.400"}
+                  border={"1px"}
+                  rounded={"full"}
+                  bg={"white"}
+                  px={2}
+                  width={"80"}
+                  _hover={{
+                    bg: "blue.400",
+                    color: "white",
+                  }}
+                >
+                  インターンの口コミを書く
+                </Button>
               </a>
-
             </Link>
           </Stack>
         </Stack>
