@@ -22,8 +22,8 @@ export default function WorkInfo() {
   return (
     <>
       <SEO
-        title="エンジニアのインターン・アルバイトの時給一覧情報"
-        description="インターンシップ、アルバイト、業務委託の学生エンジニアの時給情報を一覧画面です。"
+        title="エンジニアのインターン・アルバイトの時給情報一覧"
+        description="インターンシップ、アルバイト、業務委託の学生エンジニアの時給情報一覧画面です。"
         imageText="企業時給一覧"
         url={"https://www.student-salary.com/" + router.asPath}
       />
@@ -31,7 +31,7 @@ export default function WorkInfo() {
         <Box pt={8} pb={8}>
           <Heading pt={8} pb={8}>
             <Text fontSize={"3xl"} fontWeight={800} as={"h1"}>
-              エンジニアインターン・アルバイト時給一覧情報
+              エンジニアインターン・アルバイト時給情報一覧
             </Text>
             <Text fontSize="16" fontWeight="500" pt="4">
               登録された時給情報の企業別一覧画面です。

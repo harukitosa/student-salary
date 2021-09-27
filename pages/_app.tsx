@@ -54,7 +54,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* Google Analytics */}
         {gtag.existsGaId && (
           <>
             <script
