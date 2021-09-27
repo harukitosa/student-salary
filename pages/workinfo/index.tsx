@@ -34,7 +34,8 @@ export default function WorkInfo() {
               エンジニアインターン・アルバイト時給一覧情報
             </Text>
             <Text fontSize="16" fontWeight="500" pt="4">
-              登録された時給情報の企業別一覧画面です。<br/>
+              登録された時給情報の企業別一覧画面です。
+              <br />
               水色の点はインターンシップ、オレンジ色の点はアルバイト・業務委託の時給値です。
             </Text>
           </Heading>
@@ -44,23 +45,19 @@ export default function WorkInfo() {
             <div key={index}>
               <Link href={`/workinfo/${item.name}`}>
                 <a>
-                <Text 
-                  fontSize={"md"} 
-                  fontWeight={"smibold"} 
-                  as="h2" 
-                  >
-                  {item.name}
-                </Text>
-                <Text fontSize={"sm"}>
-                  [登録数:{item.count}件]{item.min}
-                  <Text as="span" fontSize="x-small">
-                    円
+                  <Text fontSize={"md"} fontWeight={"smibold"} as="h2">
+                    {item.name}
                   </Text>
-                  ~{item.max}
-                  <Text as="span" fontSize="x-small">
-                    円
+                  <Text fontSize={"sm"}>
+                    [登録数:{item.count}件]{item.min}
+                    <Text as="span" fontSize="x-small">
+                      円
+                    </Text>
+                    ~{item.max}
+                    <Text as="span" fontSize="x-small">
+                      円
+                    </Text>
                   </Text>
-                </Text>
                 </a>
               </Link>
               <Chart company={item} />

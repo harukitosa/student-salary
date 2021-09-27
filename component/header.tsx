@@ -1,9 +1,13 @@
 import {
   Box,
-  Container, Flex, Menu,
+  Container,
+  Flex,
+  Menu,
   MenuButton,
   MenuItem,
-  MenuList, Spacer, Text
+  MenuList,
+  Spacer,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -13,10 +17,10 @@ export const Header = () => {
       <Container maxW="container.xl">
         <Flex>
           <Link href={`/`} passHref>
-          <a>
-            <Text fontSize="xl" fontWeight="bold">
-              StudentSalary
-            </Text>
+            <a>
+              <Text fontSize="xl" fontWeight="bold">
+                StudentSalary
+              </Text>
             </a>
           </Link>
           <Spacer />

@@ -16,9 +16,7 @@ export const SEO = (props: SEO) => {
           ? props.title + " | StudentSalary"
           : "StudentSalary 学生エンジニアの情報共有サイト"
       }
-      description={
-        props.description ? props.description : ""
-      }
+      description={props.description ? props.description : ""}
       canonical="https://www.student-salary.com/"
       twitter={{
         cardType: "summary_large_image",
