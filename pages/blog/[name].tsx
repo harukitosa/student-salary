@@ -87,20 +87,24 @@ export default function BlogPage({ data, company_name }) {
   return (
     <>
       <SEO
-        title={`StudentSalary ${company_name}のインターン参加ブログまとめ`}
-        description={`${company_name}のインターン参加ブログをまとめて掲載しています。`}
-        imageText={`${company_name}のインターン参加ブログまとめ`}
+        title={`StudentSalary ${company_name}のインターンブログまとめ`}
+        description={`${company_name}のインターンブログをまとめて掲載しています。`}
+        imageText={`${company_name}のインターンブログまとめ`}
       />
       <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
         <Box borderBottom="1px" borderColor="gray.400" mt="12" mb="2">
-          <Text as="h1" fontSize={{ base: "4xl", md: "6xl" }} fontWeight="600">
+          <Text as="h1" fontSize={{ base: "5xl", md: "6xl" }} fontWeight="600">
             {company_name}
             <br />
-            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="500">
-              インターン参加blogまとめ
-            </Text>
           </Text>
+            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="500">
+              インターンブログまとめ。
+            </Text>
         </Box>
+        <Text fontSize="18">
+            {company_name}のインターンに参加した学生のブログのリンクを掲載しています。<br/>
+            リンクをクリックすると外部サイトに飛びます。
+        </Text>
         <BlogView data={data.data} name={company_name} />
       </Box>
     </>
@@ -122,7 +126,7 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
 
   return (
     <>
-      <Wrap>
+      <Wrap mt="4">
         <LinkBox title="all" url={`/blog/all`} />
         {data.blog.nameList.map((item) => {
           return (
