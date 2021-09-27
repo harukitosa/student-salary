@@ -30,10 +30,14 @@ export default function WorkInfo() {
       <Container maxW={"5xl"}>
         <Box pt={8} pb={8}>
           <Heading pt={8} pb={8}>
-            <Text fontSize={{base: "3xl", md: "4xl"}} fontWeight={800} as={"h1"}>
+            <Text
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight={800}
+              as={"h1"}
+            >
               エンジニアインターン・アルバイト時給情報一覧
             </Text>
-            <Text fontSize={{base: 16, md: 20}} fontWeight="500" pt="4">
+            <Text fontSize={{ base: 16, md: 20 }} fontWeight="500" pt="4">
               登録された時給情報の企業別一覧画面です。
               <br />
               水色の点はインターンシップ、オレンジ色の点はアルバイト・業務委託の時給値です。
@@ -45,7 +49,12 @@ export default function WorkInfo() {
             <div key={index}>
               <Link href={`/workinfo/${item.name}`}>
                 <a>
-                  <Text fontSize={"md"} fontWeight={"bold"} color="blue.400" as="h2">
+                  <Text
+                    fontSize={"md"}
+                    fontWeight={"bold"}
+                    color="blue.400"
+                    as="h2"
+                  >
                     {item.name}
                   </Text>
                   <Text fontSize={"sm"}>

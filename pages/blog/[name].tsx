@@ -97,13 +97,15 @@ export default function BlogPage({ data, company_name }) {
             {company_name}
             <br />
           </Text>
-            <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="500">
-              インターンブログまとめ。
-            </Text>
+          <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="500">
+            インターンブログまとめ。
+          </Text>
         </Box>
         <Text fontSize="18">
-            {company_name}のインターンに参加した学生のブログのリンクを掲載しています。<br/>
-            リンクをクリックすると外部サイトに飛びます。
+          {company_name}
+          のインターンに参加した学生のブログのリンクを掲載しています。
+          <br />
+          リンクをクリックすると外部サイトに飛びます。
         </Text>
         <BlogView data={data.data} name={company_name} />
       </Box>
