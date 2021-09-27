@@ -13,11 +13,11 @@ export const SEO = (props: SEO) => {
     <NextSeo
       title={
         props.title
-          ? props.title
+          ? props.title + " | StudentSalary"
           : "StudentSalary 学生エンジニアの情報共有サイト"
       }
       description={
-        props.description ? props.description : "学生エンジニアの情報共有サイト"
+        props.description ? props.description : ""
       }
       canonical="https://www.student-salary.com/"
       twitter={{

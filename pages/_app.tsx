@@ -74,6 +74,8 @@ function MyApp({ Component, pageProps }) {
             />
           </>
         )}
+        <link rel="icon" sizes="16x16" href="/favcon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favcon.png"></link>
       </Head>
       <ChakraProvider theme={theme}>
         <ApolloProvider client={client}>
