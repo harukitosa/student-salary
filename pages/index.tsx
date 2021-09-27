@@ -244,7 +244,8 @@ function HomePage() {
       </Box>
       <DataTable data={data.workdatainfo.workdata} />
       <Center alignContent={"center"} py={16}>
-        <Link href={`/workinfo`} passHref>
+        <Link href={`/workinfo`}>
+          <a>
           <Button
             color={"blue.400"}
             border={"1px"}
@@ -260,6 +261,7 @@ function HomePage() {
           >
             企業一覧
           </Button>
+          </a>
         </Link>
       </Center>
 
