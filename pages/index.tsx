@@ -61,7 +61,8 @@ export default function Home() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Link href={`/new`} passHref>
+            <Link href={`/new`}>
+              <a>
               <Button
                 color={"blue.400"}
                 border={"1px"}
@@ -76,8 +77,11 @@ export default function Home() {
               >
                 時給を登録する
               </Button>
+              </a>
+
             </Link>
-            <Link href={`/review/new`} passHref>
+            <Link href={`/review/new`}>
+              <a>
               <Button
                 color={"blue.400"}
                 border={"1px"}
@@ -92,6 +96,8 @@ export default function Home() {
               >
                 インターンの口コミを書く
               </Button>
+              </a>
+
             </Link>
           </Stack>
         </Stack>
