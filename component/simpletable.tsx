@@ -69,7 +69,7 @@ export const DataTable = (props: { data: WorkData[] }) => {
               <AccordionButton>
                 <Box flex="1" textAlign="left">
                   <Stack direction="column" gridGap={0}>
-                    <Link href={`/workinfo/${item.name}`}>
+                    <Link href={`/workinfo/[name]`} as={`/workinfo/${item.name}`}>
                       <a>
                         <Text fontSize="18" fontWeight="600" color="blue.400">
                           {item.name}
