@@ -8,26 +8,72 @@ import {
   MenuList,
   Spacer,
   Text,
+  Center,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 export const Header = () => {
   return (
-    <Box bg="blue.500" w="100%" p={2} color="white">
+    <Box
+      bg="blue.500"
+      w="100%"
+      color="white"
+      as="header"
+      position="fixed"
+      zIndex="999"
+      h="12"
+    >
       <Container maxW="container.xl">
-        <Flex>
-          <Link href={`/`} passHref>
-            <a>
-              <Text fontSize="xl" fontWeight="bold">
-                StudentSalary
-              </Text>
-            </a>
-          </Link>
+        <Flex as="nav">
+          <Box my="2">
+            <Link href={`/`}>
+              <a>
+                <Text fontSize="xl" fontWeight="bold">
+                  StudentSalary
+                </Text>
+              </a>
+            </Link>
+          </Box>
           <Spacer />
-          <HeaderMenu />
+          <Box display={{ base: "none", md: "flex" }}>
+            <HeaderItem href="/" content="Home" />
+            <HeaderItem href="/workinfo" content="企業一覧" />
+            <HeaderItem href="/review" content="口コミ" />
+            <HeaderItem href="/blog/all" content="参加ブログ一覧" />
+            <HeaderItem href="/calendar" content="カレンダー" />
+            <HeaderItem href="/new" content="時給登録" />
+            <HeaderItem href="/review/new" content="口コミ登録" />
+          </Box>
+
+          <Box display={{ base: "flex", md: "none" }}>
+            <HeaderMenu />
+          </Box>
         </Flex>
       </Container>
     </Box>
+  );
+};
+
+const HeaderItem = (props: { href: string; content: string }) => {
+  return (
+    <Link href={props.href}>
+      <a>
+        <Box
+          _hover={{
+            background: "white",
+            color: "blue.600",
+          }}
+          px="4"
+          h="12"
+          textAlign="center"
+        >
+      <Center h="12">
+          {props.content}
+        </Center>
+
+        </Box>
+      </a>
+    </Link>
   );
 };
 
@@ -37,26 +83,40 @@ const HeaderMenu = () => {
       <MenuButton>Menu</MenuButton>
       <Box color="black">
         <MenuList>
-          <Link href={`/`} passHref>
+          <Link href={`/`}>
+            <a>
             <MenuItem>Topページ</MenuItem>
+            </a>
           </Link>
-          <Link href={`/workinfo`} passHref>
+          <Link href={`/workinfo`}>
+            <a>
             <MenuItem>企業一覧</MenuItem>
+            </a>
           </Link>
-          <Link href={`/review`} passHref>
+          <Link href={`/review`}>
+            <a>
             <MenuItem>口コミ一覧</MenuItem>
+            </a>
           </Link>
-          <Link href={`/blog/all`} passHref>
+          <Link href={`/blog/all`}>
+            <a>
             <MenuItem>参加ブログ一覧</MenuItem>
+            </a>
           </Link>
-          <Link href={`/calendar`} passHref>
+          <Link href={`/calendar`}>
+            <a>
             <MenuItem>新卒採用・インターンカレンダー</MenuItem>
+            </a>
           </Link>
-          <Link href={`/new`} passHref>
+          <Link href={`/new`}>
+            <a>
             <MenuItem>時給登録</MenuItem>
+            </a>
           </Link>
           <Link href={`/review/new`} passHref>
+            <a>
             <MenuItem>口コミ登録</MenuItem>
+            </a>
           </Link>
         </MenuList>
       </Box>
