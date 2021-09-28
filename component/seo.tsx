@@ -8,7 +8,6 @@ interface SEO {
 }
 
 export const SEO = (props: SEO) => {
-  console.log(props);
   return (
     <NextSeo
       title={
