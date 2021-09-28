@@ -67,10 +67,7 @@ const HeaderItem = (props: { href: string; content: string }) => {
           h="12"
           textAlign="center"
         >
-      <Center h="12">
-          {props.content}
-        </Center>
-
+          <Center h="12">{props.content}</Center>
         </Box>
       </a>
     </Link>
@@ -85,37 +82,37 @@ const HeaderMenu = () => {
         <MenuList>
           <Link href={`/`}>
             <a>
-            <MenuItem>Topページ</MenuItem>
+              <MenuItem>Topページ</MenuItem>
             </a>
           </Link>
           <Link href={`/workinfo`}>
             <a>
-            <MenuItem>企業一覧</MenuItem>
+              <MenuItem>企業一覧</MenuItem>
             </a>
           </Link>
           <Link href={`/review`}>
             <a>
-            <MenuItem>口コミ一覧</MenuItem>
+              <MenuItem>口コミ一覧</MenuItem>
             </a>
           </Link>
           <Link href={`/blog/all`}>
             <a>
-            <MenuItem>参加ブログ一覧</MenuItem>
+              <MenuItem>参加ブログ一覧</MenuItem>
             </a>
           </Link>
           <Link href={`/calendar`}>
             <a>
-            <MenuItem>新卒採用・インターンカレンダー</MenuItem>
+              <MenuItem>新卒採用・インターンカレンダー</MenuItem>
             </a>
           </Link>
           <Link href={`/new`}>
             <a>
-            <MenuItem>時給登録</MenuItem>
+              <MenuItem>時給登録</MenuItem>
             </a>
           </Link>
           <Link href={`/review/new`} passHref>
             <a>
-            <MenuItem>口コミ登録</MenuItem>
+              <MenuItem>口コミ登録</MenuItem>
             </a>
           </Link>
         </MenuList>

@@ -18,11 +18,11 @@ export default function ReviewPage() {
         url={"https://www.student-salary.com/" + router.asPath}
         imageText="インターンシップの口コミ一覧"
       />
-      <Box minH="100vh">
+      <Box pt="24">
         <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
           口コミ一覧
         </Text>
-        <SimpleGrid columns={{ base: 1, md: 3 }}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} mx="4">
           {data.review.map((item, index) => {
             return (
               <ReviewItem

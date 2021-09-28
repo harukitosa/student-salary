@@ -92,7 +92,7 @@ export default function BlogPage({ data, company_name }) {
         imageText={`${company_name}のインターンブログまとめ`}
       />
       <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
-        <Box borderBottom="1px" borderColor="gray.400" mt="12" mb="2">
+        <Box borderBottom="1px" borderColor="gray.400" pt="24" mb="2">
           <Text as="h1" fontSize={{ base: "5xl", md: "6xl" }} fontWeight="600">
             {company_name}
             <br />
