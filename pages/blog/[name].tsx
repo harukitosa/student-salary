@@ -17,11 +17,13 @@ import Link from "next/link";
 import { supabase } from "../../libs/supabase";
 
 export async function getStaticPaths() {
-  const { data: blogs, error } = await supabase.from("blogs").select("*");
-  const set = new Set<string>();
+  const {data: blogs, error} = await supabase
+  .from('blogs')
+  .select('*');
+  const set = new Set<string>()
   blogs.forEach((item: any) => {
-    set.add(item.company_name);
-  });
+    set.add(item.company_name)
+  })
   const array = [...Array.from(set)];
   const paths = [];
   array.forEach((item: string) => {
@@ -36,14 +38,16 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const company_name = params.name;
-  const { data: blogs, error } = await supabase.from("blogs").select("*");
-  const set = new Set<string>();
+  const {data: blogs, error} = await supabase
+  .from('blogs')
+  .select('*');
+  const set = new Set<string>()
   blogs.forEach((item: any) => {
-    set.add(item.company_name);
-  });
+    set.add(item.company_name)
+  })
   const array = [...Array.from(set)];
 
-  if (company_name === "all") {
+  if (company_name=== "all") {
     return {
       props: { data: blogs, company_name, arr: array }, // will be passed to the page component as props
     };
@@ -51,11 +55,11 @@ export async function getStaticProps({ params }) {
 
   const data = [];
 
-  blogs.forEach((item) => {
+  blogs.forEach(item => {
     if (item.company_name === company_name) {
-      data.push(item);
+      data.push(item)
     }
-  });
+  })
 
   if (!data) {
     return {
@@ -106,7 +110,7 @@ interface blog {
   url: string;
 }
 
-const BlogView = (props: { data: any; name: string; arr: string[] }) => {
+const BlogView = (props: { data: any; name: string, arr: string[] }) => {
   const data = props.data;
   const name = props.name;
   const router = useRouter();
