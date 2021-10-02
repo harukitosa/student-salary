@@ -119,8 +119,6 @@ function HomePage() {
     return <ErrorPage />;
   }
 
-
-
   return (
     <Container minW={"80vw"}>
       <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>

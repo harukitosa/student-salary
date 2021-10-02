@@ -8,28 +8,38 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import React from "react";
-// import { GetBlogQuery } from "../../src/generated/graphql";
+import { GetBlogQuery } from "../../src/generated/graphql";
 import { ContributeButton } from "../../component/contributeButton";
 import { useRouter } from "next/router";
 import { ShareButton } from "../../component/shareButton";
 import { SEO } from "../../component/seo";
 import Link from "next/link";
-import { supabase } from "../../libs/supabase";
 
 export async function getStaticPaths() {
-  const {data: blogs, error} = await supabase
-  .from('blogs')
-  .select('*');
-  const set = new Set<string>()
-  blogs.forEach((item: any) => {
-    set.add(item.company_name)
-  })
-  const array = [...Array.from(set)];
-  const paths = [];
-  array.forEach((item: string) => {
+  let results = await fetch(
+    "https://student-salary-api.an.r.appspot.com/query",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        query: `query{
+        blog {
+          nameList
+        }
+      }`,
+      }),
+    }
+  );
+  let paths = [];
+  const json = await results.json();
+  json.data.blog.nameList.forEach((item: string) => {
     paths.push({ params: { name: item } });
   });
   paths.push({ params: { name: "all" } });
+
   return {
     paths: paths,
     fallback: false,
@@ -38,29 +48,30 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const company_name = params.name;
-  const {data: blogs, error} = await supabase
-  .from('blogs')
-  .select('*');
-  const set = new Set<string>()
-  blogs.forEach((item: any) => {
-    set.add(item.company_name)
-  })
-  const array = [...Array.from(set)];
-
-  if (company_name=== "all") {
-    return {
-      props: { data: blogs, company_name, arr: array }, // will be passed to the page component as props
-    };
-  }
-
-  const data = [];
-
-  blogs.forEach(item => {
-    if (item.company_name === company_name) {
-      data.push(item)
+  let results = await fetch(
+    "https://student-salary-api.an.r.appspot.com/query",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `query{
+        blog(company_name: "${company_name}") {
+          blog {
+            title
+            company_name
+            url
+            season
+            year
+          }
+          nameList
+        }
+      }`,
+      }),
     }
-  })
-
+  );
+  const data = await results.json();
   if (!data) {
     return {
       notFound: true,
@@ -68,11 +79,11 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { data, company_name, arr: array }, // will be passed to the page component as props
+    props: { data, company_name }, // will be passed to the page component as props
   };
 }
 
-export default function BlogPage({ data, company_name, arr }) {
+export default function BlogPage({ data, company_name }) {
   return (
     <>
       <SEO
@@ -96,7 +107,7 @@ export default function BlogPage({ data, company_name, arr }) {
           <br />
           リンクをクリックすると外部サイトに飛びます。
         </Text>
-        <BlogView data={data} name={company_name} arr={arr} />
+        <BlogView data={data.data} name={company_name} />
       </Box>
     </>
   );
@@ -110,15 +121,16 @@ interface blog {
   url: string;
 }
 
-const BlogView = (props: { data: any; name: string, arr: string[] }) => {
+const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   const data = props.data;
   const name = props.name;
   const router = useRouter();
+
   return (
     <>
       <Wrap mt="4">
         <LinkBox title="all" url={`/blog/all`} />
-        {props.arr.map((item) => {
+        {data.blog.nameList.map((item) => {
           return (
             <>
               <LinkBox
@@ -134,7 +146,7 @@ const BlogView = (props: { data: any; name: string, arr: string[] }) => {
       <Box py="4"></Box>
 
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 0, md: 2 }}>
-        {data.map((item, index) => {
+        {data.blog.blog.map((item, index) => {
           return <BlogItemBlock key={index} item={item} />;
         })}
       </SimpleGrid>
