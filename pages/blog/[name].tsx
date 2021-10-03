@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 
       body: JSON.stringify({
         query: `query{
-        blog {
+        blog(company_name: "all") {
           nameList
         }
       }`,
@@ -72,7 +72,7 @@ export async function getStaticProps({ params }) {
     }
   );
   const data = await results.json();
-  
+
   if (!data) {
     return {
       notFound: true,
