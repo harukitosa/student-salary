@@ -1,19 +1,8 @@
-import {
-  Box,
-  Grid,
-  Text,
-  List,
-  Flex,
-  Spacer,
-  Badge,
-} from "@chakra-ui/layout";
+import { Box, Grid, Text, List, Flex, Spacer, Badge } from "@chakra-ui/layout";
 
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import {
-  ChevronRightIcon,
-  ChevronLeftIcon,
-} from "@chakra-ui/icons";
-import {
-  Popover, 
+  Popover,
   PopoverTrigger,
   Portal,
   PopoverContent,
@@ -130,93 +119,86 @@ export default function CalenderPage() {
         description={`エンジニア向け、インターンシップや新卒採用予定をカレンダーとして一覧で閲覧することができます。`}
         imageText={`エンジニアインターンシップ・新卒採用カレンダー`}
       />
-          <Box mt="8" pt="8" w="80vw" m="auto">
-            <Flex>
-              <IconButton
-                aria-label="last month"
-                icon={<ChevronLeftIcon />}
-                onClick={() => {
-                  setcalendarState(
-                    new CalendarState(data, calendarState.subPointDay())
-                  );
-                }}
-              >
-                Last
-              </IconButton>
-              <Spacer />
-              <Text textAlign="center" fontWeight="bold" fontSize="2xl">
-                {calendarState.getYear()}年 {calendarState.getMonth()}月
-              </Text>
-              <Spacer />
-              <IconButton
-                aria-label="next month"
-                icon={<ChevronRightIcon />}
-                onClick={() => {
-                  setcalendarState(
-                    new CalendarState(data, calendarState.addPointDay())
-                  );
-                }}
-              >
-                Next
-              </IconButton>
-            </Flex>
+      <Box mt="8" pt="8" w="80vw" m="auto">
+        <Flex>
+          <IconButton
+            aria-label="last month"
+            icon={<ChevronLeftIcon />}
+            onClick={() => {
+              setcalendarState(
+                new CalendarState(data, calendarState.subPointDay())
+              );
+            }}
+          >
+            Last
+          </IconButton>
+          <Spacer />
+          <Text textAlign="center" fontWeight="bold" fontSize="2xl">
+            {calendarState.getYear()}年 {calendarState.getMonth()}月
+          </Text>
+          <Spacer />
+          <IconButton
+            aria-label="next month"
+            icon={<ChevronRightIcon />}
+            onClick={() => {
+              setcalendarState(
+                new CalendarState(data, calendarState.addPointDay())
+              );
+            }}
+          >
+            Next
+          </IconButton>
+        </Flex>
 
-            <Box py="8">
-              情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
-            </Box>
+        <Box py="8">
+          情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
+        </Box>
 
-            <Grid templateColumns={{base: "repeat(1, 1fr)", md: "repeat(7, 1fr)"}} gap={1} mt="2">
-              {calendarState.calendar.map((item, idx) => {
-                return (
-                  <Box
-                    key={idx}
-                    borderBottom="1px"
-                    borderColor="gray.300"
-                    p="1"
-                  >
-                    <Text
-                      textColor={isHoliday(item.weekdays)}
-                      fontWeight={
-                        item.month + 1 == calendarState.getMonth()
-                          ? "bold"
-                          : "hairline"
-                      }
-                      textAlign="left"
-                    >
-                      {item.month + 1}/{item.day}(
-                      {changeWeekdays(item.weekdays)})
-                    </Text>
-                    <List spacing={3} py="2">
-                      {calendarState.getEvent(item.today).map((item) => {
-                        return <EventListItem key={item.link} item={item} />;
-                      })}
-                    </List>
-                  </Box>
-                );
-              })}
-            </Grid>
-            <ShareButton
-              title="エンジニアインターンシップ・新卒採用カレンダー"
-              url="https://www.student-salary.com/calendar"
-            />
-          </Box>
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(7, 1fr)" }}
+          gap={1}
+          mt="2"
+        >
+          {calendarState.calendar.map((item, idx) => {
+            return (
+              <Box key={idx} borderBottom="1px" borderColor="gray.300" p="1">
+                <Text
+                  textColor={isHoliday(item.weekdays)}
+                  fontWeight={
+                    item.month + 1 == calendarState.getMonth()
+                      ? "bold"
+                      : "hairline"
+                  }
+                  textAlign="left"
+                >
+                  {item.month + 1}/{item.day}({changeWeekdays(item.weekdays)})
+                </Text>
+                <List spacing={3} py="2">
+                  {calendarState.getEvent(item.today).map((item) => {
+                    return <EventListItem key={item.link} item={item} />;
+                  })}
+                </List>
+              </Box>
+            );
+          })}
+        </Grid>
+        <ShareButton
+          title="エンジニアインターンシップ・新卒採用カレンダー"
+          url="https://www.student-salary.com/calendar"
+        />
+      </Box>
     </>
   );
 }
 
 const EventListItem = (props: { item: Event }) => {
-
   return (
-      <Popover>
-        <PopoverTrigger>
-          <Box borderBottom="2px" borderColor="gray.400" pb="2">
+    <Popover>
+      <PopoverTrigger>
+        <Box borderBottom="2px" borderColor="gray.400" pb="2">
           <Box>
-            <Text>
-              {props.item.company_name}
-            </Text>
-            <Text fontSize="8">
-              {props.item.title.substr(0, 20)}...
-            </Text>
+            <Text>{props.item.company_name}</Text>
+            <Text fontSize="8">{props.item.title.substr(0, 20)}...</Text>
           </Box>
           <Box>
             {props.item.dateType === "event" ? (
@@ -248,54 +230,54 @@ const EventListItem = (props: { item: Event }) => {
               ""
             )}
           </Box>
-          </Box>
-        </PopoverTrigger>
-        <Portal>
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverHeader>
-              <Text>{props.item.company_name}</Text>
-              {props.item.title}
-              <Box>
-            {props.item.dateType === "event" ? (
-              <Badge variant="outline" colorScheme="blue">
-                開催日
-              </Badge>
-            ) : (
-              ""
-            )}
-            {props.item.dateType === "limit" ? (
-              <Badge variant="outline" colorScheme="red">
-                応募締め切り日
-              </Badge>
-            ) : (
-              ""
-            )}{" "}
-            {props.item.type === "intern" ? (
-              <Badge variant="outline" colorScheme="blue">
-                インターン
-              </Badge>
-            ) : (
-              ""
-            )}
-            {props.item.type === "recruit" ? (
-              <Badge variant="outline" colorScheme="orange">
-                新卒採用
-              </Badge>
-            ) : (
-              ""
-            )}
-          </Box>
-            </PopoverHeader>
-            <PopoverCloseButton />
-            <PopoverBody>
-              <a href={props.item.link} target="_blank" rel="noreferrer">
-                <Button colorScheme="blue">Link</Button>
-              </a>
-            </PopoverBody>
-          </PopoverContent>
-        </Portal>
-      </Popover>
+        </Box>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverHeader>
+            <Text>{props.item.company_name}</Text>
+            {props.item.title}
+            <Box>
+              {props.item.dateType === "event" ? (
+                <Badge variant="outline" colorScheme="blue">
+                  開催日
+                </Badge>
+              ) : (
+                ""
+              )}
+              {props.item.dateType === "limit" ? (
+                <Badge variant="outline" colorScheme="red">
+                  応募締め切り日
+                </Badge>
+              ) : (
+                ""
+              )}{" "}
+              {props.item.type === "intern" ? (
+                <Badge variant="outline" colorScheme="blue">
+                  インターン
+                </Badge>
+              ) : (
+                ""
+              )}
+              {props.item.type === "recruit" ? (
+                <Badge variant="outline" colorScheme="orange">
+                  新卒採用
+                </Badge>
+              ) : (
+                ""
+              )}
+            </Box>
+          </PopoverHeader>
+          <PopoverCloseButton />
+          <PopoverBody>
+            <a href={props.item.link} target="_blank" rel="noreferrer">
+              <Button colorScheme="blue">Link</Button>
+            </a>
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
+    </Popover>
   );
 };
 
