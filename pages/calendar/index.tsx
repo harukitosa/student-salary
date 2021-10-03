@@ -119,7 +119,7 @@ export default function CalenderPage() {
         description={`エンジニア向け、インターンシップや新卒採用予定をカレンダーとして一覧で閲覧することができます。`}
         imageText={`エンジニアインターンシップ・新卒採用カレンダー`}
       />
-      <Box mt="8" pt="8" w="80vw" m="auto">
+      <Box mt="8" pt="8" w={{ base: "95vw", md: "80vw" }} m="auto">
         <Flex>
           <IconButton
             aria-label="last month"
@@ -197,8 +197,8 @@ const EventListItem = (props: { item: Event }) => {
       <PopoverTrigger>
         <Box borderBottom="2px" borderColor="gray.400" pb="2">
           <Box>
-            <Text>{props.item.company_name}</Text>
-            <Text fontSize="8">{props.item.title.substr(0, 20)}...</Text>
+            <Text fontWeight="semibold">{props.item.company_name}</Text>
+            <Text fontSize="12">{props.item.title.substr(0, 20)}...</Text>
           </Box>
           <Box>
             {props.item.dateType === "event" ? (
