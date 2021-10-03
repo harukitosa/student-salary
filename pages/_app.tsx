@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
 import { Header } from "../component/header";
 import { Footer } from "../component/footer";
 import {
@@ -79,6 +79,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={theme}>
         <ApolloProvider client={client}>
           <Header />
+          <Box h="12"></Box>
           <Component {...pageProps} />
           <Footer />
         </ApolloProvider>

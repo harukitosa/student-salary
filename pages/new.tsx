@@ -26,7 +26,7 @@ import { SEO } from "../component/seo";
 
 export default function workinfonewPage() {
   return (
-    <Container pt={12}>
+    <Container>
       <SEO />
       <WorkinfoForm />
     </Container>

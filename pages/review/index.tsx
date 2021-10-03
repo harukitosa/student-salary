@@ -18,7 +18,7 @@ export default function ReviewPage() {
         url={"https://www.student-salary.com/" + router.asPath}
         imageText="インターンシップの口コミ一覧"
       />
-      <Box pt="24">
+      <Box>
         <Text p={"8"} fontSize={"32"} fontWeight={"semibold"}>
           口コミ一覧
         </Text>

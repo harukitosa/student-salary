@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <SEO />
-      <Container display={{ md: "flex" }} minW={"80vw"} pt="12">
+      <Container display={{ md: "flex" }} minW={"80vw"}>
         <Stack
           as={Box}
           textAlign={"center"}

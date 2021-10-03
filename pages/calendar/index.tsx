@@ -126,7 +126,7 @@ export default function CalenderPage() {
       />
       <Center>
         <Container>
-          <Box maxW="600px" mt="16">
+          <Box maxW="600px" mt="4">
             <Flex>
               <IconButton
                 aria-label="last month"

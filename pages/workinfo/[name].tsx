@@ -76,7 +76,7 @@ export default function WorkInfo() {
   });
 
   return (
-    <Container minW={"80vw"} pt="12">
+    <Container minW={"80vw"}>
       <SEO
         title={`StudentSalary ${router.query.name as string}の情報まとめ`}
         description={`${
