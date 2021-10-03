@@ -2,21 +2,27 @@ import {
   Box,
   Grid,
   Text,
-  Center,
   List,
-  ListItem,
-  ListIcon,
   Flex,
   Spacer,
-  Stack,
   Badge,
-  Container,
 } from "@chakra-ui/layout";
+
 import {
-  ExternalLinkIcon,
   ChevronRightIcon,
   ChevronLeftIcon,
 } from "@chakra-ui/icons";
+import {
+  Popover, 
+  PopoverTrigger,
+  Portal,
+  PopoverContent,
+  PopoverArrow,
+  PopoverHeader,
+  PopoverCloseButton,
+  PopoverBody,
+  Button,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import moment from "moment-timezone";
 import data from "../../calendar.json";
@@ -124,9 +130,7 @@ export default function CalenderPage() {
         description={`エンジニア向け、インターンシップや新卒採用予定をカレンダーとして一覧で閲覧することができます。`}
         imageText={`エンジニアインターンシップ・新卒採用カレンダー`}
       />
-      <Center>
-        <Container>
-          <Box maxW="600px" mt="4">
+          <Box mt="8" pt="8" w="80vw" m="auto">
             <Flex>
               <IconButton
                 aria-label="last month"
@@ -161,7 +165,7 @@ export default function CalenderPage() {
               情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
             </Box>
 
-            <Grid templateColumns="repeat(1, 1fr)" gap={1} mt="2">
+            <Grid templateColumns={{base: "repeat(1, 1fr)", md: "repeat(7, 1fr)"}} gap={1} mt="2">
               {calendarState.calendar.map((item, idx) => {
                 return (
                   <Box
@@ -174,7 +178,7 @@ export default function CalenderPage() {
                       textColor={isHoliday(item.weekdays)}
                       fontWeight={
                         item.month + 1 == calendarState.getMonth()
-                          ? "normal"
+                          ? "bold"
                           : "hairline"
                       }
                       textAlign="left"
@@ -196,17 +200,24 @@ export default function CalenderPage() {
               url="https://www.student-salary.com/calendar"
             />
           </Box>
-        </Container>
-      </Center>
     </>
   );
 }
 
 const EventListItem = (props: { item: Event }) => {
+
   return (
-    <a href={props.item.link} target="_blank" rel="noreferrer">
-      <ListItem mb="4">
-        <Stack>
+      <Popover>
+        <PopoverTrigger>
+          <Box borderBottom="2px" borderColor="gray.400" pb="2">
+          <Box>
+            <Text>
+              {props.item.company_name}
+            </Text>
+            <Text fontSize="8">
+              {props.item.title.substr(0, 20)}...
+            </Text>
+          </Box>
           <Box>
             {props.item.dateType === "event" ? (
               <Badge variant="outline" colorScheme="blue">
@@ -237,15 +248,54 @@ const EventListItem = (props: { item: Event }) => {
               ""
             )}
           </Box>
-          <Box>
-            <Text as="span">
-              {props.item.title} - {props.item.company_name}
-            </Text>
-            <ListIcon as={ExternalLinkIcon} color="black" w={4} h={4} />
           </Box>
-        </Stack>
-      </ListItem>
-    </a>
+        </PopoverTrigger>
+        <Portal>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverHeader>
+              <Text>{props.item.company_name}</Text>
+              {props.item.title}
+              <Box>
+            {props.item.dateType === "event" ? (
+              <Badge variant="outline" colorScheme="blue">
+                開催日
+              </Badge>
+            ) : (
+              ""
+            )}
+            {props.item.dateType === "limit" ? (
+              <Badge variant="outline" colorScheme="red">
+                応募締め切り日
+              </Badge>
+            ) : (
+              ""
+            )}{" "}
+            {props.item.type === "intern" ? (
+              <Badge variant="outline" colorScheme="blue">
+                インターン
+              </Badge>
+            ) : (
+              ""
+            )}
+            {props.item.type === "recruit" ? (
+              <Badge variant="outline" colorScheme="orange">
+                新卒採用
+              </Badge>
+            ) : (
+              ""
+            )}
+          </Box>
+            </PopoverHeader>
+            <PopoverCloseButton />
+            <PopoverBody>
+              <a href={props.item.link} target="_blank" rel="noreferrer">
+                <Button colorScheme="blue">Link</Button>
+              </a>
+            </PopoverBody>
+          </PopoverContent>
+        </Portal>
+      </Popover>
   );
 };
 
