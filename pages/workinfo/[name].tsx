@@ -110,10 +110,10 @@ export default function WorkInfo() {
   return (
     <Container minW={"80vw"}>
       <SEO
-        title={`StudentSalary ${router.query.name as string}の情報まとめ`}
+        title={`${router.query.name as string}のインターン・アルバイト・業務委託の時給情報`}
         description={`${
           router.query.name as string
-        }の時給情報の詳細データを掲載しています。`}
+        }の学生エンジニア向けの情報を提供しています。各種時給情報やインターン参加ブログへのリンクなどを閲覧することができます。`}
         imageText={`StudentSalary ${router.query.name as string}の情報まとめ`}
         url={"https://www.student-salary.com/" + router.asPath}
       />
