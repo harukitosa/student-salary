@@ -15,16 +15,33 @@ import {
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
 import Image from "next/image";
-import { ErrorPage } from "../component/error";
 import { ReviewItem } from "../component/reviewItem";
-import { useGetHomePageQuery } from "../src/generated/graphql";
 import {
   CompanyListLink,
   InternBlogLink,
   SummerInternSpreadSheetLink,
 } from "../component/pageLink";
-import { Loading } from "../component/loading";
 import { SEO } from "../component/seo";
+import { addApolloState, initializeApollo } from "../libs/apolloClient";
+import { useGetHomePageQuery} from "../src/generated/graphql";
+import { HOMEPAGE_QUERY } from "../request/queries/homepage.query";
+import { Loading } from "../component/loading";
+import { ErrorPage } from "../component/error";
+
+export async function getStaticProps({ params }) {
+  const apolloClient = initializeApollo()
+
+  await apolloClient.query({
+    query: HOMEPAGE_QUERY,
+  })
+
+  console.log(apolloClient)
+
+  return addApolloState(apolloClient, {
+    props: {},
+  })
+}
+
 
 export default function Home() {
   return (
@@ -112,12 +129,10 @@ export default function Home() {
 }
 
 function HomePage() {
-  const { data, loading, error } = useGetHomePageQuery({});
-  if (loading) return <Loading />;
-  if (error) {
-    console.log(error);
-    return <ErrorPage />;
-  }
+  const {data, loading, error} = useGetHomePageQuery({});
+
+  if (loading) return <Loading/>
+  if (error) return <ErrorPage/>
 
   return (
     <Container minW={"80vw"}>

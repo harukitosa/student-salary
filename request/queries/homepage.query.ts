@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import { review, workdataInfo, company } from "../../types/type";
 
 export const HOMEPAGE_QUERY = gql`
-  query {
+  query HomePage {
     review: newreview {
       id
       user_name

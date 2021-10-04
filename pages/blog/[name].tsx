@@ -16,6 +16,7 @@ import { SEO } from "../../component/seo";
 import Link from "next/link";
 
 export async function getStaticPaths() {
+  
   let results = await fetch(
     "https://student-salary-api.an.r.appspot.com/query",
     {

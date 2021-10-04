@@ -8,6 +8,7 @@ import {
 import data from "../../../intern2021.json";
 import Link from "next/link";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+
 export async function getStaticProps({ params }) {
   return {
     props: { data },
