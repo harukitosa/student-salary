@@ -5,7 +5,7 @@
       count
       name
       workdata {
-	id
+	      id
         salary
         name
         workType
@@ -13,6 +13,11 @@
     }
   }
 
+query getCompanyNameList {
+    companylist: company {
+        name
+    }
+}
 
   query Company($name: String) {
     company(name: $name) {

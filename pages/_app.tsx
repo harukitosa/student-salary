@@ -42,7 +42,6 @@ function MyApp({ Component, pageProps }) {
     }
 
     const handleRouteChange = (path) => {
-      console.log(path);
       gtag.pageview(path);
     };
 

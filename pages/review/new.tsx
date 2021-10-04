@@ -48,7 +48,6 @@ const ReviewForm = () => {
   };
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
     // @ts-ignore
     if (!validation(data)) {
       alert("未記入事項があります");
@@ -71,7 +70,6 @@ const ReviewForm = () => {
 
   if (loading) return <Text>loading</Text>;
   if (error) {
-    console.log(error);
     return <ErrorPage />;
   }
   if (data) return <ThankPage />;

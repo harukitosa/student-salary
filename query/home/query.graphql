@@ -21,7 +21,7 @@
     workdatainfo {
       mid
       avarage
-      count
+      counta
       company_count
       workdata {
         id

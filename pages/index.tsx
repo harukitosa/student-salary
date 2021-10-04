@@ -35,8 +35,6 @@ export async function getStaticProps({ params }) {
     query: HOMEPAGE_QUERY,
   });
 
-  console.log(apolloClient);
-
   return addApolloState(apolloClient, {
     props: {},
   });
