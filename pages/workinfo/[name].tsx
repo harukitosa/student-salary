@@ -110,7 +110,9 @@ export default function WorkInfo() {
   return (
     <Container minW={"80vw"}>
       <SEO
-        title={`${router.query.name as string}のインターン・アルバイト・業務委託の時給情報`}
+        title={`${
+          router.query.name as string
+        }のインターン・アルバイト・業務委託の時給情報`}
         description={`${
           router.query.name as string
         }の学生エンジニア向けの情報を提供しています。各種時給情報やインターン参加ブログへのリンクなどを閲覧することができます。`}
