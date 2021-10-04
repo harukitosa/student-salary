@@ -10,7 +10,11 @@ import {
 import { useRouter } from "next/dist/client/router";
 import { DataTable } from "../../component/simpletable";
 import { ErrorPage } from "../../component/error";
-import { CompanyDocument, GetCompanyNameListDocument, useCompanyQuery } from "../../src/generated/graphql";
+import {
+  CompanyDocument,
+  GetCompanyNameListDocument,
+  useCompanyQuery,
+} from "../../src/generated/graphql";
 import { BlogPostWithImage } from "..";
 import React from "react";
 import {
@@ -38,7 +42,7 @@ import { addApolloState, initializeApollo } from "../../libs/apolloClient";
 
 export async function getStaticPaths() {
   const apolloClient = initializeApollo();
-  const {data, loading, error} = await apolloClient.query({
+  const { data, loading, error } = await apolloClient.query({
     query: GetCompanyNameListDocument,
   });
   const paths = data.companylist.map((item) => ({
@@ -47,7 +51,7 @@ export async function getStaticPaths() {
   return {
     paths: paths || [],
     fallback: false,
- };
+  };
 }
 
 export async function getStaticProps({ params }) {
@@ -55,15 +59,13 @@ export async function getStaticProps({ params }) {
 
   await apolloClient.query({
     query: CompanyDocument,
-    variables: {name: params.name},
+    variables: { name: params.name },
   });
 
   return addApolloState(apolloClient, {
     props: {},
   });
 }
-
-
 
 export default function WorkInfo() {
   const router = useRouter();
