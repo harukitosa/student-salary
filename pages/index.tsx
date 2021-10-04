@@ -23,25 +23,24 @@ import {
 } from "../component/pageLink";
 import { SEO } from "../component/seo";
 import { addApolloState, initializeApollo } from "../libs/apolloClient";
-import { useGetHomePageQuery} from "../src/generated/graphql";
+import { useGetHomePageQuery } from "../src/generated/graphql";
 import { HOMEPAGE_QUERY } from "../request/queries/homepage.query";
 import { Loading } from "../component/loading";
 import { ErrorPage } from "../component/error";
 
 export async function getStaticProps({ params }) {
-  const apolloClient = initializeApollo()
+  const apolloClient = initializeApollo();
 
   await apolloClient.query({
     query: HOMEPAGE_QUERY,
-  })
+  });
 
-  console.log(apolloClient)
+  console.log(apolloClient);
 
   return addApolloState(apolloClient, {
     props: {},
-  })
+  });
 }
-
 
 export default function Home() {
   return (
@@ -129,10 +128,10 @@ export default function Home() {
 }
 
 function HomePage() {
-  const {data, loading, error} = useGetHomePageQuery({});
+  const { data, loading, error } = useGetHomePageQuery({});
 
-  if (loading) return <Loading/>
-  if (error) return <ErrorPage/>
+  if (loading) return <Loading />;
+  if (error) return <ErrorPage />;
 
   return (
     <Container minW={"80vw"}>
