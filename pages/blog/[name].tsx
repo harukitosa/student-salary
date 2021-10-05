@@ -33,13 +33,11 @@ export async function getStaticPaths() {
       }),
     }
   );
-  let paths = [];
   const json = await results.json();
-  json.data.blog.nameList.forEach((item: string) => {
-    paths.push({ params: { name: item } });
-  });
+  const paths = json.data.blog.nameList.map((item) => ({
+    params: { name: item },
+  }))
   paths.push({ params: { name: "all" } });
-
   return {
     paths: paths,
     fallback: false,
