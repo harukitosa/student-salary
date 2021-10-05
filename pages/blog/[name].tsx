@@ -36,7 +36,7 @@ export async function getStaticPaths() {
   const json = await results.json();
   const paths = json.data.blog.nameList.map((item) => ({
     params: { name: item },
-  }))
+  }));
   paths.push({ params: { name: "all" } });
   return {
     paths: paths,
