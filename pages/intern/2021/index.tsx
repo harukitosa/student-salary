@@ -24,9 +24,9 @@ export default function InternPage({ data }) {
   return (
     <Container minH="100vh">
       <Container py="8">
-        <Text align="center" as="h1" fontSize="28" fontWeight="bold">
-          2021年
-          <br /> 夏のインターンスプレッドシート専用UI
+        <Text as="h1" fontSize="28" fontWeight="bold">
+          2021年夏のインターンスプレッドシート
+          専用UI
         </Text>
         <a
           href={
@@ -34,7 +34,7 @@ export default function InternPage({ data }) {
           }
         >
           <Text fontSize="18" fontWeight="bold" color="blue.400">
-            スプレッドシートはこちら
+            [スプレッドシートはこちら]
           </Text>
         </a>
       </Container>
@@ -42,7 +42,7 @@ export default function InternPage({ data }) {
       <Text fontSize="14" fontWeight="bold">
         企業名で検索
       </Text>
-      <Input mb="12" onChange={(e) => setValue(e.target.value)} />
+      <Input mt="2" mb="12" onChange={(e) => setValue(e.target.value)} />
       {viewList.length == 0 ? (
         <Text textAlign="center" fontSize="18" fontWeight="bold">
           検索結果なし

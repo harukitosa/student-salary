@@ -9,6 +9,7 @@ import {
   InternItemTitle as Title,
   InternItemUrl as Url,
 } from "../../../component/InternItem";
+import { SEO } from "../../../component/seo";
 
 export async function getStaticPaths() {
   let paths = [];
@@ -37,6 +38,11 @@ export async function getStaticProps({ params }) {
 export default function detailPage({ target }) {
   return (
     <Container minW="80vw">
+      <SEO
+        title={`${target.company_name}のエンジニアサマーインターンシップ`}
+        description={`${target.content}`}
+        imageText={`${target.company_name}のエンジニアサマーインターンシップ`}
+      />
       <Breadcrumb
         spacing="8px"
         fontSize="18"
