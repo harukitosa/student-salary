@@ -86,9 +86,15 @@ export default function BlogPage({ data, company_name }) {
   return (
     <>
       <SEO
-        title={`${company_name == "all" ? "エンジニア" : company_name}のインターン参加ブログまとめ`}
-        description={`${company_name == "all" ? "エンジニア" : company_name}のインターンブログをまとめて掲載しています。`}
-        imageText={`${company_name == "all" ? "エンジニア" : company_name}のインターン参加ブログまとめ`}
+        title={`${
+          company_name == "all" ? "エンジニア" : company_name
+        }のインターン参加ブログまとめ`}
+        description={`${
+          company_name == "all" ? "エンジニア" : company_name
+        }のインターンブログをまとめて掲載しています。`}
+        imageText={`${
+          company_name == "all" ? "エンジニア" : company_name
+        }のインターン参加ブログまとめ`}
       />
       <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
         <Box borderBottom="1px" borderColor="gray.400" pt="12" mb="2">

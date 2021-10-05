@@ -43,9 +43,7 @@ export async function getStaticProps({ params }) {
 export default function Home() {
   return (
     <>
-      <SEO 
-        description="StudentSalaryは学生エンジニアの時給・総合情報サイトです。各種インターンシップ情報や参加ブログなどを企業別に閲覧することができます。" 
-      />
+      <SEO description="StudentSalaryは学生エンジニアの時給・総合情報サイトです。各種インターンシップ情報や参加ブログなどを企業別に閲覧することができます。" />
       <Container display={{ md: "flex" }} minW={"80vw"}>
         <Stack
           as={Box}
