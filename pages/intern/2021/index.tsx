@@ -25,8 +25,7 @@ export default function InternPage({ data }) {
     <Container minH="100vh">
       <Container py="8">
         <Text as="h1" fontSize="28" fontWeight="bold">
-          2021年夏のインターンスプレッドシート
-          専用UI
+          2021年夏のインターンスプレッドシート 専用UI
         </Text>
         <a
           href={
