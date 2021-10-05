@@ -68,14 +68,14 @@ export const CompanyListLink = (props: { companylist: company[] }) => {
             <span key={item.name}>
               <Link href={`/workinfo/${item.name}`}>
                 <a>
-                  <Box bg={"gray.50"} borderRadius="xl" p="4" h="full">
+                  <Box bg={"gray.50"} borderRadius="xl" p="2" h="full">
                     <Text
                       fontSize={{ base: 14, md: 18 }}
                       fontWeight="semibold"
                       color="blue.400"
-                      px="2"
+                      px="4"
                     >
-                      {item.name}
+                      # {item.name}
                     </Text>
                   </Box>
                 </a>
