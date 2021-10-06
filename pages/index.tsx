@@ -281,6 +281,7 @@ function HomePage() {
         </Link>
       </Center>
 
+
       {/* 夏のインターンスプレッドシート専用UI */}
       <Box w="full" mt="24">
         <SummerInternSpreadSheetLink />
