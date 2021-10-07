@@ -111,6 +111,24 @@ export default function Home() {
                 </Button>
               </a>
             </Link>
+            <Link href={`/career/2023`}>
+              <a>
+                <Button
+                  color={"blue.400"}
+                  border={"1px"}
+                  rounded={"full"}
+                  bg={"white"}
+                  px={2}
+                  width={"80"}
+                  _hover={{
+                    bg: "blue.400",
+                    color: "white",
+                  }}
+                >
+                 23新卒就活情報ページ
+                </Button>
+              </a>
+            </Link>
           </Stack>
         </Stack>
         <Image

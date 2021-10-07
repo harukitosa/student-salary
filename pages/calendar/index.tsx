@@ -18,6 +18,7 @@ import data from "../../calendar.json";
 import { IconButton } from "@chakra-ui/button";
 import { SEO } from "../../component/seo";
 import { ShareButton } from "../../component/shareButton";
+import Link from "next/link";
 
 interface Event {
   company_name: string;
@@ -152,6 +153,14 @@ export default function CalenderPage() {
 
         <Box py="8">
           情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
+        </Box>
+        <Box color="blue.400" fontSize="22" mb="8">
+        <Link href="/career/2023">
+        <a>
+          2023年卒新卒募集企業一覧はこちら！
+        </a>
+        </Link>
+
         </Box>
 
         <Grid
