@@ -155,12 +155,9 @@ export default function CalenderPage() {
           情報は不正確な場合があります。必ず、参照先のリンクをご確認ください。
         </Box>
         <Box color="blue.400" fontSize="22" mb="8">
-        <Link href="/career/2023">
-        <a>
-          2023年卒新卒募集企業一覧はこちら！
-        </a>
-        </Link>
-
+          <Link href="/career/2023">
+            <a>2023年卒新卒募集企業一覧はこちら！</a>
+          </Link>
         </Box>
 
         <Grid

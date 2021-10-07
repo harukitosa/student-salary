@@ -125,7 +125,7 @@ export default function Home() {
                     color: "white",
                   }}
                 >
-                 23新卒就活情報ページ
+                  23新卒就活情報ページ
                 </Button>
               </a>
             </Link>
