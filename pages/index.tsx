@@ -59,7 +59,8 @@ export default function Home() {
             StudentSalary <br />
             <Text
               as={"span"}
-              color={"blue.400"}
+              bgGradient="linear(to-l, cyan.800, blue.400)"
+              bgClip="text"
               fontSize={{ base: "xl", sm: "3xl" }}
             >
               学生エンジニアの情報サイト
