@@ -250,7 +250,7 @@ function HomePage() {
           color={"white"}
           align={"center"}
         >
-          新着レビュー
+          新着口コミ
         </Text>
       </Box>
       <SimpleGrid columns={{ base: 1, md: 3 }} mt="4">
