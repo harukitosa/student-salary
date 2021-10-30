@@ -137,6 +137,9 @@ export default function Home() {
           alt="studentsalary"
           width={"850"}
           height={"850"}
+          quality={30}
+          placeholder="blur"
+          blurDataURL={"/icon.svg"}
         />
       </Container>
       <HomePage />
