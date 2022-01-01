@@ -29,7 +29,10 @@ function PostView(props: any) {
           {props.data.title}
         </Heading>
         <Box pt="12">
-          <div className="markdown" dangerouslySetInnerHTML={{ __html: props.content }} />
+          <div
+            className="markdown"
+            dangerouslySetInnerHTML={{ __html: props.content }}
+          />
         </Box>
       </Container>
     </Box>

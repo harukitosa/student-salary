@@ -31,12 +31,12 @@ const themes = {
         padding: 0,
         margin: 0,
       },
-      "a": {
+      a: {
         color: "teal.500",
       },
-      "p": {
+      p: {
         "font-size": "18px",
-        "line-height": "1.75"
+        "line-height": "1.75",
       },
     },
   },

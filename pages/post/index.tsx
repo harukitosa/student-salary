@@ -19,7 +19,9 @@ export default function Home(props: any) {
             スチュサラ速報
           </Text>
           <Box my="12">
-            <Text fontSize={"28"} fontWeight={"bold"} mb="12"># Posts</Text>
+            <Text fontSize={"28"} fontWeight={"bold"} mb="12">
+              # Posts
+            </Text>
             {props.contents.map((item) => {
               return <PostItem {...item} key={"post-key-" + item.data.slug} />;
             })}
