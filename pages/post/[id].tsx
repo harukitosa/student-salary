@@ -13,8 +13,8 @@ export default function PostPage(props) {
       </main>
 
       <footer>
-        <Container height="20">
-          <Link href="/">Home...</Link>
+        <Container height="32">
+          <Link href="/">Topページに戻る</Link>
         </Container>
       </footer>
     </div>
@@ -25,11 +25,11 @@ function PostView(props: any) {
   return (
     <Box w="100vw">
       <Container padding="4">
-        <Heading as="h2" size="2xl">
+        <Heading as="h2" size="2xl" py="12">
           {props.data.title}
         </Heading>
         <Box pt="12">
-          <div dangerouslySetInnerHTML={{ __html: props.content }} />
+          <div className="markdown" dangerouslySetInnerHTML={{ __html: props.content }} />
         </Box>
       </Container>
     </Box>

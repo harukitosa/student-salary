@@ -1,0 +1,34 @@
+---
+title: 2021年春エンジニアインターンシップまとめ
+date: "2022-01-01"
+template: "post"
+draft: false
+slug: "2022-spring-intern"
+category: "Engineer"
+tags:
+    - "web"
+description: "2022年の春のエンジニアインターンシップの情報を気軽にまとめています"
+---
+
+2023年卒、2024年卒のソフトウェアエンジニアインターンシップの情報をまとめています。
+正確な情報は各社募集サイトをご確認ください。
+
+### [Pixiv](https://www.pixiv.co.jp/spring_bootcamp_2022)
+
+> ピクシブ株式会社は「創作活動がもっと楽しくなる場所を創る」というミッションのもと、累計登録ユーザー数7400万人を超える「pixiv」をはじめ、現在15以上のサービス開発を進めています。
+
+23, 24卒のソフトウェア開発インターンシップです。コース別に別れていて興味のある分野で挑戦できるそう。
+[https://www.student-salary.com/blog/pixiv](https://www.student-salary.com/blog/pixiv)にて過去の参加ブログも参考にしてみてください。
+
+[応募する](https://www.pixiv.co.jp/spring_bootcamp_2022)
+
+### [CADDI](https://recruiting.caddi.jp/recruit/eng/spring_intern)
+
+> 弊社キャディのプロダクトチームは、1兆円プラットフォームの構築を目指し、日々奮闘しています。
+> ご参加いただく皆様の才能と情熱を解放するようなインターンシップにできたらと考えています。
+> 複雑かつ難解な課題を最前線で規格化することにチャレンジをしたい方、是非ご応募お待ちしております。
+
+昨年大型の資金調達もして勢いのある企業。
+個人的にはBackendでRustがかけるのが魅力的。データサイエンティストコースは応募のハードルも高く設定されています。
+
+[応募する](https://recruiting.caddi.jp/recruit/eng/spring_intern)

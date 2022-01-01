@@ -112,7 +112,7 @@ export default function Home() {
                 </Button>
               </a>
             </Link>
-            <Link href={`/career/2023`}>
+            <Link href={`/post`}>
               <a>
                 <Button
                   color={"blue.400"}
@@ -126,7 +126,7 @@ export default function Home() {
                     color: "white",
                   }}
                 >
-                  23新卒就活情報ページ
+                  スチュサラ速報
                 </Button>
               </a>
             </Link>

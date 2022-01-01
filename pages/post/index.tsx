@@ -15,13 +15,15 @@ export default function Home(props: any) {
 
       <main>
         <Container pt="12" minH={"60vh"}>
-          <Text as="h1" fontSize={"32"} fontWeight={"bold"}>スチュサラ速報</Text>
-	  <Box my="12">
-          <Text fontSize={"28"}># Posts</Text>
-          {props.contents.map((item) => {
-            return <PostItem {...item} key={"post-key-" + item.data.slug} />;
-          })}
-	  </Box>
+          <Text as="h1" fontSize={"32"} fontWeight={"bold"}>
+            スチュサラ速報
+          </Text>
+          <Box my="12">
+            <Text fontSize={"28"} fontWeight={"bold"} mb="12"># Posts</Text>
+            {props.contents.map((item) => {
+              return <PostItem {...item} key={"post-key-" + item.data.slug} />;
+            })}
+          </Box>
         </Container>
       </main>
       <footer></footer>
@@ -34,7 +36,7 @@ function PostItem(props: any) {
     <Box key={props.data.slug}>
       <Link href={"/post/" + props.data.slug}>
         <a>
-          <Container mx="1">
+          <Container borderBottom={"1px"} pb="4">
             <Box>
               <Text color="gray.600" fontWeight={"normal"} as="span">
                 {props.data.date}
