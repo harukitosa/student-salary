@@ -12,6 +12,7 @@ description: "2022年の春のエンジニアインターンシップの情報�
 
 2023年卒、2024年卒のソフトウェアエンジニアインターンシップの情報をまとめています。
 正確な情報は各社募集サイトをご確認ください。
+自分が見つけ次第追加していきたいと思っています。
 
 ### [Pixiv](https://www.pixiv.co.jp/spring_bootcamp_2022)
 
@@ -29,6 +30,27 @@ description: "2022年の春のエンジニアインターンシップの情報�
 > 複雑かつ難解な課題を最前線で規格化することにチャレンジをしたい方、是非ご応募お待ちしております。
 
 昨年大型の資金調達もして勢いのある企業。
-個人的にはBackendでRustがかけるのが魅力的。データサイエンティストコースは応募のハードルも高く設定されています。
+個人的にはBackendで今流行りのRustがかけるのが魅力的。
+データサイエンティストコースは応募のハードルも高く設定されています。
 
 [応募する](https://recruiting.caddi.jp/recruit/eng/spring_intern)
+
+### [CyberAgent](https://www.cyberagent.co.jp/careers/students/event/detail/id=26886)
+
+> 極（きわみ）コンペは、サーバーサイドエンジニアとML/DSがチームとなって、広告クリエイティブ自動生成プロダクト開発に取り組む3日間のコンペティションです。
+
+MLのインターンシップ。もう一つ、春休み開発インターンシップの募集がありましたが既に応募は終了していました。
+
+[応募する](https://www.cyberagent.co.jp/careers/students/event/detail/id=26886)
+
+### [Mercari](https://mercari.wd3.myworkdayjobs.com/ja-JP/mercari_external/job/Work-from-Home-JP/Online-Spring-Internship-for-Gophers-2022--Internship-_JR-000001163)
+
+> Online Spring Internship for Gophers 2022は、メルカリグループで採用されている言語「Go」をモブプログラミングやワークショップを交えつつ学ぶ、短期のオンラインインターンシップです。
+
+Go 1.18の目玉アップデートのジェネリクスについて講義形式+開発のインターンシップ。
+後半二日間は個人でOSSのツールを作るとのこと。Golangに興味のある学生は必見です。
+
+[応募する](https://mercari.wd3.myworkdayjobs.com/ja-JP/mercari_external/job/Work-from-Home-JP/Online-Spring-Internship-for-Gophers-2022--Internship-_JR-000001163)
+
+
+

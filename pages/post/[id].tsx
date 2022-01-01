@@ -4,10 +4,16 @@ import fs from "fs";
 import { GetStaticPropsContext } from "next";
 import { Container, Box, Heading } from "@chakra-ui/react";
 import Link from "next/link";
+import { SEO } from "../../component/seo";
 
 export default function PostPage(props) {
   return (
     <div>
+      <SEO
+        title={`${props.data.title}`}
+        description={`${props.data.description}`}
+        imageText={`${props.data.title}`}
+      />
       <main>
         <PostView {...props} />
       </main>

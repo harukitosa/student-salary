@@ -40,7 +40,7 @@ export const Header = () => {
             <HeaderItem href="/workinfo" content="企業一覧" />
             <HeaderItem href="/review" content="口コミ" />
             <HeaderItem href="/blog/all" content="参加ブログ一覧" />
-            <HeaderItem href="/calendar" content="カレンダー" />
+            <HeaderItem href="/post" content="速報" />
             <HeaderItem href="/new" content="時給登録" />
             <HeaderItem href="/review/new" content="口コミ登録" />
           </Box>
