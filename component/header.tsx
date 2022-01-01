@@ -100,9 +100,9 @@ const HeaderMenu = () => {
               <MenuItem>参加ブログ一覧</MenuItem>
             </a>
           </Link>
-          <Link href={`/calendar`}>
+          <Link href={`/post`}>
             <a>
-              <MenuItem>新卒採用・インターンカレンダー</MenuItem>
+              <MenuItem>スチュサラ速報</MenuItem>
             </a>
           </Link>
           <Link href={`/new`}>
