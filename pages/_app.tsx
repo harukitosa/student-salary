@@ -8,7 +8,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import Head from "next/dist/next-server/lib/head";
+import Head from "next/head";
 import * as gtag from "../libs/gtag";
 import { useEffect } from "react";
 import router from "next/router";
