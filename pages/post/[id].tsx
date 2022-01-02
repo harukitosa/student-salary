@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import { renderMarkdown } from "../../utils/renderMarkdown";
 import fs from "fs";
 import { GetStaticPropsContext } from "next";
-import { Container, Box, Heading } from "@chakra-ui/react";
+import { Container, Box, Heading, Button, Center } from "@chakra-ui/react";
 import Link from "next/link";
 import { SEO } from "../../component/seo";
 
@@ -19,9 +19,28 @@ export default function PostPage(props) {
       </main>
 
       <footer>
-        <Container height="32">
-          <Link href="/">Topページに戻る</Link>
-        </Container>
+	      <Center my="16">
+	      <Link href={`/post`}>
+              <a>
+                <Button
+                  color={"blue.400"}
+                  border={"1px"}
+                  rounded={"full"}
+                  bg={"white"}
+                  px={2}
+                  width={"80"}
+                  _hover={{
+                    bg: "blue.400",
+                    color: "white",
+                  }}
+                >
+                  Topに戻る
+                </Button>
+              </a>
+            </Link>
+
+	      </Center>
+
       </footer>
     </div>
   );
