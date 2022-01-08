@@ -82,7 +82,7 @@ Dive into mixi GROUP 2021-2022 冬季（エンジニア）
 
 ## 1月8日追加
 
-### [NTTコミュニケーションズインターンシップ](https://www.ntt.com/about-us/recruit/event/event01.html))
+### [NTTコミュニケーションズインターンシップ](https://www.ntt.com/about-us/recruit/event/event01.html)
 
 > 職場体験型インターンシップ（技術コース）
 > これまでの経験やスキルを活かして、NTTコミュニケーションズの業務を経験されたい方向けのコースになります。
