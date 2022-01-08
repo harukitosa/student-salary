@@ -79,3 +79,12 @@ Dive into mixi GROUP 2021-2022 冬季（エンジニア）
 
 [モンスト事業本部の応募サイト](https://mixi-recruit.snar.jp/jobboard/detail.aspx)
 
+
+## 1月8日追加
+
+NTTコミュニケーションズインターンシップ
+
+> 職場体験型インターンシップ（技術コース）
+> これまでの経験やスキルを活かして、NTTコミュニケーションズの業務を経験されたい方向けのコースになります。
+
+[応募する](https://www.ntt.com/about-us/recruit/event/event01.html)
