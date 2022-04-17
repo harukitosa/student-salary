@@ -6,8 +6,8 @@ export const ContributeButton = (props: { link: string }) => {
   return (
     <Link href={props.link}>
       <a>
-        <Button bg="blue.200" rounded="full" w="60" h="12">
-          Contribute
+        <Button border="2px" bg="white" w="60" h="12">
+          フォームで入力
         </Button>
       </a>
     </Link>
