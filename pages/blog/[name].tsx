@@ -1,11 +1,4 @@
-import {
-  Text,
-  Center,
-  Box,
-  HStack,
-  VStack,
-  Flex
-} from "@chakra-ui/react";
+import { Text, Center, Box, HStack, VStack, Flex } from "@chakra-ui/react";
 import React from "react";
 import { GetBlogQuery } from "../../src/generated/graphql";
 import { ContributeButton } from "../../component/contributeButton";
@@ -98,11 +91,13 @@ export default function BlogPage({ data, company_name }) {
       <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
         <Box pt="12" mb="2">
           <Text as="h1" fontSize={{ base: "4xl" }} fontWeight="600">
-            {company_name == "all" ? "エンジニア" : company_name}インターンブログまとめ。
+            {company_name == "all" ? "エンジニア" : company_name}
+            インターンブログまとめ。
           </Text>
         </Box>
         <Text fontSize="18">
-          {company_name}の開発インターンに参加した学生のブログのリンクを掲載しています。
+          {company_name}
+          の開発インターンに参加した学生のブログのリンクを掲載しています。
           <br />
           リンクをクリックすると外部サイトに飛びます。
         </Text>
@@ -127,27 +122,33 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
 
   return (
     <>
-
       <Box py="4"></Box>
-      <Flex spacing={2} direction={{base: "column", md: "row"}}>
-      <Box w={{base: "100%", md: "76%"}}>
-      {data.blog.blog.map((item, index) => {
-          return <BlogItemBlock key={index} item={item} />;
-      })}
-      </Box>
-      <Flex mt="4" w={{base: "100%", md: "24%"}} direction="column" pl="4" borderLeft={"1px"} borderColor="gray.200">
-        <LinkBox title="all" url={`/blog/all`} />
-        {data.blog.nameList.map((item) => {
-          return (
+      <Flex spacing={2} direction={{ base: "column", md: "row" }}>
+        <Box w={{ base: "100%", md: "76%" }}>
+          {data.blog.blog.map((item, index) => {
+            return <BlogItemBlock key={index} item={item} />;
+          })}
+        </Box>
+        <Flex
+          mt="4"
+          w={{ base: "100%", md: "24%" }}
+          direction="column"
+          pl="4"
+          borderLeft={"1px"}
+          borderColor="gray.200"
+        >
+          <LinkBox title="all" url={`/blog/all`} />
+          {data.blog.nameList.map((item) => {
+            return (
               <LinkBox
                 key={item}
                 title={item}
                 url={`/blog/${item}`}
                 select={item == name}
               />
-          );
-        })}
-      </Flex>
+            );
+          })}
+        </Flex>
       </Flex>
 
       <Text pt="12" fontSize="18" fontWeight="bold" align="center">
@@ -177,7 +178,9 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
   return (
     <Link href={props.url}>
       <a>
-        <Text fontSize={22} color={color}>{props.title}</Text>
+        <Text fontSize={22} color={color}>
+          {props.title}
+        </Text>
       </a>
     </Link>
   );
@@ -185,7 +188,13 @@ const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
 
 export const BlogItemBlock = (props: { item: blog }) => {
   return (
-    <HStack align={"center"} my="2" px="4" borderLeft="4px" borderColor="blue.400">
+    <HStack
+      align={"center"}
+      my="2"
+      px="4"
+      borderLeft="4px"
+      borderColor="blue.400"
+    >
       <VStack align={"start"}>
         <a href={props.item.url} target="_blank" rel="noopener noreferrer">
           <Text color="blue.600" fontWeight={400} fontSize={22}>
