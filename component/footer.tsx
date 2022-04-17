@@ -64,7 +64,7 @@ export const Footer = () => {
 
             <Stack align={"flex-start"}>
               <ListHeader>Contact</ListHeader>
-              <Link href={"https://twitter.com/tosa_now"}>開発者twitter</Link>
+              <Link href={"https://twitter.com/tosa_now"}>@開発者とさ:twitter</Link>
             </Stack>
           </SimpleGrid>
         </Container>
