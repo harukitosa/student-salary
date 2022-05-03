@@ -139,37 +139,37 @@ export default function WorkInfo() {
         </Text>
       </Heading>
       <SimpleGrid
-          py="4"
-          mt={"4"}
-          columns={{ base: 1, md: 2, lg: 4, sm: 1 }}
-          spacing={2}
-        >
-          <BlogPostWithImage
-            title={"登録データ数"}
-            num={data.company[0].count}
-            icon={"/memory.svg"}
-            unit={"件"}
-          />
+        py="4"
+        mt={"4"}
+        columns={{ base: 1, md: 2, lg: 4, sm: 1 }}
+        spacing={2}
+      >
+        <BlogPostWithImage
+          title={"登録データ数"}
+          num={data.company[0].count}
+          icon={"/memory.svg"}
+          unit={"件"}
+        />
 
-          <BlogPostWithImage
-            title={"時給の最大値"}
-            num={data.company[0].max}
-            icon={"/db.svg"}
-            unit={"円"}
-          />
-          <BlogPostWithImage
-            title={"時給の最小値"}
-            num={data.company[0].min}
-            icon={"/mouse.svg"}
-            unit={"円"}
-          />
-          <BlogPostWithImage
-            title={"平均時給"}
-            num={Math.round(avg)}
-            icon={"/statistics.svg"}
-            unit={"円"}
-          />
-        </SimpleGrid>
+        <BlogPostWithImage
+          title={"時給の最大値"}
+          num={data.company[0].max}
+          icon={"/db.svg"}
+          unit={"円"}
+        />
+        <BlogPostWithImage
+          title={"時給の最小値"}
+          num={data.company[0].min}
+          icon={"/mouse.svg"}
+          unit={"円"}
+        />
+        <BlogPostWithImage
+          title={"平均時給"}
+          num={Math.round(avg)}
+          icon={"/statistics.svg"}
+          unit={"円"}
+        />
+      </SimpleGrid>
 
       <Text fontSize={20} fontWeight={700}>
         提供データ
