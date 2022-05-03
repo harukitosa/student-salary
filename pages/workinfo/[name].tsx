@@ -137,9 +137,9 @@ export default function WorkInfo() {
         >
           {data.company[0].name}
         </Text>
-        <br />
-        <Box h="8" />
-        <SimpleGrid
+      </Heading>
+      <SimpleGrid
+          py="4"
           mt={"4"}
           columns={{ base: 1, md: 2, lg: 4, sm: 1 }}
           spacing={2}
@@ -170,8 +170,11 @@ export default function WorkInfo() {
             unit={"円"}
           />
         </SimpleGrid>
-      </Heading>
 
+      <Text fontSize={20} fontWeight={700}>
+        提供データ
+      </Text>
+      <DataTable data={data.company[0].workdata} />
       <Text fontSize={18} fontWeight={700} p="2" mt="6">
         データの割合
       </Text>
@@ -206,10 +209,6 @@ export default function WorkInfo() {
           <SimpleBar data={dataList2} />
         </Box>
       </SimpleGrid>
-      <Text fontSize={20} fontWeight={700}>
-        提供データ
-      </Text>
-      <DataTable data={data.company[0].workdata} />
 
       <Text fontSize="18" fontWeight="bold" mt="24" mb="8">
         インターン参加ブログ[外部サイト]
