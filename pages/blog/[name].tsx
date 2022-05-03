@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export async function getStaticPaths() {
   const results = await fetch(
-    "https://student-salary-api.an.r.appspot.com/query",
+    "https://studentsalaryprod.du.r.appspot.com/query",
     {
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const company_name = params.name;
   const results = await fetch(
-    "https://student-salary-api.an.r.appspot.com/query",
+    "https://studentsalaryprod.du.r.appspot.com/query",
     {
       method: "POST",
       headers: {
