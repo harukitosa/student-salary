@@ -12,7 +12,7 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
     link: new HttpLink({
-      uri: "https://studentsalaryprod.du.r.appspot.com/query", // Server URL (must be absolute)
+      uri: "https://student-salary-api.an.r.appspot.com/query", // Server URL (must be absolute)
       credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
     }),
     cache: new InMemoryCache({
