@@ -123,7 +123,7 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   return (
     <>
       <Box py="4"></Box>
-      <Flex spacing={2} direction={{ base: "column", md: "row" }}>
+      <Flex direction={{ base: "column", md: "row" }}>
         <Box w={{ base: "100%", md: "76%" }}>
           {data.blog.blog.map((item, index) => {
             return <BlogItemBlock key={index} item={item} />;
