@@ -68,6 +68,7 @@ export default function Home() {
           </Heading>
           <Text color={"gray.500"}>
             このwebサイトは日本の学生エンジニアから匿名であつめられた給与情報、インターンのクチコミを掲載しています。
+            (from GCP)
           </Text>
           <Stack
             direction={"column"}
