@@ -35,7 +35,7 @@ export default function Home(props: any) {
 function PostItem(props: any) {
   return (
     <>
-      <Box py="4"></Box>
+      <Box py=""></Box>
       <Flex direction={{ base: "column", md: "row" }}>
         <Box w={{ base: "100%", md: "76%" }}>
           <HStack

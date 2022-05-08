@@ -2,13 +2,13 @@ import matter from "gray-matter";
 import { renderMarkdown } from "../../utils/renderMarkdown";
 import fs from "fs";
 import { GetStaticPropsContext } from "next";
-import { Container, Box, Heading, Button, Center } from "@chakra-ui/react";
+import { Box, Heading, Button, Center } from "@chakra-ui/react";
 import Link from "next/link";
 import { SEO } from "../../component/seo";
 
 export default function PostPage(props) {
   return (
-    <div>
+    <>
       <SEO
         title={`${props.data.title}`}
         description={`${props.data.description}`}
@@ -40,14 +40,13 @@ export default function PostPage(props) {
           </Link>
         </Center>
       </footer>
-    </div>
+    </>
   );
 }
 
 function PostView(props: any) {
   return (
-    <Box w="100vw">
-      <Container padding="4">
+    <Box margin={"auto"} w={{md: "75vw", base: "100vw"}}>
         <Heading as="h2" size="2xl" py="12">
           {props.data.title}
         </Heading>
@@ -57,7 +56,6 @@ function PostView(props: any) {
             dangerouslySetInnerHTML={{ __html: props.content }}
           />
         </Box>
-      </Container>
     </Box>
   );
 }

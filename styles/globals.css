@@ -21,13 +21,28 @@ a {
 }
 
 .markdown h3 {
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 1.75;
+  font-size: 28px;
+  font-weight: semibold;
+  line-height: 1.45;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.markdown h2 {
+  font-size: 28px;
+  font-weight: semibold;
+  line-height: 1.45;
 }
 
 .markdown a {
   color: #3182ce;
+}
+
+.markdown hr {
+  border-top: 1px dashed #8c8b8b;
+	border-bottom: 1px dashed #fff;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .markdown blockquote {
