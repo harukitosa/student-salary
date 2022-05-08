@@ -14,19 +14,19 @@ export default function Home(props: any) {
       />
 
       <main>
-      <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
-        <Box pt="12" mb="2">
-          <Text as="h1" fontSize={{ base: "4xl" }} fontWeight="600">
-            スチュサラ速報
+        <Box maxW="100vw" margin="auto" px={{ base: "2", md: "12" }}>
+          <Box pt="12" mb="2">
+            <Text as="h1" fontSize={{ base: "4xl" }} fontWeight="600">
+              スチュサラ速報
+            </Text>
+          </Box>
+          <Text fontSize="18">
+            エンジニアインターンやアルバイト情報の記事をまとめています。
           </Text>
+          {props.contents.map((item) => {
+            return <PostItem {...item} key={"post-key-" + item.data.slug} />;
+          })}
         </Box>
-        <Text fontSize="18">
-          エンジニアインターンやアルバイト情報の記事をまとめています。
-        </Text>
-        {props.contents.map((item) => {
-              return <PostItem {...item} key={"post-key-" + item.data.slug} />;
-            })}
-      </Box>
       </main>
       <footer></footer>
     </div>
@@ -35,41 +35,46 @@ export default function Home(props: any) {
 
 function PostItem(props: any) {
   return (
-         <><Box py="4"></Box><Flex direction={{ base: "column", md: "row" }}>
-      <Box w={{ base: "100%", md: "76%" }}>
-            <HStack
-      align={"center"}
-      my="2"
-      px="4"
-      borderLeft="4px"
-      borderColor="blue.400"
-    >
-      <VStack align={"start"}>
-        <a href={"/post/" + props.data.slug} target="_blank" rel="noopener noreferrer">
-          <Text color="blue.600" fontWeight={400} fontSize={22}>
-            {props.data.title}
-          </Text>
-        </a>
-        <Text fontSize={"18"}>
-          {props.data.description}
-        </Text>
-        <Text fontSize="18" color={"gray.600"} as="span">
-          {props.data.date}
-        </Text>
-      </VStack>
-    </HStack>
-      </Box>
-      <Flex
-        mt="4"
-        w={{ base: "100%", md: "24%" }}
-        direction="column"
-        pl="4"
-        borderLeft={"1px"}
-        borderColor="gray.200"
-      >
-        {/* ここにTag等一覧を作成する */}
+    <>
+      <Box py="4"></Box>
+      <Flex direction={{ base: "column", md: "row" }}>
+        <Box w={{ base: "100%", md: "76%" }}>
+          <HStack
+            align={"center"}
+            my="2"
+            px="4"
+            borderLeft="4px"
+            borderColor="blue.400"
+          >
+            <VStack align={"start"}>
+              <a
+                href={"/post/" + props.data.slug}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Text color="blue.600" fontWeight={400} fontSize={22}>
+                  {props.data.title}
+                </Text>
+              </a>
+              <Text fontSize={"18"}>{props.data.description}</Text>
+              <Text fontSize="18" color={"gray.600"} as="span">
+                {props.data.date}
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+        <Flex
+          mt="4"
+          w={{ base: "100%", md: "24%" }}
+          direction="column"
+          pl="4"
+          borderLeft={"1px"}
+          borderColor="gray.200"
+        >
+          {/* ここにTag等一覧を作成する */}
+        </Flex>
       </Flex>
-    </Flex></>
+    </>
   );
 }
 
