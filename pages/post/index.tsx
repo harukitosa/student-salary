@@ -1,5 +1,4 @@
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
-import Link from "next/link";
 import { SEO } from "../../component/seo";
 // import {Post, HomePageProps} from "../types/type";
 import { getAllPostsData } from "../../utils/getPostsData";
@@ -77,26 +76,6 @@ function PostItem(props: any) {
     </>
   );
 }
-
-const LinkBox = (props: { title: string; url: string; select?: boolean }) => {
-  let border = "1px";
-  let bg = "white";
-  let color = "blue.600";
-  if (props.select != undefined && props.select) {
-    bg = "white";
-    border = "1px";
-    color = "red.200";
-  }
-  return (
-    <Link href={props.url}>
-      <a>
-        <Text fontSize={22} color={color}>
-          {props.title}
-        </Text>
-      </a>
-    </Link>
-  );
-};
 
 export async function getStaticProps() {
   const path = "./posts/";

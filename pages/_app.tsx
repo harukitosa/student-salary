@@ -38,6 +38,10 @@ const themes = {
         "font-size": "18px",
         "line-height": "1.75",
       },
+      "hr": {
+        "background-color": "#fff",
+        "border-top": "2px dashed #8c8b8b"
+      }
     },
   },
 };

@@ -14,6 +14,8 @@ description: "2022年の春のエンジニアインターンシップの情報�
 正確な情報は各社募集サイトをご確認ください。
 見つけ次第追加していきたいと思っています。
 
+---
+
 ### [Pixiv](https://www.pixiv.co.jp/spring_bootcamp_2022)
 
 > ピクシブ株式会社は「創作活動がもっと楽しくなる場所を創る」というミッションのもと、累計登録ユーザー数7400万人を超える「pixiv」をはじめ、現在15以上のサービス開発を進めています。
@@ -24,6 +26,9 @@ description: "2022年の春のエンジニアインターンシップの情報�
 [応募する](https://www.pixiv.co.jp/spring_bootcamp_2022)
 
 [過去のインターンシップの参加ブログを読む](https://www.student-salary.com/blog/pixiv)
+
+
+---
 
 ### [CADDI](https://recruiting.caddi.jp/recruit/eng/spring_intern)
 
@@ -47,6 +52,7 @@ MLのインターンシップ。もう一つ、春休み開発インターンシ
 
 [過去のインターンシップの参加ブログを読む](https://www.student-salary.com/blog/CyberAgent)
 
+---
 
 ### [Mercari](https://mercari.wd3.myworkdayjobs.com/ja-JP/mercari_external/job/Work-from-Home-JP/Online-Spring-Internship-for-Gophers-2022--Internship-_JR-000001163)
 
@@ -60,6 +66,7 @@ Go 1.18の目玉アップデートのジェネリクスについて講義形式+
 
 [過去のインターンシップの参加ブログを読む](https://www.student-salary.com/blog/mercari)
 
+---
 
 ### [Mixi](https://mixi-recruit.snar.jp/jobboard/detail.aspx)
 
