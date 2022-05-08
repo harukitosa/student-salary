@@ -46,7 +46,7 @@ export default function PostPage(props) {
 
 function PostView(props: any) {
   return (
-    <Box margin={"auto"} w={{ md: "75vw", base: "100vw" }}>
+    <Box margin={"auto"} w={{ md: "75vw", base: "94vw" }}>
       <Heading as="h2" size="2xl" py="12">
         {props.data.title}
       </Heading>
