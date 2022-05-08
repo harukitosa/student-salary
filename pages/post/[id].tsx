@@ -46,16 +46,16 @@ export default function PostPage(props) {
 
 function PostView(props: any) {
   return (
-    <Box margin={"auto"} w={{md: "75vw", base: "100vw"}}>
-        <Heading as="h2" size="2xl" py="12">
-          {props.data.title}
-        </Heading>
-        <Box pt="12">
-          <div
-            className="markdown"
-            dangerouslySetInnerHTML={{ __html: props.content }}
-          />
-        </Box>
+    <Box margin={"auto"} w={{ md: "75vw", base: "100vw" }}>
+      <Heading as="h2" size="2xl" py="12">
+        {props.data.title}
+      </Heading>
+      <Box pt="12">
+        <div
+          className="markdown"
+          dangerouslySetInnerHTML={{ __html: props.content }}
+        />
+      </Box>
     </Box>
   );
 }
