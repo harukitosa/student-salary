@@ -126,7 +126,7 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   const page = parseInt(router.query.page as string, 10) || 0;
   const maxPageCount = 40;
   // const maxBlogSize = data.blog.blog.length;
-  const pageCount = parseInt(data.blog.blog.length / maxPageCount);
+  const pageCount = Math.floor(data.blog.blog.length / maxPageCount);
 
   return (
     <>
