@@ -88,7 +88,11 @@ export default function BlogPage({ data, company_name }) {
           company_name == "all" ? "エンジニア" : company_name
         }のインターン参加ブログまとめ`}
       />
-      <Box maxW={{base: "100vw", md: "70vw"}} margin="auto" px={{ base: "2", md: "12" }}>
+      <Box
+        maxW={{ base: "100vw", md: "70vw" }}
+        margin="auto"
+        px={{ base: "2", md: "12" }}
+      >
         <Box pt="12" mb="2">
           <Text as="h1" fontSize={{ base: "4xl" }} fontWeight="600">
             {company_name == "all" ? "エンジニア" : company_name}
@@ -122,16 +126,18 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
   const page = parseInt(router.query.page as string, 10) || 0;
   const maxPageCount = 40;
   // const maxBlogSize = data.blog.blog.length;
-  const pageCount = parseInt(data.blog.blog.length/maxPageCount)
+  const pageCount = parseInt(data.blog.blog.length / maxPageCount);
 
   return (
     <>
       <Box py="4"></Box>
       <Flex direction={{ base: "column", md: "row" }}>
         <Box w={{ base: "100%", md: "76%" }}>
-          {data.blog.blog.slice(page*maxPageCount, page*maxPageCount+maxPageCount).map((item, index) => {
-            return <BlogItemBlock key={index} item={item} />;
-          })}
+          {data.blog.blog
+            .slice(page * maxPageCount, page * maxPageCount + maxPageCount)
+            .map((item, index) => {
+              return <BlogItemBlock key={index} item={item} />;
+            })}
         </Box>
         <Flex
           mt="4"
@@ -157,23 +163,25 @@ const BlogView = (props: { data: GetBlogQuery; name: string }) => {
 
       <VStack>
         <Box fontSize={22}>Page</Box>
-      <Flex gap={"4"}>
-        {[...Array(pageCount)].map((item, index) => {
-          return (
-            <Center key={index}>
-              <Link href={`/blog/${props.name}?page=${index}`}>
-                <a>
-                  <Text fontSize={28} color={page==index ? "gray.200": "blue.600"}>
-                    {index}
-                  </Text>
-                </a>
-              </Link>
-            </Center>
-          )
-        })}
-      </Flex>
+        <Flex gap={"4"}>
+          {[...Array(pageCount)].map((item, index) => {
+            return (
+              <Center key={index}>
+                <Link href={`/blog/${props.name}?page=${index}`}>
+                  <a>
+                    <Text
+                      fontSize={28}
+                      color={page == index ? "gray.200" : "blue.600"}
+                    >
+                      {index}
+                    </Text>
+                  </a>
+                </Link>
+              </Center>
+            );
+          })}
+        </Flex>
       </VStack>
-
 
       <Text pt="12" fontSize="18" fontWeight="bold" align="center">
         Blog情報の提供はこちらからお願いします
