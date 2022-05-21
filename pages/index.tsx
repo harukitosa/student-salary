@@ -42,15 +42,18 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Home() {
-  useEffect(async () => {
-    const results = await fetch("/api/hello", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const re = await results.json();
-    console.log(re);
+  useEffect(() => {
+    const fetchMock = async () => {
+      const results = await fetch("/api/hello", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const re = await results.json();
+      console.log(re);
+    }
+    fetchMock()
   }, []);
   return (
     <>
