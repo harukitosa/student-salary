@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model blogs {
+  id           BigInt  @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  url          String  @unique(map: "url") @db.VarChar(255)
+  title        String? @db.VarChar(255)
+  company_name String  @db.VarChar(255)
+  year         Int?
+  season       String? @db.VarChar(20)
+}
+
+model hoges {
+  user_id  BigInt @id @unique(map: "user_id") @default(autoincrement()) @db.UnsignedBigInt
+  username String @unique(map: "username") @db.VarChar(50)
+  password String @db.VarChar(50)
+  email    String @unique(map: "email") @db.VarChar(300)
+}
+
+model job_salaries {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  created_at     DateTime?
+  updated_at     DateTime?
+  deleted_at     DateTime?
+  create_data_js String?   @db.LongText
+  detail         String?   @db.LongText
+  experience     String?   @db.LongText
+  is_show        Boolean?
+  name           String?   @db.LongText
+  salary         BigInt?
+  term           String?   @db.LongText
+  type           String?   @db.LongText
+  work_days      String?   @db.LongText
+  work_type      String?   @db.LongText
+
+  @@index([deleted_at], map: "idx_job_salaries_deleted_at")
+}
+
+model reviews {
+  id             BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  created_at     DateTime?
+  updated_at     DateTime?
+  deleted_at     DateTime?
+  company_name   String?   @db.LongText
+  content        String?   @db.LongText
+  create_date_js String?   @db.LongText
+  link           String?   @db.LongText
+  reasons        String?   @db.LongText
+  report         String?   @db.LongText
+  skill          String?   @db.LongText
+  user_name      String?   @db.LongText
+
+  @@index([deleted_at], map: "idx_reviews_deleted_at")
+}
+
+model schema_migrations {
+  version BigInt  @id
+  dirty   Boolean
+}
+
+model users {
+  id         BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  created_at DateTime?
+  updated_at DateTime?
+  deleted_at DateTime?
+  name       String?   @db.LongText
+
+  @@index([deleted_at], map: "idx_users_deleted_at")
+}

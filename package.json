@@ -27,6 +27,7 @@
     "@hookform/resolvers": "^2.8.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/data-grid": "^4.0.0-alpha.35",
+    "@prisma/client": "^3.14.0",
     "deepmerge": "^4.2.2",
     "framer-motion": "^4.1.17",
     "graphql": "^15.5.2",
@@ -60,6 +61,7 @@
     "husky": "^7.0.0",
     "next-sitemap": "^1.6.168",
     "prettier": "^2.3.2",
+    "prisma": "^3.14.0",
     "typescript": "^4.4.3"
   }
 }

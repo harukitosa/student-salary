@@ -27,6 +27,7 @@ import { useGetHomePageQuery } from "../src/generated/graphql";
 import { HOMEPAGE_QUERY } from "../request/queries/homepage.query";
 import { Loading } from "../component/loading";
 import { ErrorPage } from "../component/error";
+import { useEffect } from "react";
 
 export async function getStaticProps({ params }) {
   const apolloClient = initializeApollo();
@@ -41,6 +42,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Home() {
+  useEffect(async () => {
+    const results = await fetch("/api/hello", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const re = await results.json()
+    console.log(re);
+  }, []);
   return (
     <>
       <SEO description="StudentSalaryは学生エンジニアの時給・総合情報サイトです。各種インターンシップ情報や参加ブログなどを企業別に閲覧することができます。" />
@@ -351,3 +362,6 @@ export const BlogPostWithImage = (props: {
     </Box>
   );
 };
+function axios(arg0: string) {
+  throw new Error("Function not implemented.");
+}
