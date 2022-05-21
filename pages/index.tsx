@@ -52,8 +52,8 @@ export default function Home() {
       });
       const re = await results.json();
       console.log(re);
-    }
-    fetchMock()
+    };
+    fetchMock();
   }, []);
   return (
     <>

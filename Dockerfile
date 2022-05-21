@@ -5,6 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
+RUN yarn run prisma generate
 
 # If using npm with a `package-lock.json` comment out above and use below instead
 # COPY package.json package-lock.json ./ 
@@ -53,4 +54,5 @@ EXPOSE 3000
 
 ENV PORT 3000
 
+# ここでmigrationできるようにしておく
 CMD ["node", "server.js"]
