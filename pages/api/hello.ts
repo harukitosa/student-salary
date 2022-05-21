@@ -8,8 +8,8 @@ const hello = async (req: NextApiRequest, res: NextApiResponse) => {
   const r = await prisma.job_salaries.findMany();
   const response = JSON.stringify(
     r,
-    (key, value) => (typeof value === 'bigint' ? value.toString() : value) // return everything else unchanged
-  )
+    (key, value) => (typeof value === "bigint" ? value.toString() : value) // return everything else unchanged
+  );
   res.status(200).send(response);
 };
 

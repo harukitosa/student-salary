@@ -49,7 +49,7 @@ export default function Home() {
         "Content-Type": "application/json",
       },
     });
-    const re = await results.json()
+    const re = await results.json();
     console.log(re);
   }, []);
   return (
