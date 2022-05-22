@@ -12,50 +12,6 @@ import Link from "next/link";
 import * as React from "react";
 import { WorkData } from "../src/generated/graphql";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 30 },
-  {
-    field: "name",
-    headerName: "企業名",
-    width: 150,
-  },
-  {
-    field: "salary",
-    headerName: "時給",
-    width: 120,
-  },
-  {
-    field: "workType",
-    headerName: "契約種別",
-    type: "string",
-    width: 140,
-  },
-  {
-    field: "type",
-    headerName: "タイプ",
-    type: "string",
-    width: 120,
-  },
-  {
-    field: "term",
-    headerName: "期間",
-    type: "string",
-    width: 120,
-  },
-  {
-    field: "experience",
-    headerName: "経験年数",
-    type: "number",
-    width: 140,
-  },
-  {
-    field: "workdays",
-    headerName: "週出勤日数",
-    type: "number",
-    width: 150,
-  },
-];
-
 interface WorkDataArgument extends Omit<WorkData, "workType"> {
   work_type?: string;
 }

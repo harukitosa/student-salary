@@ -154,7 +154,7 @@ function HomePage() {
   const fetcher = (url: string): Promise<any> =>
     fetch(url).then((res) => res.json());
   const { data: workinfoData, error: errorHello } = useSWR(
-    "/api/hello",
+    "/api/salary",
     fetcher
   );
 
