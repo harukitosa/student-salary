@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import * as React from "react";
-import { useRouter } from "next/router";
 import { WorkData } from "../src/generated/graphql";
 
 const columns = [
@@ -57,9 +56,11 @@ const columns = [
   },
 ];
 
-export const DataTable = (props: { data: WorkData[] }) => {
-  const router = useRouter();
+interface WorkDataArgument extends Omit<WorkData, 'workType'> {
+  work_type?: string
+}
 
+export const DataTable = (props: { data: WorkDataArgument[] }) => {
   return (
     <Accordion allowToggle>
       {props.data.slice(0, 30).map((item) => {
@@ -80,7 +81,7 @@ export const DataTable = (props: { data: WorkData[] }) => {
                       </a>
                     </Link>
                     <Text as="span" fontSize="12">
-                      {item.workType}
+                      {item.work_type || "記載なし"}
                     </Text>
                   </Stack>
                 </Box>
@@ -101,7 +102,7 @@ export const DataTable = (props: { data: WorkData[] }) => {
                 >
                   <Stack direction="column" gridGap={0}>
                     <Text fontSize="18" fontWeight="400">
-                      {item.type}
+                      {item.type === "" ? "記載なし": item.type}
                     </Text>
                   </Stack>
                 </Box>
@@ -112,7 +113,7 @@ export const DataTable = (props: { data: WorkData[] }) => {
                 >
                   <Stack direction="column" gridGap={0}>
                     <Text fontSize="18" fontWeight="400">
-                      {item.term}
+                      {item.term || "記載なし"}
                     </Text>
                   </Stack>
                 </Box>
@@ -122,10 +123,10 @@ export const DataTable = (props: { data: WorkData[] }) => {
             </h2>
             <AccordionPanel pb={4}>
               <Stack>
-                <Text>経験年数:{item.experience}</Text>
-                <Text>週出勤日数:{item.workdays}</Text>
+                <Text>経験年数:{item.experience || "記載なし"}</Text>
+                <Text>週出勤日数:{item.workdays || "記載なし"}</Text>
                 <Text fontSize="12">詳細</Text>
-                <Text>{item.detail}</Text>
+                <Text>{item.detail || "記載なし"}</Text>
               </Stack>
             </AccordionPanel>
           </AccordionItem>

@@ -27,7 +27,7 @@ import { useGetHomePageQuery } from "../src/generated/graphql";
 import { HOMEPAGE_QUERY } from "../request/queries/homepage.query";
 import { Loading } from "../component/loading";
 import { ErrorPage } from "../component/error";
-import { useEffect } from "react";
+import useSWR from "swr";
 
 export async function getStaticProps({ params }) {
   const apolloClient = initializeApollo();
@@ -42,19 +42,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Home() {
-  useEffect(() => {
-    const fetchMock = async () => {
-      const results = await fetch("/api/hello", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const re = await results.json();
-      console.log(re);
-    };
-    fetchMock();
-  }, []);
   return (
     <>
       <SEO description="StudentSalaryは学生エンジニアの時給・総合情報サイトです。各種インターンシップ情報や参加ブログなどを企業別に閲覧することができます。" />
@@ -163,6 +150,9 @@ export default function Home() {
 
 function HomePage() {
   const { data, loading, error } = useGetHomePageQuery({});
+
+  const fetcher = (url: string): Promise<any> => fetch(url).then(res => res.json());
+  const { data: workinfoData, error: errorHello } = useSWR("/api/hello", fetcher)
 
   if (loading) return <Loading />;
   if (error) return <ErrorPage />;
@@ -294,7 +284,7 @@ function HomePage() {
           企業情報
         </Text>
       </Box>
-      <DataTable data={data.workdatainfo.workdata} />
+      {workinfoData && <DataTable data={workinfoData} />}
       <Center alignContent={"center"} py={16}>
         <Link href={`/workinfo`}>
           <a>
