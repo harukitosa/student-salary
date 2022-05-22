@@ -56,8 +56,8 @@ const columns = [
   },
 ];
 
-interface WorkDataArgument extends Omit<WorkData, 'workType'> {
-  work_type?: string
+interface WorkDataArgument extends Omit<WorkData, "workType"> {
+  work_type?: string;
 }
 
 export const DataTable = (props: { data: WorkDataArgument[] }) => {
@@ -102,7 +102,7 @@ export const DataTable = (props: { data: WorkDataArgument[] }) => {
                 >
                   <Stack direction="column" gridGap={0}>
                     <Text fontSize="18" fontWeight="400">
-                      {item.type === "" ? "記載なし": item.type}
+                      {item.type === "" ? "記載なし" : item.type}
                     </Text>
                   </Stack>
                 </Box>

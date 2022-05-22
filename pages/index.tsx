@@ -151,8 +151,12 @@ export default function Home() {
 function HomePage() {
   const { data, loading, error } = useGetHomePageQuery({});
 
-  const fetcher = (url: string): Promise<any> => fetch(url).then(res => res.json());
-  const { data: workinfoData, error: errorHello } = useSWR("/api/hello", fetcher)
+  const fetcher = (url: string): Promise<any> =>
+    fetch(url).then((res) => res.json());
+  const { data: workinfoData, error: errorHello } = useSWR(
+    "/api/hello",
+    fetcher
+  );
 
   if (loading) return <Loading />;
   if (error) return <ErrorPage />;
