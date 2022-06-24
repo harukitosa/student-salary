@@ -9,10 +9,11 @@ const salary = async (req: NextApiRequest, res: NextApiResponse) => {
     take: 30,
     orderBy: [
       {
-        id: 'desc'
-      }
+        created_at: "desc",
+      },
     ],
   });
+  console.log(salaryList)
   const response = JSON.stringify(
     salaryList,
     (key, value) => (typeof value === "bigint" ? value.toString() : value) // return everything else unchanged
