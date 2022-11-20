@@ -3,7 +3,6 @@ import {
   Center,
   Heading,
   Box,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -18,13 +17,17 @@ export const ReviewItem = (props: {
       <a>
         <Center>
           <Box
-            bg={useColorModeValue("white", "gray.900")}
+            // bg={useColorModeValue("white", "gray.900")}
             border={"1px"}
+            borderRadius={"3xl"}
             borderColor={"blackAlpha.200"}
-            p={3}
+            _hover={{
+              borderColor: "blue.400",
+            }}
+            p={4}
             m={1}
+            h="40"
             w={"full"}
-            h={"full"}
           >
             <Heading fontSize={"xl"} fontFamily={"body"} color="blue.400">
               {props.name}

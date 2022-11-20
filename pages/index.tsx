@@ -11,6 +11,7 @@ import {
   VStack,
   Spacer,
   Container,
+  Badge,
 } from "@chakra-ui/react";
 import { DataTable } from "../component/simpletable";
 import Link from "next/link";
@@ -163,94 +164,10 @@ function HomePage() {
 
   return (
     <Container minW={"80vw"}>
-      <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
+      <Box mt={12} w={40} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
           fontWeight={600}
-          color={"white"}
-          align={"center"}
-        >
-          広告
-        </Text>
-      </Box>
-      <Center>
-        <SimpleGrid
-          columns={{ base: 1, md: 1, lg: 3, sm: 1 }}
-          spacing={12}
-          mt={6}
-        >
-          <Link href={"https://twitter.com/tosa_now"}>
-            <a>
-              <Box
-                bg="gray.100"
-                w="300px"
-                h="100px"
-                textAlign={"center"}
-                _hover={{
-                  boxShadow: "md",
-                }}
-              >
-                <Center h="100%" p="1">
-                  <Text fontSize="12px" color={"gray.500"}>
-                    300px x 100pxの画像+リンクで月1000円から広告募集しています。
-                    <br />
-                    詳しくは制作者Twitter(@tosa_now)のDMよりどうぞ
-                  </Text>
-                </Center>
-              </Box>
-            </a>
-          </Link>
-          <Link href={"https://twitter.com/tosa_now"}>
-            <a>
-              <Box
-                bg="gray.100"
-                w="300px"
-                h="100px"
-                textAlign={"center"}
-                _hover={{
-                  boxShadow: "md",
-                }}
-              >
-                <Center h="100%" p="1">
-                  <Text fontSize="12px" color={"gray.500"}>
-                    300px x 100pxの画像+リンクで月1000円から広告募集しています。
-                    <br />
-                    詳しくは制作者Twitter(@tosa_now)のDMよりどうぞ
-                  </Text>
-                </Center>
-              </Box>
-            </a>
-          </Link>
-          <Link href={"https://twitter.com/tosa_now"}>
-            <a>
-              <Box
-                bg="gray.100"
-                w="300px"
-                h="100px"
-                textAlign={"center"}
-                _hover={{
-                  boxShadow: "md",
-                }}
-              >
-                <Center h="100%" p="1">
-                  <Text fontSize="12px" color={"gray.500"}>
-                    300px x 100pxの画像+リンクで月1000円から広告募集しています。
-                    <br />
-                    詳しくは制作者Twitter(@tosa_now)のDMよりどうぞ
-                  </Text>
-                </Center>
-              </Box>
-            </a>
-          </Link>
-        </SimpleGrid>
-      </Center>
-
-      <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
-        <Text
-          fontSize={"medium"}
-          fontWeight={600}
-          color={"white"}
-          align={"center"}
         >
           統計情報
         </Text>
@@ -285,12 +202,10 @@ function HomePage() {
           unit={"円"}
         />
       </SimpleGrid>
-      <Box mt={12} bg={"blue.400"} w={40} p={2} rounded={"lg"}>
+      <Box mt={12} w={40} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
           fontWeight={600}
-          color={"white"}
-          align={"center"}
         >
           登録件数が多い企業
         </Text>
@@ -302,7 +217,10 @@ function HomePage() {
               <a>
                 <Box
                   border={"1px"}
-                  w={"full"}
+                  borderRadius={"3xl"}
+                  _hover={{
+                    borderColor: "blue.400",
+                  }}
                   borderColor={"blackAlpha.200"}
                   p={"5"}
                   flex="1"
@@ -314,11 +232,12 @@ function HomePage() {
                         fontWeight={"bold"}
                         color={"blue.400"}
                       >
+                        <Badge mr="2" textAlign={"center"} colorScheme='blue' w="8" size={"sm"}>{index+1}位</Badge>
                         {item.name}
                       </Text>
                       <Text fontSize={"14"} fontWeight={"bold"}>
-                        {item.min}円/hr ~ {item.max}
-                        円/hr
+                        時給 {item.min}円 ~ {item.max}
+                        円
                       </Text>
                     </VStack>
                     <Spacer />
@@ -337,12 +256,10 @@ function HomePage() {
           );
         })}
       </SimpleGrid>
-      <Box mt={12} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
+      <Box mt={12} w={32} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
           fontWeight={600}
-          color={"white"}
-          align={"center"}
         >
           新着口コミ
         </Text>
@@ -361,12 +278,10 @@ function HomePage() {
         })}
       </SimpleGrid>
 
-      <Box mt={12} mb={6} bg={"blue.400"} w={32} p={2} rounded={"lg"}>
+      <Box mt={12} mb={6} w={32} p={2} rounded={"lg"}>
         <Text
           fontSize={"medium"}
           fontWeight={600}
-          color={"white"}
-          align={"center"}
         >
           企業情報
         </Text>
