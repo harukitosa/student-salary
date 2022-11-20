@@ -1,9 +1,4 @@
-import {
-  Text,
-  Center,
-  Heading,
-  Box,
-} from "@chakra-ui/react";
+import { Text, Center, Heading, Box } from "@chakra-ui/react";
 
 import Link from "next/link";
 export const ReviewItem = (props: {

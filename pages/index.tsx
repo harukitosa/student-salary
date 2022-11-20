@@ -165,10 +165,7 @@ function HomePage() {
   return (
     <Container minW={"80vw"}>
       <Box mt={12} w={40} p={2} rounded={"lg"}>
-        <Text
-          fontSize={"medium"}
-          fontWeight={600}
-        >
+        <Text fontSize={"medium"} fontWeight={600}>
           統計情報
         </Text>
       </Box>
@@ -203,10 +200,7 @@ function HomePage() {
         />
       </SimpleGrid>
       <Box mt={12} w={40} p={2} rounded={"lg"}>
-        <Text
-          fontSize={"medium"}
-          fontWeight={600}
-        >
+        <Text fontSize={"medium"} fontWeight={600}>
           登録件数が多い企業
         </Text>
       </Box>
@@ -232,12 +226,19 @@ function HomePage() {
                         fontWeight={"bold"}
                         color={"blue.400"}
                       >
-                        <Badge mr="2" textAlign={"center"} colorScheme='blue' w="8" size={"sm"}>{index+1}位</Badge>
+                        <Badge
+                          mr="2"
+                          textAlign={"center"}
+                          colorScheme="blue"
+                          w="8"
+                          size={"sm"}
+                        >
+                          {index + 1}位
+                        </Badge>
                         {item.name}
                       </Text>
                       <Text fontSize={"14"} fontWeight={"bold"}>
-                        時給 {item.min}円 ~ {item.max}
-                        円
+                        時給 {item.min}円 ~ {item.max}円
                       </Text>
                     </VStack>
                     <Spacer />
@@ -257,10 +258,7 @@ function HomePage() {
         })}
       </SimpleGrid>
       <Box mt={12} w={32} p={2} rounded={"lg"}>
-        <Text
-          fontSize={"medium"}
-          fontWeight={600}
-        >
+        <Text fontSize={"medium"} fontWeight={600}>
           新着口コミ
         </Text>
       </Box>
@@ -279,10 +277,7 @@ function HomePage() {
       </SimpleGrid>
 
       <Box mt={12} mb={6} w={32} p={2} rounded={"lg"}>
-        <Text
-          fontSize={"medium"}
-          fontWeight={600}
-        >
+        <Text fontSize={"medium"} fontWeight={600}>
           企業情報
         </Text>
       </Box>
