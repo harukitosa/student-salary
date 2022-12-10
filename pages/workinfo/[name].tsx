@@ -48,7 +48,7 @@ export async function getStaticPaths() {
   const paths = data.companylist.map((item) => ({
     params: { name: item.name },
   }));
-  console.log(paths)
+  console.log(paths);
   return {
     paths: paths || [],
     fallback: false,
@@ -75,7 +75,7 @@ export default function WorkInfo() {
   });
   if (loading) return <Loading />;
   if (error) return <ErrorPage />;
-  console.log(data)
+  console.log(data);
   // avarage
   // logic多いので後で移す
   let avg: number = 0;
